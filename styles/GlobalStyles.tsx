@@ -1,0 +1,52 @@
+import { Global, css, useTheme } from '@emotion/react';
+
+const GlobalStyles = () => {
+  const theme = useTheme();
+  return (
+    <Global
+      styles={css`
+        :root {
+          --font-primary: 'DM Sans', sans-serif;
+          --font-secondary: 'Poppins', sans-serif;
+          --fontWeight-regular: 400;
+          --fontWeight-semiBold: 600;
+          --fontWeight-bold: 700;
+
+          --transition: all 0.25s linear;
+        }
+
+        *,
+        *::before,
+        *::after {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: var(--font-primary);
+          font-size: 1rem;
+          color: ${theme.textColor};
+          background-color: ${theme.backgroundColor};
+          transition: var(--transition);
+        }
+
+        a {
+          display: inline-block;
+          color: inherit;
+          text-decoration: none;
+        }
+
+        ul {
+          list-style: none;
+        }
+
+        h1 {
+          margin: 0;
+        }
+      `}
+    />
+  );
+};
+
+export default GlobalStyles;
