@@ -5,16 +5,18 @@ import { BaseStyles } from './types';
 const base = ({
   fontFamily = 'DM Sans',
   fontSize = '1rem',
-  fontWeight = 400,
+  fontWeight,
   lineHeight = '1.5rem',
   letterSpacing,
+  textTransform,
 }: BaseStyles) =>
   css`
     font-family: ${fontFamily}, sans-serif;
     font-size: ${fontSize};
-    font-weight: ${fontWeight};
+    ${fontWeight && `font-weight: ${fontWeight};`}
     line-height: ${lineHeight};
     ${letterSpacing && `letter-spacing: ${letterSpacing};`}
+    ${textTransform && `text-transform: ${textTransform};`}
   `;
 
 export default base;

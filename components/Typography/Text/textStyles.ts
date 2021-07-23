@@ -37,12 +37,14 @@ const textStyles: TextType = {
     fontSize: '1rem',
     fontWeight: 700,
     lineHeight: '1rem',
+    textTransform: 'uppercase',
   },
   hairline2: {
     fontFamily: 'Poppins',
     fontSize: '0.75rem',
     fontWeight: 700,
     lineHeight: '0.75rem',
+    textTransform: 'uppercase',
   },
   button1: {
     fontSize: '1rem',

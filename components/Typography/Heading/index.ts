@@ -12,7 +12,6 @@ interface HeadingProps extends TypographyProps {
 const Heading = styled.div<HeadingProps>`
   ${({ variant = HeadingVariants.Hero }) => base(headingStyles[variant])}
   ${({ textCenter }) => textCenter && `text-align: center`}
-  ${({ textTransform }) => textTransform && `text-transform: ${textTransform}`}
 `;
 
 export default Heading;

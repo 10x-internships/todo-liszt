@@ -1,6 +1,5 @@
 export interface TypographyProps {
   textCenter?: boolean;
-  textTransform?: 'uppercase' | 'capitalize';
 }
 
 export interface BaseStyles {
@@ -9,6 +8,7 @@ export interface BaseStyles {
   fontWeight?: number;
   lineHeight: string;
   letterSpacing?: string;
+  textTransform?: 'uppercase' | 'capitalize';
 }
 
 export enum TypoTags {
