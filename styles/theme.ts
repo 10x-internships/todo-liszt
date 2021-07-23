@@ -29,7 +29,8 @@ const lightTheme = {
   backgroundColor: colors.neutrals['08'],
   borderColor: colors.neutrals['06'],
   button: {
-    textColor: colors.neutrals['08'],
+    textColor: colors.neutrals['02'],
+    textHover: colors.neutrals['08'],
     backgroundColor: colors.neutrals['02'],
     borderColor: colors.neutrals['06'],
   },
@@ -40,7 +41,8 @@ const darkTheme = {
   backgroundColor: colors.neutrals['01'],
   borderColor: colors.neutrals['03'],
   button: {
-    textColor: colors.neutrals['02'],
+    textColor: colors.neutrals['08'],
+    textHover: colors.neutrals['02'],
     backgroundColor: colors.neutrals['08'],
     borderColor: colors.neutrals['04'],
   },
