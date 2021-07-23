@@ -1,33 +1,18 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import headingStyles from './headingStyles';
-import { TypographySizes } from '../types';
+import { TypographyProps, HeadingVariants } from '../types';
+import base from '../base';
 
-type HeadingProps = {
-  variant: 'hero' | 'headline';
-  size?: TypographySizes;
-};
+interface HeadingProps extends TypographyProps {
+  variant: HeadingVariants;
+}
 
+// Using for Hero and Headline heading text
 const Heading = styled.div<HeadingProps>`
-  font-weight: 700;
-
-  ${({ variant = 'heading', size = TypographySizes.SM }) => {
-    if (variant === 'hero') {
-      return css`
-        font-size: ${headingStyles.hero.fontSize};
-        line-height: ${headingStyles.hero.lineHeight};
-        letter-spacing: : ${headingStyles.hero.letterSpacing};
-      `;
-    }
-    if (variant === 'headline') {
-      return css`
-        font-size: ${headingStyles.headline.fontSize[size]};
-        line-height: ${headingStyles.headline.lineHeight[size]};
-        letter-spacing: : ${headingStyles.headline.letterSpacing[size]};
-      `;
-    }
-  }}
+  ${({ variant = HeadingVariants.Hero }) => base(headingStyles[variant])}
+  ${({ textCenter }) => textCenter && `text-align: center`}
+  ${({ textTransform }) => textTransform && `text-transform: ${textTransform}`}
 `;
 
 export default Heading;

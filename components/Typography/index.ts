@@ -1,2 +1,3 @@
 export { default as Heading } from './Heading';
-export { TypographySizes } from './types';
+export { default as Text } from './Text';
+export { HeadingVariants, TextVariants, TypoTags } from './types';
