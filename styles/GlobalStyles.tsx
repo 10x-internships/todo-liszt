@@ -8,9 +8,6 @@ const GlobalStyles = () => {
         :root {
           --font-primary: 'DM Sans', sans-serif;
           --font-secondary: 'Poppins', sans-serif;
-          --fontWeight-regular: 400;
-          --fontWeight-semiBold: 600;
-          --fontWeight-bold: 700;
 
           --transition: all 0.25s linear;
         }
@@ -26,6 +23,7 @@ const GlobalStyles = () => {
         body {
           font-family: var(--font-primary);
           font-size: 1rem;
+          font-weight: 400;
           color: ${theme.textColor};
           background-color: ${theme.backgroundColor};
           transition: var(--transition);
