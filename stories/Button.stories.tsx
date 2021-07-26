@@ -1,6 +1,11 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button, ButtonSizes, ButtonVariants } from '../components/Button';
+import {
+  Button,
+  ButtonIcon,
+  ButtonSizes,
+  ButtonVariants,
+} from '../components/Button';
 import StarFilled from '../components/Icons/StarFilled';
 import Link from 'next/link';
 
@@ -31,15 +36,17 @@ export const ButtonTheme = () => (
 
 export const ButtonWithIcon = () => (
   <>
-    <Button
-      variant={ButtonVariants.Theme}
-      size={ButtonSizes.XSmall}
-      leftIcon={<StarFilled />}
-    >
+    <Button variant={ButtonVariants.Theme} size={ButtonSizes.XSmall}>
+      <ButtonIcon
+        icon={<StarFilled />}
+        iconSpaceSize={ButtonSizes.XSmall}
+        position="left"
+      />
       X Small
     </Button>
-    <Button variant={ButtonVariants.Theme} rightIcon={<StarFilled />}>
+    <Button variant={ButtonVariants.Theme}>
       Small
+      <ButtonIcon icon={<StarFilled />} position="right" />
     </Button>
   </>
 );
