@@ -42,6 +42,13 @@ const GlobalStyles = () => {
         h1 {
           margin: 0;
         }
+
+        button,
+        input,
+        textarea {
+          font-family: inherit;
+          font-size: 100%;
+        }
       `}
     />
   );
