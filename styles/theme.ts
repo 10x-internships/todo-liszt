@@ -34,6 +34,10 @@ const lightTheme = {
     backgroundColor: colors.neutrals['02'],
     borderColor: colors.neutrals['06'],
   },
+  circleButton: {
+    textColor: colors.neutrals['08'],
+    backgroundColor: colors.neutrals['02'],
+  },
 };
 
 const darkTheme = {
@@ -45,6 +49,10 @@ const darkTheme = {
     textHover: colors.neutrals['02'],
     backgroundColor: colors.neutrals['08'],
     borderColor: colors.neutrals['04'],
+  },
+  circleButton: {
+    textColor: colors.neutrals['04'],
+    backgroundColor: colors.neutrals['08'],
   },
 };
 
