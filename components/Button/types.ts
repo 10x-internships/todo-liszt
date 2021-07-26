@@ -1,7 +1,7 @@
 export enum ButtonSizes {
-  XSmall = 'x-small',
+  XSmall = 'xs',
   Small = 'sm',
-  Medium = 'medium',
+  Medium = 'md',
 }
 
 export enum ButtonVariants {
@@ -9,19 +9,18 @@ export enum ButtonVariants {
   Theme = 'theme',
 }
 
-export interface ButtonProps {
-  type?: 'button' | 'submit' | 'reset';
+export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
   variant?: ButtonVariants;
   size?: ButtonSizes;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   isDisabled?: boolean;
-  children: React.ReactNode;
   asLink?: boolean;
+  children: React.ReactNode;
 }
 
-export interface IconWrapperProps {
-  size: ButtonSizes;
-  marginRight?: boolean;
-  marginLeft?: boolean;
+export interface ButtonIconProps {
+  position: 'right' | 'left';
+  icon: React.ReactNode;
+  iconSpaceSize?: ButtonSizes;
 }

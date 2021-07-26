@@ -3,13 +3,15 @@ import styled from '@emotion/styled';
 
 import {
   ButtonProps,
-  IconWrapperProps,
+  ButtonIconProps,
   ButtonSizes,
   ButtonVariants,
 } from './types';
 import { colors } from '../../styles';
 
 const buttonBase = css`
+  font-weight: 700;
+  line-height: 1rem;
   border: none;
   border-radius: 5.625rem;
   outline: none;
@@ -26,31 +28,6 @@ const buttonBase = css`
   }
 `;
 
-export const IconWrapper = styled.span<IconWrapperProps>`
-  --icon-spacing-normal: 0.75rem;
-  --icon-spacing-small: 0.5rem;
-
-  display: block;
-
-  ${({ size, marginRight }) =>
-    marginRight &&
-    `margin-right: var(--icon-spacing-${
-      size === ButtonSizes.XSmall ? 'small' : 'normal'
-    });`}
-
-  ${({ size, marginLeft }) =>
-    marginLeft &&
-    `margin-left: var(--icon-spacing-${
-      size === ButtonSizes.XSmall ? 'small' : 'normal'
-    });`}
-
-  & svg {
-    width: 1rem;
-    height: 1rem;
-    display: block;
-  }
-`;
-
 export const StyledButton = styled.button<ButtonProps>`
   ${buttonBase}
 
@@ -60,6 +37,7 @@ export const StyledButton = styled.button<ButtonProps>`
         return css`
           height: 2rem;
           padding: 0 0.75rem;
+          font-size: 0.875rem;
         `;
       case ButtonSizes.Small:
         return css`
@@ -107,4 +85,21 @@ export const StyledButton = styled.button<ButtonProps>`
         `;
     }
   }}
+`;
+
+export const StyledButtonIcon = styled.span<ButtonIconProps>`
+  display: block;
+
+  ${({ iconSpaceSize = ButtonSizes.Small, position }) =>
+    css`
+      margin-${position === 'left' ? 'right' : 'left'}: ${
+      iconSpaceSize === ButtonSizes.XSmall ? '0.5rem' : '0.75rem'
+    };
+    `}
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+    display: block;
+  }
 `;
