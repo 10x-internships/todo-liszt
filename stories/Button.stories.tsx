@@ -1,37 +1,72 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Button from '../components/Button';
+import { Button, ButtonSizes, ButtonVariants } from '../components/Button';
 import StarFilled from '../components/Icons/StarFilled';
+import Link from 'next/link';
 
 export default {
   title: 'Button/Button',
   component: Button,
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export const ButtonNeutral = () => (
+  <>
+    <Button size={ButtonSizes.XSmall}>X Small</Button>
+    <Button>Small</Button>
+    <Button size={ButtonSizes.Medium}>Medium</Button>
+  </>
+);
 
-export const ButtonNeutral = Template.bind({});
-ButtonNeutral.args = {
-  children: 'Button',
-  size: 'medium',
-  variant: 'neutral',
-  isDisabled: false,
-};
+export const ButtonTheme = () => (
+  <>
+    <Button variant={ButtonVariants.Theme} size={ButtonSizes.XSmall}>
+      X Small
+    </Button>
+    <Button variant={ButtonVariants.Theme}>Small</Button>
+    <Button variant={ButtonVariants.Theme} size={ButtonSizes.Medium}>
+      Medium
+    </Button>
+  </>
+);
 
-export const ButtonWithIconRight = Template.bind({});
-ButtonWithIconRight.args = {
-  children: 'Button with Icon',
-  size: 'medium',
-  variant: 'neutral',
-  isDisabled: false,
-  rightIcon: <StarFilled />,
-};
+export const ButtonWithIcon = () => (
+  <>
+    <Button
+      variant={ButtonVariants.Theme}
+      size={ButtonSizes.XSmall}
+      leftIcon={<StarFilled />}
+    >
+      X Small
+    </Button>
+    <Button variant={ButtonVariants.Theme} rightIcon={<StarFilled />}>
+      Small
+    </Button>
+  </>
+);
 
-export const ButtonWithIconLeft = Template.bind({});
-ButtonWithIconLeft.args = {
-  children: 'Button with Icon',
-  size: 'medium',
-  variant: 'neutral',
-  isDisabled: false,
-  leftIcon: <StarFilled />,
-};
+export const ButtonAsLink = () => (
+  <>
+    <Link href="/" passHref>
+      <Button size={ButtonSizes.XSmall} asLink>
+        X Small
+      </Button>
+    </Link>
+    <Link href="/" passHref>
+      <Button asLink>Small</Button>
+    </Link>
+    <Link href="/" passHref>
+      <Button size={ButtonSizes.Medium} asLink>
+        Medium
+      </Button>
+    </Link>
+  </>
+);
+
+export const ButtonDisabled = () => (
+  <>
+    <Button variant={ButtonVariants.Theme} isDisabled>
+      Small
+    </Button>
+    <Button isDisabled>Small</Button>
+  </>
+);

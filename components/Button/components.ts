@@ -1,89 +1,97 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { ButtonProps } from './types';
+import {
+  ButtonProps,
+  IconWrapperProps,
+  ButtonSizes,
+  ButtonVariants,
+} from './types';
 import { colors } from '../../styles';
 
 const buttonBase = css`
-  border: 2px solid transparent;
+  border: none;
   border-radius: 5.625rem;
-  text-align: center;
   outline: none;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   transition: var(--transition);
 
-  &:disabled {
+  &[disabled] {
     opacity: 0.5;
+    cursor: not-allowed;
     pointer-events: none;
-    user-select: none;
   }
 `;
 
-export const IconWrapper = styled.span<ButtonProps>`
+export const IconWrapper = styled.span<IconWrapperProps>`
+  --icon-spacing-normal: 0.75rem;
+  --icon-spacing-small: 0.5rem;
+
   display: block;
+
+  ${({ size, marginRight }) =>
+    marginRight &&
+    `margin-right: var(--icon-spacing-${
+      size === ButtonSizes.XSmall ? 'small' : 'normal'
+    });`}
+
+  ${({ size, marginLeft }) =>
+    marginLeft &&
+    `margin-left: var(--icon-spacing-${
+      size === ButtonSizes.XSmall ? 'small' : 'normal'
+    });`}
 
   & svg {
     width: 1rem;
     height: 1rem;
     display: block;
   }
-
-  ${({ size = 'x-small', leftIcon, rightIcon }) => {
-    switch (size) {
-      case 'x-small':
-        return css`
-          ${leftIcon && 'margin-right: 0.5rem'}
-          ${rightIcon && 'margin-left: 0.5rem'}
-        `;
-      case 'small':
-      case 'medium':
-        return css`
-          ${leftIcon && 'margin-right: 0.75rem'}
-          ${rightIcon && 'margin-left: 0.75rem'}
-        `;
-    }
-  }}
 `;
 
 export const StyledButton = styled.button<ButtonProps>`
   ${buttonBase}
 
-  ${({ size = 'small' }) => {
+  ${({ size }) => {
     switch (size) {
-      case 'x-small':
+      case ButtonSizes.XSmall:
         return css`
-          padding: 0.375rem 0.625rem;
+          height: 2rem;
+          padding: 0 0.75rem;
         `;
-      case 'small':
+      case ButtonSizes.Small:
         return css`
-          padding: 0.625rem 0.938rem;
+          height: 2.5rem;
+          padding: 0 1rem;
         `;
-      case 'medium':
+      case ButtonSizes.Medium:
         return css`
-          padding: 0.875rem 1.375rem;
+          height: 3rem;
+          padding: 0 1.5rem;
         `;
+      default:
+        return;
     }
   }}
+
   ${({ variant, theme }) => {
     switch (variant) {
-      case 'neutral':
+      case ButtonVariants.Primary:
         return css`
           color: ${colors.neutrals['08']};
           background: ${colors.primary['01']};
-          border-color: ${colors.primary['01']};
 
           &:hover {
             background: #2955bf;
-            border-color: #2955bf;
           }
         `;
-      case 'theme':
+      case ButtonVariants.Theme:
         return css`
           color: ${theme.button.textColor};
           background: transparent;
-          border-color: ${theme.button.borderColor};
+          border: 2px solid ${theme.button.borderColor};
 
           &:hover {
             color: ${theme.button.textHover};
@@ -91,7 +99,7 @@ export const StyledButton = styled.button<ButtonProps>`
             border-color: ${theme.button.backgroundColor};
           }
 
-          &:disabled {
+          &[disabled] {
             color: ${theme.button.textHover};
             background: ${theme.button.backgroundColor};
             border-color: ${theme.button.backgroundColor};
