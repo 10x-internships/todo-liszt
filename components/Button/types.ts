@@ -5,7 +5,7 @@ export enum ButtonSizes {
 }
 
 export enum ButtonVariants {
-  Primary = 'primary',
+  Neutral = 'neutral',
   Theme = 'theme',
 }
 

@@ -78,7 +78,7 @@ export const StyledButton = styled.button<ButtonProps>`
 
   ${({ variant, theme }) => {
     switch (variant) {
-      case ButtonVariants.Primary:
+      case ButtonVariants.Neutral:
         return css`
           color: ${colors.neutrals['08']};
           background: ${colors.primary['01']};

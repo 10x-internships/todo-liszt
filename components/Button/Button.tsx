@@ -6,7 +6,7 @@ import { IconWrapper, StyledButton } from './components';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
-    variant = ButtonVariants.Primary,
+    variant = ButtonVariants.Neutral,
     size = ButtonSizes.Small,
     leftIcon,
     rightIcon,
