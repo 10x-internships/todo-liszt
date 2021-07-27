@@ -12,7 +12,7 @@ import { colors } from '../../styles';
 const buttonBase = css`
   font-weight: 700;
   line-height: 1rem;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 5.625rem;
   outline: none;
   cursor: pointer;
@@ -69,7 +69,7 @@ export const StyledButton = styled.button<ButtonProps>`
         return css`
           color: ${theme.button.textColor};
           background: transparent;
-          border: 2px solid ${theme.button.borderColor};
+          border-color: ${theme.button.borderColor};
 
           &:hover {
             color: ${theme.button.textHover};
