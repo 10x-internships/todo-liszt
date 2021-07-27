@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 import { colors } from '../../styles/theme';
+import { Text as CheckboxLabel } from '../Typography';
 
 export const Checkbox = styled.span`
-  width: 100%;
-  height: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
   background: ${({ theme }) => theme.backgroundColor};
   border: 2px solid ${({ theme }) => theme.borderColor};
   border-radius: 4px;
@@ -24,12 +25,10 @@ export const Checkbox = styled.span`
   }
 `;
 
-export const Label = styled.label`
-  width: 1.5rem;
-  height: 1.5rem;
+export const Label = styled.label<{ isDisabled?: boolean }>`
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
+  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 
   & input {
     display: none;
@@ -44,14 +43,28 @@ export const Label = styled.label`
     opacity: 1;
     transform: scale(1);
   }
-`;
 
-export const Text = styled.span`
-  padding-left: 0.75rem;
-  font-family: var(--font-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.5rem;
-  display: inline-block;
-  user-select: none;
+  &:hover ${Checkbox} {
+    border-color: ${colors.primary['01']};
+  }
+
+  & input:disabled + ${Checkbox} {
+    background: ${colors.neutrals['05']};
+    border-color: ${colors.neutrals['04']};
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  & input:disabled + ${Checkbox} svg {
+    color: ${colors.neutrals['04']};
+  }
+
+  & ${CheckboxLabel} {
+    padding-left: 0.75rem;
+    user-select: none;
+  }
+
+  & input:disabled ~ ${CheckboxLabel} {
+    color: ${colors.neutrals['04']};
+  }
 `;
