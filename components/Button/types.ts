@@ -16,6 +16,8 @@ export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
   rightIcon?: React.ReactNode;
   isDisabled?: boolean;
   href?: string;
+  target?: string;
+  rel?: string;
   children: React.ReactNode;
 }
 
