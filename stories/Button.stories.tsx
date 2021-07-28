@@ -76,17 +76,32 @@ export const WithIcon = () => (
 export const AsLink = () => (
   <FlexWrapper>
     <div>
-      <Button href="https://www.google.com" size={ButtonSizes.XSmall}>
+      <Button
+        href="https://www.google.com"
+        size={ButtonSizes.XSmall}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Go to Google
       </Button>
     </div>
     <div>
-      <Button href="https://www.youtube.com" size={ButtonSizes.Small}>
+      <Button
+        href="https://www.youtube.com"
+        size={ButtonSizes.Small}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Go to YouTube
       </Button>
     </div>
     <div>
-      <Button href="https://www.facebook.com" size={ButtonSizes.Medium}>
+      <Button
+        href="https://www.facebook.com"
+        size={ButtonSizes.Medium}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Go to Facebook
       </Button>
     </div>
