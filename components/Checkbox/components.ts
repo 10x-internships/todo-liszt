@@ -26,12 +26,19 @@ export const Checkbox = styled.span`
 `;
 
 export const Label = styled.label<{ isDisabled?: boolean }>`
+  position: relative;
   display: inline-flex;
   align-items: center;
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
 
   & input {
-    display: none;
+    width: 0.5px;
+    height: 0.5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
   }
 
   & input:checked + ${Checkbox} {
@@ -42,6 +49,10 @@ export const Label = styled.label<{ isDisabled?: boolean }>`
   & input:checked + ${Checkbox} svg {
     opacity: 1;
     transform: scale(1);
+  }
+
+  & input:focus + ${Checkbox} {
+    border-color: ${colors.primary['01']};
   }
 
   &:hover ${Checkbox} {
