@@ -24,7 +24,6 @@ const buttonBase = css`
   &[disabled] {
     opacity: 0.5;
     cursor: not-allowed;
-    pointer-events: none;
   }
 `;
 
@@ -62,6 +61,10 @@ export const StyledButton = styled.button<ButtonProps>`
           background: ${colors.primary['01']};
 
           &:hover {
+            background: #2955bf;
+          }
+
+          &:disabled {
             background: #2955bf;
           }
         `;
