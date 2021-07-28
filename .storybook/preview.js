@@ -1,13 +1,18 @@
 import { ThemeProvider } from '@emotion/react';
-import { GlobalStyles, lightTheme } from '../styles';
+import { useDarkMode } from 'storybook-dark-mode';
+
+import { GlobalStyles, lightTheme, darkTheme } from '../styles';
+import DocsContainer from '../stories/DocsContainer';
 
 export const decorators = [
-  (Story) => (
-    <ThemeProvider theme={lightTheme}>
-      <GlobalStyles />
-      <Story />
-    </ThemeProvider>
-  ),
+  (Story) => {
+    return (
+      <ThemeProvider theme={useDarkMode() ? darkTheme : lightTheme}>
+        <GlobalStyles />
+        <Story />
+      </ThemeProvider>
+    );
+  },
 ];
 
 export const parameters = {
@@ -17,5 +22,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  docs: {
+    container: DocsContainer,
   },
 };

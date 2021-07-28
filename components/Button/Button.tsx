@@ -8,14 +8,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     variant = ButtonVariants.Neutral,
     size = ButtonSizes.Small,
     isDisabled,
-    asLink,
+    href,
     children,
     ...others
   } = props;
 
   return (
     <StyledButton
-      as={asLink ? 'a' : 'button'}
+      as={href ? 'a' : 'button'}
+      href={href}
       variant={variant}
       size={size}
       disabled={isDisabled}

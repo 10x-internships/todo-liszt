@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const StarFilled = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width={24}
