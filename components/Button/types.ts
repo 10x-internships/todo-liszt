@@ -9,15 +9,17 @@ export enum ButtonVariants {
   Theme = 'theme',
 }
 
-export interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
+// Still can not detect separate props for each tag
+type ButtonTypes = React.ComponentPropsWithRef<'button'> &
+  React.ComponentPropsWithoutRef<'a'>;
+
+export interface ButtonProps extends ButtonTypes {
   variant?: ButtonVariants;
   size?: ButtonSizes;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
   isDisabled?: boolean;
   href?: string;
-  target?: string;
-  rel?: string;
   children: React.ReactNode;
 }
 
