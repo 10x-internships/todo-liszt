@@ -79,6 +79,12 @@ export const Input = styled.input<InputProps>`
   &:active::placeholder {
     color: ${colors.neutrals['05']};
   }
+
+  &:disabled {
+    color: ${colors.neutrals['05']};
+    background: ${colors.neutrals['06']};
+    pointer-events: none;
+  }
 `;
 
 export const InputMessage = styled.div<InputProps>`

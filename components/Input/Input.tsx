@@ -3,10 +3,10 @@ import { InputProps } from './types';
 import { Text, TextVariants, TypoTags } from '../Typography';
 
 const Input = (props: InputProps) => {
-  const { label, id, type, message, ...others } = props;
+  const { label, id, type, message, isDisabled, ...others } = props;
 
   return (
-    <Styled.InputWrapper>
+    <>
       {label && (
         <Styled.InputLabel htmlFor={id}>
           <Text as={TypoTags.Span} variant={TextVariants.Hairline2}>
@@ -16,7 +16,7 @@ const Input = (props: InputProps) => {
       )}
 
       <Styled.InputGroup>
-        <Styled.Input type={type || 'text'} id={id} {...others} />
+        <Styled.Input type={type || 'text'} id={id} disabled={isDisabled} {...others} />
         {others.inputIcon}
       </Styled.InputGroup>
 
@@ -27,7 +27,7 @@ const Input = (props: InputProps) => {
           </Text>
         </Styled.InputMessage>
       )}
-    </Styled.InputWrapper>
+    </>
   );
 };
 
