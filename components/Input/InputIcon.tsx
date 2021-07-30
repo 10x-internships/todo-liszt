@@ -1,11 +1,11 @@
 import { InputIcon as InputIconWrapper } from './components';
 
-interface InputIconWrapper {
-  icon?: React.ReactNode;
+interface InputIconWrapper extends React.ComponentPropsWithoutRef<'div'> {
+  children?: React.ReactNode;
 }
 
-const InputIcon = (props: InputIconWrapper) => {
-  return <InputIconWrapper>{props.icon}</InputIconWrapper>;
+const InputIcon = ({ children, ...others }: InputIconWrapper) => {
+  return <InputIconWrapper {...others}>{children}</InputIconWrapper>;
 };
 
 export default InputIcon;

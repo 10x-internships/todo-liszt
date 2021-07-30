@@ -2,6 +2,20 @@ import styled from '@emotion/styled';
 import { colors } from '../../styles/theme';
 import { InputProps } from './types';
 
+const getStateColor = ({
+  isError,
+  isSuccess,
+  defaultColor,
+}: {
+  isError?: boolean;
+  isSuccess?: boolean;
+  defaultColor?: string;
+}) => {
+  if (isError) return colors.primary['03'];
+  if (isSuccess) return colors.primary['04'];
+  return defaultColor;
+};
+
 export const InputWrapper = styled.div``;
 
 export const InputLabel = styled.label`
@@ -31,7 +45,7 @@ export const InputIcon = styled.div`
 export const Input = styled.input<InputProps>`
   width: 100%;
   height: 3rem;
-  padding-right: 1rem;
+  padding-right: ${({ inputIcon }) => (inputIcon ? '3rem' : '1rem')};
   padding-left: 1rem;
   font-family: var(--font-secondary);
   font-size: 0.875rem;
@@ -39,23 +53,21 @@ export const Input = styled.input<InputProps>`
   color: ${({ theme }) => theme.textColor};
   background: transparent;
   border: 2px solid
-    ${({ isError, isValid }) => {
-      if (isError) return colors.primary['03'];
-      if (isValid) return colors.primary['04'];
-      return colors.neutrals['06'];
-    }};
+    ${({ isError, isSuccess }) =>
+      getStateColor({ isError, isSuccess, defaultColor: colors.neutrals['06'] })};
   border-radius: 0.75rem;
   outline: none;
   transition: var(--transition);
 
   &::placeholder {
     font: inherit;
-    color: ${({ isError }) => (isError ? colors.primary['03'] : colors.neutrals['04'])};
+    color: ${({ isError }) => getStateColor({ isError, defaultColor: colors.neutrals['04'] })};
     transition: var(--transition);
   }
 
   &:hover {
-    border-color: ${({ isError }) => (isError ? colors.primary['03'] : colors.neutrals['05'])};
+    border-color: ${({ isError, isSuccess }) =>
+      getStateColor({ isError, isSuccess, defaultColor: colors.neutrals['05'] })};
   }
 
   &:focus,
@@ -69,8 +81,8 @@ export const Input = styled.input<InputProps>`
   }
 `;
 
-export const ErrorMessage = styled.div`
+export const InputMessage = styled.div<InputProps>`
   padding: 0.5rem 1rem;
   margin-top: 0.75rem;
-  color: ${colors.primary['03']};
+  color: ${({ isError, isSuccess }) => getStateColor({ isError, isSuccess })};
 `;
