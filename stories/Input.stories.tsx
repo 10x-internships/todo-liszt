@@ -47,6 +47,9 @@ export const Default = () => {
           id="validMessage"
         />
       </div>
+      <div>
+        <Input label="Disabled" id="firstName" defaultValue="Disabled field" isDisabled />
+      </div>
     </Wrapper>
   );
 };
