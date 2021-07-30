@@ -38,6 +38,9 @@ const lightTheme = {
     textColor: colors.neutrals['08'],
     backgroundColor: colors.neutrals['02'],
   },
+  dropdown: {
+    hoverBackground: colors.neutrals['07'],
+  },
 };
 
 const darkTheme = {
@@ -53,6 +56,9 @@ const darkTheme = {
   circleButton: {
     textColor: colors.neutrals['04'],
     backgroundColor: colors.neutrals['08'],
+  },
+  dropdown: {
+    hoverBackground: colors.neutrals['02'],
   },
 };
 
