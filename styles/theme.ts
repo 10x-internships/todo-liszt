@@ -41,6 +41,13 @@ const lightTheme = {
   dropdown: {
     hoverBackground: colors.neutrals['07'],
   },
+  subNavItem: {
+    activeBackground: colors.neutrals['03'],
+    activeText: colors.neutrals['08'],
+    textColor: colors.neutrals['04'],
+    textHover: colors.neutrals['02'],
+    deactiveColor: colors.neutrals['05'],
+  },
 };
 
 const darkTheme = {
@@ -59,6 +66,13 @@ const darkTheme = {
   },
   dropdown: {
     hoverBackground: colors.neutrals['02'],
+  },
+  subNavItem: {
+    activeBackground: colors.neutrals['06'],
+    activeText: colors.neutrals['02'],
+    textColor: colors.neutrals['04'],
+    textHover: colors.neutrals['08'],
+    deactiveColor: colors.neutrals['03'],
   },
 };
 
