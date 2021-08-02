@@ -19,6 +19,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <div id="portal-container"></div>
+          <div id="toast-portal"></div>
         </body>
       </Html>
     );

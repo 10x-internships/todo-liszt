@@ -1,15 +1,21 @@
-import { ThemeProvider } from '@emotion/react';
 import type { AppProps } from 'next/app';
+import { ThemeProvider } from '@emotion/react';
+import { Provider } from 'react-redux';
 
 import 'normalize.css';
 import { GlobalStyles, lightTheme, darkTheme } from 'styles';
+import store from '../redux/store';
+import Toasts from '@components/Toast';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={lightTheme}>
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={lightTheme}>
+        <GlobalStyles />
+        <Component {...pageProps} />
+        <Toasts />
+      </ThemeProvider>
+    </Provider>
   );
 }
 export default MyApp;
