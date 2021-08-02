@@ -1,17 +1,15 @@
+import { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { colors } from '../../../styles/theme';
 
-interface DropdownListProps {
-  isOpen?: boolean;
+interface DropdownListProps extends React.ComponentPropsWithRef<'ul'> {
   children?: React.ReactNode;
+  onCloseDropdown: (e: Event) => void;
 }
 
-const StyledDropdownList = styled.ul<DropdownListProps>`
+const StyledDropdownList = styled.ul<Omit<DropdownListProps, 'onCloseDropdown'>>`
   position: absolute;
-  top: 100%;
-  left: 0;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
-  width: 100%;
-  max-height: 16rem;
+  max-height: 16.5rem;
   padding: 0.5rem;
   margin-top: 0.75rem;
   background: ${({ theme }) => theme.backgroundColor};
@@ -19,14 +17,37 @@ const StyledDropdownList = styled.ul<DropdownListProps>`
   border-radius: 0.75rem;
   box-shadow: 0 4rem 4rem -3rem rgba(31, 47, 70, 0.12);
   overflow-y: auto;
+  z-index: 10;
 
   & li + li {
     margin-top: 0.625rem;
   }
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    padding: 1rem 0;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${colors.neutrals['05']};
+    border-radius: 10rem;
+  }
 `;
 
-const DropdownList = ({ isOpen, children }: DropdownListProps) => {
-  return <StyledDropdownList isOpen={isOpen}>{children}</StyledDropdownList>;
+const DropdownList = ({ children, onCloseDropdown, ...others }: DropdownListProps) => {
+  useEffect(() => {
+    document.addEventListener('click', onCloseDropdown);
+
+    return () => {
+      document.removeEventListener('click', onCloseDropdown);
+    };
+  }, []);
+
+  return <StyledDropdownList {...others}>{children}</StyledDropdownList>;
 };
 
 export default DropdownList;
