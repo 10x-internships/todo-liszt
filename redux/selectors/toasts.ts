@@ -1,3 +1,3 @@
-import { RootStateOrAny } from 'react-redux';
+import { RootState } from '../store';
 
-export const selectToastsList = (state: RootStateOrAny) => state.toasts.list;
+export const selectToastsList = (state: RootState) => state.toasts.list;
