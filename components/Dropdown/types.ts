@@ -7,5 +7,5 @@ export type OptionType = {
 export interface DropdownProps {
   options: OptionType[];
   selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  setSelected: (name: string) => void;
 }
