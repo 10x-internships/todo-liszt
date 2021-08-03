@@ -6,7 +6,7 @@ interface PortalProps {
   children?: React.ReactNode;
 }
 
-const Portal = ({ children, id = 'portal-container' }: PortalProps) => {
+const Portal = ({ children, id = 'dropdown-portal' }: PortalProps) => {
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {

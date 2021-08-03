@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import 'normalize.css';
 import { GlobalStyles, lightTheme, darkTheme } from 'styles';
 import store from '../redux/store';
-import Toasts from '@components/Toast';
+import ToastContainer from '@components/Toast';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={lightTheme}>
         <GlobalStyles />
         <Component {...pageProps} />
-        <Toasts />
+        <ToastContainer />
       </ThemeProvider>
     </Provider>
   );

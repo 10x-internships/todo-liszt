@@ -2,7 +2,7 @@ import { ThemeProvider } from '@emotion/react';
 import { useDarkMode } from 'storybook-dark-mode';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
-import Toasts from '../components/Toast';
+import ToastContainer from '../components/Toast';
 import { GlobalStyles, lightTheme, darkTheme } from '../styles';
 import DocsContainer from '../stories/DocsContainer';
 
@@ -13,7 +13,7 @@ export const decorators = [
         <ThemeProvider theme={useDarkMode() ? darkTheme : lightTheme}>
           <GlobalStyles />
           <Story />
-          <Toasts />
+          <ToastContainer />
         </ThemeProvider>
       </Provider>
     );
