@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 
-import { ButtonProps, ButtonSizes, ButtonVariants } from './types';
 import { StyledButton } from './components';
+import { ButtonProps, ButtonSizes, ButtonVariants } from './types';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
