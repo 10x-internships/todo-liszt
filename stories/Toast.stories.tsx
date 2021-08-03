@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from '../components/Button';
 import { FlexWrapper } from './Wrapper';
 import { useDispatch } from 'react-redux';
-import { toast } from '../redux/actions/toasts';
+import { showToast } from '../redux/actions/toasts';
 
 export default {
   title: 'Toast/Toast',
@@ -16,12 +16,14 @@ export const Default = () => {
   return (
     <FlexWrapper>
       <div>
-        <Button onClick={() => dispatch(toast({ message: 'Error message', isError: true }))}>
+        <Button onClick={() => dispatch(showToast({ message: 'Error message', state: 'error' }))}>
           Show error toast
         </Button>
       </div>
       <div>
-        <Button onClick={() => dispatch(toast({ message: 'Success message', isSuccess: true }))}>
+        <Button
+          onClick={() => dispatch(showToast({ message: 'Success message', state: 'success' }))}
+        >
           Show success toast
         </Button>
       </div>
