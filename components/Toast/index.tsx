@@ -1,2 +1,2 @@
-export { default } from './Toasts';
-export type { ToastItemTypes } from './types';
+export { default } from './ToastContainer';
+export type { ToastTypes } from './types';

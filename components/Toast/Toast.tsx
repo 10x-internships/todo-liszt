@@ -5,8 +5,7 @@ import { Text, TextVariants, TypoTags } from '../Typography';
 import { Close } from '../Icons';
 
 interface ToastProps {
-  isSuccess?: boolean;
-  isError?: boolean;
+  state: 'error' | 'success';
   isCloseable?: boolean;
   children?: React.ReactNode;
 }
@@ -22,9 +21,15 @@ const ToastItemWrapper = styled.div<ToastProps>`
   align-items: center;
   justify-content: space-between;
 
-  ${({ isSuccess, isError }) => {
-    if (isSuccess) return `background: ${colors.primary['04']};`;
-    if (isError) return `background: ${colors.primary['03']};`;
+  ${({ state }) => {
+    switch (state) {
+      case 'success':
+        return `background: ${colors.primary['04']};`;
+      case 'error':
+        return `background: ${colors.primary['03']};`;
+      default:
+        return;
+    }
   }}
 `;
 
@@ -39,7 +44,7 @@ const ToastCloseIcon = styled.div`
   }
 `;
 
-const ToastItem = ({ children, isCloseable, ...others }: ToastProps) => {
+const Toast = ({ children, isCloseable, ...others }: ToastProps) => {
   return (
     <ToastItemWrapper {...others}>
       <Text as={TypoTags.Span} variant={TextVariants.Caption1}>
@@ -54,4 +59,4 @@ const ToastItem = ({ children, isCloseable, ...others }: ToastProps) => {
   );
 };
 
-export default ToastItem;
+export default Toast;

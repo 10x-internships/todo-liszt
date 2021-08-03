@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 
 import { selectToastsList } from '../../redux/selectors/toasts';
 import Portal from '../Portal';
-import ToastItem from './ToastItem';
-import { ToastItemTypes } from './types';
+import Toast from './Toast';
+import { ToastTypes } from './types';
 
 const ToastsWrapper = styled.div`
   position: fixed;
@@ -12,20 +12,20 @@ const ToastsWrapper = styled.div`
   right: 1rem;
 `;
 
-const Toasts = () => {
+const ToastContainer = () => {
   const toastsList = useSelector(selectToastsList);
 
   return (
     <Portal id="toast-portal">
       <ToastsWrapper>
-        {toastsList.map((toast: ToastItemTypes) => (
-          <ToastItem key={toast.id} isSuccess={toast.isSuccess} isError={toast.isError}>
+        {toastsList.map((toast: ToastTypes) => (
+          <Toast key={toast.id} state={toast.state}>
             {toast.message}
-          </ToastItem>
+          </Toast>
         ))}
       </ToastsWrapper>
     </Portal>
   );
 };
 
-export default Toasts;
+export default ToastContainer;

@@ -1,7 +1,6 @@
-export type ToastItemTypes = {
+export type ToastTypes = {
   id?: string | number;
   message: string;
-  isError?: boolean;
-  isSuccess?: boolean;
+  state: 'error' | 'success';
   isCloseable?: true;
 };
