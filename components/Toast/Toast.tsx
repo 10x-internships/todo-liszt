@@ -1,16 +1,13 @@
 import styled from '@emotion/styled';
+import { animated } from 'react-spring';
 
 import { colors } from '../../styles/theme';
 import { Text, TextVariants, TypoTags } from '../Typography';
-import { Close } from '../Icons';
+import { ToastTypes } from './types';
 
-interface ToastProps {
-  state: 'error' | 'success';
-  isCloseable?: boolean;
-  children?: React.ReactNode;
-}
+interface ToastProps extends React.ComponentPropsWithoutRef<'div'>, ToastTypes {}
 
-const ToastItemWrapper = styled.div<ToastProps>`
+const ToastItemWrapper = styled(animated.div)<Omit<ToastProps, 'message'>>`
   min-width: 15.625rem;
   max-width: 20rem;
   padding: 0.75rem 1rem;
@@ -33,28 +30,12 @@ const ToastItemWrapper = styled.div<ToastProps>`
   }}
 `;
 
-const ToastCloseIcon = styled.div`
-  margin-left: 1rem;
-  cursor: pointer;
-
-  & svg {
-    display: block;
-    width: 1rem;
-    height: 1rem;
-  }
-`;
-
-const Toast = ({ children, isCloseable, ...others }: ToastProps) => {
+const Toast = ({ children, message, ...others }: ToastProps) => {
   return (
     <ToastItemWrapper {...others}>
       <Text as={TypoTags.Span} variant={TextVariants.Caption1}>
-        {children}
+        {message}
       </Text>
-      {isCloseable && (
-        <ToastCloseIcon>
-          <Close />
-        </ToastCloseIcon>
-      )}
     </ToastItemWrapper>
   );
 };

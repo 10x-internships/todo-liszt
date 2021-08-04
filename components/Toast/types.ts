@@ -1,6 +1,5 @@
 export type ToastTypes = {
-  id?: string | number;
+  id?: string;
   message: string;
   state: 'error' | 'success';
-  isCloseable?: true;
 };
