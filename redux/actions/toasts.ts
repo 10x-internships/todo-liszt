@@ -1,16 +1,11 @@
-import { Dispatch } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
 
 import { ToastTypes } from '../../components/Toast';
 import { ADD_TOAST, REMOVE_TOAST } from '../constants/toasts';
 
-export const showToast = (toastData: ToastTypes) => {
-  return (dispatch: Dispatch) => {
-    const id = uuidv4();
-    dispatch({ type: ADD_TOAST, payload: { id, ...toastData } });
+export const showToast = (toastData: ToastTypes) => ({
+  type: ADD_TOAST,
+  payload: { id: uuidv4(), ...toastData },
+});
 
-    setTimeout(() => {
-      dispatch({ type: REMOVE_TOAST, payload: { id } });
-    }, 3000);
-  };
-};
+export const removeToast = (id: string) => ({ type: REMOVE_TOAST, payload: id });

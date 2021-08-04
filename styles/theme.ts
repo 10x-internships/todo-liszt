@@ -76,5 +76,11 @@ const darkTheme = {
   },
 };
 
+const breakpoints = {
+  tabletPortrait: '768px',
+  tabletLandscape: '1024px',
+  desktop: '1200px',
+};
+
 export type ThemeType = typeof lightTheme;
-export { colors, lightTheme, darkTheme };
+export { colors, lightTheme, darkTheme, breakpoints };

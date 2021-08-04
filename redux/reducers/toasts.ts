@@ -7,7 +7,7 @@ type ToastsStateTypes = {
 
 type ToastsAction = {
   type: string;
-  payload: ToastTypes;
+  payload: ToastTypes | string;
 };
 
 const initialState: ToastsStateTypes = {
@@ -19,12 +19,12 @@ const toastsReducer = (state = initialState, action: ToastsAction): ToastsStateT
     case ADD_TOAST:
       return {
         ...state,
-        list: [...state.list, action.payload],
+        list: [...state.list, action.payload as ToastTypes],
       };
     case REMOVE_TOAST:
       return {
         ...state,
-        list: state.list.filter((list) => list.id !== action.payload.id),
+        list: state.list.filter((item) => item.id !== (action.payload as string)),
       };
     default:
       return state;
