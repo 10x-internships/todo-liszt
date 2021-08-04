@@ -7,3 +7,4 @@ export { default as Search } from './Search';
 export { default as Cup } from './Cup';
 export { ArrowDown, ArrowUp } from './Arrow';
 export { CircleLine, CircleFilled } from './Circle';
+export { default as Burger } from './Burger';
