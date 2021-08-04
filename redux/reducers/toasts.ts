@@ -1,17 +1,13 @@
 import { ToastTypes } from '../../components/Toast';
 import { ADD_TOAST, REMOVE_TOAST } from '../constants/toasts';
 
-type Toast = {
-  id: string;
-} & ToastTypes;
-
 type ToastsStateTypes = {
-  list: Toast[];
+  list: ToastTypes[];
 };
 
 type ToastsAction = {
   type: string;
-  payload: Toast | string;
+  payload: ToastTypes | string;
 };
 
 const initialState: ToastsStateTypes = {
@@ -23,7 +19,7 @@ const toastsReducer = (state = initialState, action: ToastsAction): ToastsStateT
     case ADD_TOAST:
       return {
         ...state,
-        list: [...state.list, action.payload as Toast],
+        list: [...state.list, action.payload as ToastTypes],
       };
     case REMOVE_TOAST:
       return {
