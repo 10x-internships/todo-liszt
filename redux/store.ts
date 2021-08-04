@@ -10,7 +10,7 @@ const epicMiddleware = createEpicMiddleware();
 const composedEnhancer = composeWithDevTools(applyMiddleware(thunk, epicMiddleware));
 
 const store = createStore(rootReducer, composedEnhancer);
-epicMiddleware.run(rootEpic);
+epicMiddleware.run(rootEpic as any);
 
 export type RootState = ReturnType<typeof store.getState>;
 export default store;
