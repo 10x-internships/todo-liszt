@@ -34,6 +34,8 @@ const AuthHaveAccount = ({ noAccount }: AuthHaveAccountProps) => {
 };
 
 const StyledAuthHaveAccount = styled.div`
+  margin-top: 4rem;
+
   & ${Text} {
     color: ${({ theme }) => theme.authentication.textColor};
   }

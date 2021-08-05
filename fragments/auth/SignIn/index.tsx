@@ -32,7 +32,6 @@ const SignIn = () => {
 const ForgotPasswordLink = styled.a`
   width: 100%;
   margin-top: 1rem;
-  margin-bottom: 4rem;
 
   & ${Text} {
     display: inline-block;
