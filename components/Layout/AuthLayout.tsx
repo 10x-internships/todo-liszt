@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 interface AuthLayoutProps {
   src: StaticImageData;
+  alt: string;
   children: React.ReactNode;
 }
 
@@ -23,24 +24,24 @@ const AuthContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 `;
 
 const AuthContent = styled.div`
-  width: 22.5rem;
+  flex: 1;
 `;
 
-const AuthLayout = ({ src, children }: AuthLayoutProps) => {
+const AuthLayout = ({ src, alt, children }: AuthLayoutProps) => {
   return (
     <StyledAuthLayout>
       <AuthBackground>
         <Image
-          alt="Coming soon"
+          alt={alt}
           src={src}
           layout="fill"
           objectFit="cover"
           objectPosition="center"
           placeholder="blur"
+          priority={true}
         />
       </AuthBackground>
       <AuthContentWrapper>

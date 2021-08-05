@@ -29,6 +29,7 @@ const ComingSoon = () => {
         layout="fill"
         objectFit="cover"
         objectPosition="center"
+        priority
       />
 
       <Heading as={TypoTags.H1} variant={HeadingVariants.Hero}>
