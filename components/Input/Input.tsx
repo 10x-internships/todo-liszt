@@ -6,7 +6,7 @@ const Input = (props: InputProps) => {
   const { label, id, type, message, isDisabled, ...others } = props;
 
   return (
-    <>
+    <Styled.InputWrapper>
       {label && (
         <Styled.InputLabel htmlFor={id}>
           <Text as={TypoTags.Span} variant={TextVariants.Hairline2}>
@@ -27,7 +27,7 @@ const Input = (props: InputProps) => {
           </Text>
         </Styled.InputMessage>
       )}
-    </>
+    </Styled.InputWrapper>
   );
 };
 

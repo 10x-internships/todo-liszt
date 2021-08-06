@@ -48,6 +48,9 @@ const lightTheme = {
     textHover: colors.neutrals['02'],
     deactiveColor: colors.neutrals['05'],
   },
+  authentication: {
+    textColor: colors.neutrals['02'],
+  },
 };
 
 const darkTheme = {
@@ -73,6 +76,9 @@ const darkTheme = {
     textColor: colors.neutrals['04'],
     textHover: colors.neutrals['08'],
     deactiveColor: colors.neutrals['03'],
+  },
+  authentication: {
+    textColor: colors.neutrals['05'],
   },
 };
 

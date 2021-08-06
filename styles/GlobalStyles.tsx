@@ -27,7 +27,6 @@ const GlobalStyles = () => {
           color: ${theme.textColor};
           background-color: ${theme.backgroundColor};
           transition: var(--transition);
-          padding: 2rem;
         }
 
         a {
