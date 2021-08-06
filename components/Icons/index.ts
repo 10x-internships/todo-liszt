@@ -8,3 +8,8 @@ export { default as Cup } from './Cup';
 export { ArrowDown, ArrowUp } from './Arrow';
 export { CircleLine, CircleFilled } from './Circle';
 export { default as Burger } from './Burger';
+export { default as List } from './List';
+export { default as Calendar } from './Calendar';
+export { default as User } from './User';
+export { default as Setting } from './Setting';
+export { BrightnessUpLine, BrightnessUpFilled } from './BrightnessUp';
