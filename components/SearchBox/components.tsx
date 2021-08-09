@@ -41,6 +41,7 @@ export const SearchButton = styled.button`
   background: ${colors.primary['01']};
   border: 0;
   border-radius: 50%;
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
