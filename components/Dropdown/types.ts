@@ -1,7 +1,9 @@
 export type OptionType = {
   id: string | number;
   name: string;
-  value: string;
+  value?: string;
+  href?: string;
+  icon?: React.ReactNode;
 };
 
 export interface DropdownProps {
