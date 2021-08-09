@@ -13,6 +13,13 @@ const DashboardContent = styled.div`
   flex: 1;
 `;
 
+const DashboardMain = styled.main`
+  min-height: calc(100vh - 4rem);
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+`;
+
 const DashboardLayout: React.FC = ({ children }) => {
   const [isSideBarCollapsed, setIsSideBarCollapsed] = useState(true);
 
@@ -24,7 +31,7 @@ const DashboardLayout: React.FC = ({ children }) => {
 
       <DashboardContent>
         <DashboardNav onSidebarCollapsed={handleSidebarCollapsed} />
-        <main>{children}</main>
+        <DashboardMain>{children}</DashboardMain>
       </DashboardContent>
     </DashboardWrapper>
   );

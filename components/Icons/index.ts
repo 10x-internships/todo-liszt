@@ -12,4 +12,8 @@ export { default as List } from './List';
 export { default as Calendar } from './Calendar';
 export { default as User } from './User';
 export { default as Setting } from './Setting';
+export { default as QuestionCircle } from './QuestionCircle';
+export { default as Document } from './Document';
+export { default as Lock } from './Lock';
+export { default as InfoCircle } from './InfoCircle';
 export { BrightnessUpLine, BrightnessUpFilled } from './BrightnessUp';

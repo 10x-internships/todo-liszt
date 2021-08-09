@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 import { colors } from '@styles/theme';
 import SidebarList from './SidebarList';
-import { SidebarDarkMode, SidebarLink } from './SidebarItem';
+import { SidebarDarkMode, SidebarLink, SidebarAbout } from './SidebarItem';
 import sidebarData from './sidebarData';
 
 import QuestionCircle from '@components/Icons/QuestionCircle';
@@ -46,9 +46,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
         {/* Side Nav Bottom */}
         <SidebarList>
           <SidebarDarkMode isCollapsed={isCollapsed} />
-          <SidebarLink href="/" icon={<QuestionCircle />} isCollapsed={isCollapsed}>
-            About
-          </SidebarLink>
+          <SidebarAbout isCollapsed={isCollapsed} />
         </SidebarList>
       </SidebarNav>
     </SidebarWrapper>

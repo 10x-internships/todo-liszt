@@ -58,3 +58,12 @@ export const SidebarSwitch = styled.div<Omit<SidebarItemProps, 'href'>>`
     ${({ isCollapsed }) => isCollapsed && `background: #2955bf;`};
   }
 `;
+
+export const SidebarAbout = styled.div<Omit<SidebarItemProps, 'href'>>`
+  ${({ isCollapsed }) => itemContentStyles(isCollapsed)}
+  cursor: pointer;
+
+  &:hover {
+    background: #2955bf;
+  }
+`;
