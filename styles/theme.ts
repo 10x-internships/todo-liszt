@@ -51,6 +51,9 @@ const lightTheme = {
   authentication: {
     textColor: colors.neutrals['02'],
   },
+  listItem: {
+    hoverBackground: colors.neutrals['07'],
+  },
 };
 
 const darkTheme = {
@@ -79,6 +82,9 @@ const darkTheme = {
   },
   authentication: {
     textColor: colors.neutrals['05'],
+  },
+  listItem: {
+    hoverBackground: colors.neutrals['03'],
   },
 };
 
