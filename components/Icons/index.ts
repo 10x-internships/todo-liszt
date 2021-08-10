@@ -16,4 +16,5 @@ export { default as QuestionCircle } from './QuestionCircle';
 export { default as Document } from './Document';
 export { default as Lock } from './Lock';
 export { default as InfoCircle } from './InfoCircle';
+export { default as Signout } from './Signout';
 export { BrightnessUpLine, BrightnessUpFilled } from './BrightnessUp';

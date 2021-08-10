@@ -9,6 +9,12 @@ const DashboardWrapper = styled.div`
   min-height: 100vh;
 `;
 
+const SidebarWrapper = styled.aside<{ isCollapsed?: boolean }>`
+  position: relative;
+  width: ${({ isCollapsed }) => (isCollapsed ? '4rem' : '12.5rem')};
+  transition: var(--transition);
+`;
+
 const DashboardContent = styled.div`
   flex: 1;
 `;
@@ -27,7 +33,9 @@ const DashboardLayout: React.FC = ({ children }) => {
 
   return (
     <DashboardWrapper>
-      <Sidebar isCollapsed={isSideBarCollapsed} />
+      <SidebarWrapper isCollapsed={isSideBarCollapsed}>
+        <Sidebar isCollapsed={isSideBarCollapsed} />
+      </SidebarWrapper>
 
       <DashboardContent>
         <DashboardNav onSidebarCollapsed={handleSidebarCollapsed} />

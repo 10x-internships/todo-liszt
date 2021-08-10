@@ -3,4 +3,5 @@ export interface SidebarItemProps {
   icon?: React.ReactNode;
   children?: React.ReactNode;
   isCollapsed?: boolean;
+  isActive?: boolean;
 }

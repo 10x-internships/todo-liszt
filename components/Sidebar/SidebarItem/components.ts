@@ -12,7 +12,7 @@ const itemContentStyles = (isCollapsed: boolean = false) => css`
   border-radius: ${isCollapsed ? '50%' : '4px'};
   display: flex;
   align-items: center;
-  transition: background 0.25s linear;
+  transition: background 0.25s linear, border-radius 0.25s linear;
 `;
 
 export const SidebarItem = styled.li<Omit<SidebarItemProps, 'href'>>`
@@ -25,8 +25,15 @@ export const SidebarItem = styled.li<Omit<SidebarItemProps, 'href'>>`
   & a {
     ${({ isCollapsed }) => itemContentStyles(isCollapsed)}
 
+    ${({ isActive }) =>
+      isActive &&
+      css`
+        background: ${colors.neutrals['08']};
+        color: ${colors.primary['01']};
+      `}
+
     &:hover {
-      background: #2955bf;
+      background: ${({ isActive }) => (isActive ? colors.neutrals['08'] : '#2955bf')};
     }
   }
 

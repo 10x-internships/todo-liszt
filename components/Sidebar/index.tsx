@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 import { colors } from '@styles/theme';
 import SidebarList from './SidebarList';
@@ -11,14 +12,13 @@ interface SidebarProps {
   isCollapsed: boolean;
 }
 
-const SidebarWrapper = styled.aside<SidebarProps>`
-  width: ${({ isCollapsed }) => (isCollapsed ? '4rem' : '12.5rem')};
+const SidebarNav = styled.nav<SidebarProps>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: 100vh;
   background: ${colors.primary['01']};
-  transition: width 0.25s linear;
-`;
-
-const SidebarNav = styled.nav`
-  height: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -26,30 +26,31 @@ const SidebarNav = styled.nav`
 `;
 
 const Sidebar = ({ isCollapsed }: SidebarProps) => {
-  return (
-    <SidebarWrapper isCollapsed={isCollapsed}>
-      <SidebarNav>
-        {/* Side Nav Top */}
-        <SidebarList>
-          {sidebarData.map((sidebarItem) => (
-            <SidebarLink
-              key={sidebarItem.id}
-              href={sidebarItem.path}
-              icon={sidebarItem.icon}
-              isCollapsed={isCollapsed}
-            >
-              {sidebarItem.name}
-            </SidebarLink>
-          ))}
-        </SidebarList>
+  const router = useRouter();
 
-        {/* Side Nav Bottom */}
-        <SidebarList>
-          <SidebarDarkMode isCollapsed={isCollapsed} />
-          <SidebarAbout isCollapsed={isCollapsed} />
-        </SidebarList>
-      </SidebarNav>
-    </SidebarWrapper>
+  return (
+    <SidebarNav isCollapsed={isCollapsed}>
+      {/* Side Nav Top */}
+      <SidebarList>
+        {sidebarData.map((sidebarItem) => (
+          <SidebarLink
+            key={sidebarItem.id}
+            href={sidebarItem.path}
+            icon={sidebarItem.icon}
+            isCollapsed={isCollapsed}
+            isActive={router.pathname === sidebarItem.path}
+          >
+            {sidebarItem.name}
+          </SidebarLink>
+        ))}
+      </SidebarList>
+
+      {/* Side Nav Bottom */}
+      <SidebarList>
+        <SidebarDarkMode isCollapsed={isCollapsed} />
+        <SidebarAbout isCollapsed={isCollapsed} />
+      </SidebarList>
+    </SidebarNav>
   );
 };
 
