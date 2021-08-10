@@ -15,7 +15,7 @@ const ThemeDarkProvider: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       {children}
-      {!router.pathname.startsWith('/dashboard') && (
+      {!router.pathname.startsWith('/app') && (
         <div style={{ position: 'fixed', bottom: '1rem', right: '1rem' }}>
           <Switch checked={isDarkMode} onChange={() => dispatch(toggleDarkMode())} />
         </div>

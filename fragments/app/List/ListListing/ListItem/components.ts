@@ -6,6 +6,7 @@ export const ListItem = styled.li`
   background: ${({ theme }) => theme.backgroundColor};
   display: flex;
   align-items: flex-start;
+  transition: var(--transition);
 
   &:not(:last-of-type) {
     border-bottom: 2px solid ${({ theme }) => theme.borderColor};
