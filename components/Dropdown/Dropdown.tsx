@@ -21,6 +21,7 @@ const DropdownSelectBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: var(--transition);
 `;
 
 const Dropdown = ({ options, selected, setSelected }: DropdownProps) => {
