@@ -8,10 +8,10 @@ export const ListHeader = styled.div`
   align-items: center;
 `;
 
-export const ListSearchForm = styled.form`
+export const ListHeaderContent = styled.div`
   display: flex;
 
-  & ${StyledButton} {
-    margin-left: 1rem;
+  & > *:not(:last-child) {
+    margin-right: 1rem;
   }
 `;

@@ -54,6 +54,12 @@ const lightTheme = {
   listItem: {
     hoverBackground: colors.neutrals['07'],
   },
+  subTaskItem: {
+    borderColor: colors.neutrals['06'],
+  },
+  modal: {
+    backgroundColor: colors.neutrals['09'],
+  },
 };
 
 const darkTheme = {
@@ -85,6 +91,12 @@ const darkTheme = {
   },
   listItem: {
     hoverBackground: colors.neutrals['03'],
+  },
+  subTaskItem: {
+    borderColor: colors.neutrals['04'],
+  },
+  modal: {
+    backgroundColor: colors.neutrals['01'],
   },
 };
 
