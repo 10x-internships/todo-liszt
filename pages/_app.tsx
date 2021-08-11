@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
+import { NextPage } from 'next';
 
 import 'normalize.css';
 import { GlobalStyles } from 'styles';
@@ -8,28 +9,22 @@ import store from '../redux/store';
 import ToastContainer from '@components/Toast';
 import ThemeDarkProvider from '@styles/ThemeDarkProvider';
 
-import { DashboardLayout, AuthLayout, GuestLayout } from '@components/Layout';
+type Page<P = {}> = NextPage<P> & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+};
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  // const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
+type Props = AppProps & {
+  Component: Page;
+};
 
-  let Layout = <Component {...pageProps} />;
-
-  if (router.pathname.startsWith('/app')) {
-    Layout = (
-      <DashboardLayout>
-        <Component {...pageProps} />
-      </DashboardLayout>
-    );
-  }
+function MyApp({ Component, pageProps }: Props) {
+  const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
 
   return (
     <Provider store={store}>
       <ThemeDarkProvider>
         <GlobalStyles />
-        {Layout}
-        {/* <Component {...pageProps} /> */}
+        {getLayout(<Component {...pageProps} />)}
         <ToastContainer />
       </ThemeDarkProvider>
     </Provider>

@@ -14,3 +14,6 @@ export default function Calendar() {
     </>
   );
 }
+
+// eslint-disable-next-line react/display-name
+Calendar.getLayout = (page: React.ReactNode) => <DashboardLayout>{page}</DashboardLayout>;

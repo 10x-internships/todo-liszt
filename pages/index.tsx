@@ -10,9 +10,11 @@ export default function Home() {
         <meta name="description" content="The best app for writing todos" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <GuestLayout>
-        <ComingSoon />
-      </GuestLayout>
+
+      <ComingSoon />
     </>
   );
 }
+
+// eslint-disable-next-line react/display-name
+Home.getLayout = (page: React.ReactNode) => <GuestLayout>{page}</GuestLayout>;

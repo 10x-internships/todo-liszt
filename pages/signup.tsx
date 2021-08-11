@@ -13,9 +13,15 @@ export default function SignUp() {
         <meta name="description" content="Sign in to the best app for writing todos" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AuthLayout src={signupBg} alt="A beautiful lady">
-        <SignUpContent />
-      </AuthLayout>
+
+      <SignUpContent />
     </>
   );
 }
+
+// eslint-disable-next-line react/display-name
+SignUp.getLayout = (page: React.ReactNode) => (
+  <AuthLayout src={signupBg} alt="A beautiful lady">
+    {page}
+  </AuthLayout>
+);
