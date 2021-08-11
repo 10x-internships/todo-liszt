@@ -11,7 +11,7 @@ const StyledDropdownList = styled.ul<Omit<DropdownListProps, 'onCloseDropdown'>>
   position: absolute;
   max-height: 16.5rem;
   padding: 0.5rem;
-  margin-top: 0.75rem;
+  /* margin-top: 0.75rem; */
   background: ${({ theme }) => theme.backgroundColor};
   border: 1px solid ${({ theme }) => theme.borderColor};
   border-radius: 0.75rem;

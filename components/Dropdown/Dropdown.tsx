@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { Text, TextVariants, TypoTags } from '../Typography';
 import { ArrowDown, ArrowUp } from '../Icons';
 import Portal from '../Portal';
+import { InputLabel } from '@components/Input';
 
 import { DropdownProps, OptionType } from './types';
 import DropdownList from './DropdownList';
@@ -24,7 +25,13 @@ const DropdownSelectBox = styled.div`
   transition: var(--transition);
 `;
 
-const Dropdown = ({ options, selected, setSelected }: DropdownProps) => {
+const Dropdown = ({
+  options,
+  selected,
+  setSelected,
+  placement: place = 'bottom',
+  label,
+}: DropdownProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [position, setPosition] = useState({});
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -32,8 +39,18 @@ const Dropdown = ({ options, selected, setSelected }: DropdownProps) => {
   const handleToggleDropdown = () => {
     if (dropdownRef.current) {
       const rect = dropdownRef.current.getBoundingClientRect();
+      let top;
 
-      setPosition({ top: rect.top + 48 + window.scrollY, left: rect.left, width: rect.width });
+      if (place === 'bottom') {
+        top = rect.top + rect.height + window.scrollY; // 48 -> height of the dropdown box
+        setPosition({ top, left: rect.left, width: rect.width, marginTop: 12 });
+      }
+
+      if (place === 'top') {
+        top = rect.top - 264 + window.scrollY; // 264 -> max-height of the DropdownList
+        setPosition({ top, left: rect.left, width: rect.width, marginTop: -12 });
+      }
+
       setIsOpen((prevIsOpen) => !prevIsOpen);
     }
   };
@@ -46,6 +63,8 @@ const Dropdown = ({ options, selected, setSelected }: DropdownProps) => {
 
   return (
     <>
+      {label && <InputLabel label={label} />}
+
       <DropdownSelectBox ref={dropdownRef} onClick={handleToggleDropdown}>
         <Text as={TypoTags.Span} variant={TextVariants.Caption1} isBold>
           {selected}

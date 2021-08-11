@@ -41,7 +41,7 @@ const StyledDropdownItem = styled.li<Omit<DropdownItemProps, 'option'>>`
 `;
 
 const DropdownItem = ({ option, ...others }: DropdownItemProps) => {
-  const { name, value, href, icon } = option;
+  const { name, value, href, icon, colorFill } = option;
 
   if (href) {
     return (
@@ -60,7 +60,7 @@ const DropdownItem = ({ option, ...others }: DropdownItemProps) => {
 
   return (
     <StyledDropdownItem isAllItem={value === ''} {...others}>
-      <CircleLine />
+      <CircleLine circleFill={colorFill} />
       <Text as={TypoTags.Span} variant={TextVariants.Caption1} isBold={value === ''}>
         {name}
       </Text>
