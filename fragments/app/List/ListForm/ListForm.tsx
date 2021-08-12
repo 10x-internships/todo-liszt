@@ -1,14 +1,11 @@
-import { Button } from '@components/Button';
 import Dropdown from '@components/Dropdown';
 import { Input } from '@components/Input';
 import { Heading, HeadingVariants, TypoTags } from '@components/Typography';
-import { colors } from '@styles/theme';
 import { useState } from 'react';
 
 import * as Styled from './components';
 import SubTasks from './SubTasks';
 import colorOptions from '../colorOptions';
-import Modal from '@components/Modal';
 
 const ListForm = () => {
   const [selected, setSelected] = useState<string>(colorOptions[0].name);

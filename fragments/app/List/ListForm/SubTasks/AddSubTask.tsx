@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { colors } from '@styles/theme';
-import { Button, ButtonVariants } from '@components/Button';
+import { Button, ButtonColors, ButtonVariants } from '@components/Button';
 import Modal from '@components/Modal';
 import { Heading, HeadingVariants, TypoTags } from '@components/Typography';
 import { Input } from '@components/Input';
@@ -14,14 +14,7 @@ const AddSubTask = () => {
 
   return (
     <>
-      <Button
-        css={{
-          background: colors.primary['02'],
-          '&:hover': { background: colors.primary['02'] },
-        }}
-        onClick={() => setShowModal(true)}
-        type="button"
-      >
+      <Button bgColor={ButtonColors.Primary_02} onClick={() => setShowModal(true)} type="button">
         Add sub-task
       </Button>
 
