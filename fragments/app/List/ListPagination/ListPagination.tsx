@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { ArrowLeft, ArrowRight } from '@components/Icons';
 
 import * as Styled from './components';
-import { colors } from '@styles/theme';
 
 interface ListPaginationProps {
   total: number;
@@ -33,28 +32,21 @@ const ListPagination = ({ total, pageSize = 10, defaultPage = 1 }: ListPaginatio
 
   return (
     <Styled.PaginationList>
-      <li>
+      <Styled.PaginationItem>
         <button disabled={isFirstPage} onClick={handlePrevPage}>
           <ArrowLeft />
         </button>
-      </li>
+      </Styled.PaginationItem>
       {pagesArr.map((page) => (
-        <li key={page}>
-          <button
-            style={{
-              color: page === currentPage ? colors.primary['01'] : 'inherit',
-            }}
-            onClick={() => setCurrentPage(page)}
-          >
-            {page}
-          </button>
-        </li>
+        <Styled.PaginationItem key={page} isActive={page === currentPage}>
+          <button onClick={() => setCurrentPage(page)}>{page}</button>
+        </Styled.PaginationItem>
       ))}
-      <li>
+      <Styled.PaginationItem>
         <button disabled={isLastPage} onClick={handleNextPage}>
           <ArrowRight />
         </button>
-      </li>
+      </Styled.PaginationItem>
     </Styled.PaginationList>
   );
 };
