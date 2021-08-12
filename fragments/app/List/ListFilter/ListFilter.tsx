@@ -3,14 +3,9 @@ import { useState } from 'react';
 import * as Styled from './components';
 import Dropdown from '@components/Dropdown';
 import { Text, TextVariants, TypoTags } from '@components/Typography';
+import colorOptions from '../colorOptions';
 
-const filterOptions = [
-  { id: 0, name: 'All', value: '' },
-  { id: 1, name: 'Black', value: 'black' },
-  { id: 2, name: 'Green', value: 'green' },
-  { id: 3, name: 'Pink', value: 'pink' },
-  { id: 4, name: 'Purple', value: 'purple' },
-];
+const filterOptions = [{ id: 0, name: 'All', value: '' }, ...colorOptions.slice(1)];
 
 const ListFilter = () => {
   const [selected, setSelected] = useState<string>(filterOptions[0].name);
