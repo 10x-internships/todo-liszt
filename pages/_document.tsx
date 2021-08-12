@@ -9,17 +9,20 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <meta name="description" content="The best app for writing todos" />
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap"
             rel="stylesheet"
           />
+          <link rel="icon" href="/favicon.ico" />
         </Head>
         <body>
           <Main />
           <NextScript />
           <div id="dropdown-portal"></div>
           <div id="toast-portal"></div>
+          <div id="modal-portal"></div>
         </body>
       </Html>
     );

@@ -1,18 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import {
-  ButtonProps,
-  ButtonIconProps,
-  ButtonSizes,
-  ButtonVariants,
-} from './types';
+import { ButtonProps, ButtonIconProps, ButtonSizes, ButtonVariants, ButtonColors } from './types';
 import { colors } from '../../styles';
 
 const buttonBase = css`
   font-weight: 700;
   line-height: 1rem;
-  border: 2px solid transparent;
+  border: 0;
   border-radius: 5.625rem;
   outline: none;
   cursor: pointer;
@@ -23,9 +18,33 @@ const buttonBase = css`
 
   &[disabled] {
     opacity: 0.5;
-    cursor: not-allowed;
+    pointer-events: none;
+    user-select: none;
   }
 `;
+
+const getButtonColor = (color: ButtonColors) => {
+  switch (color) {
+    case ButtonColors.Primary_01:
+      return colors.primary['01'];
+    case ButtonColors.Primary_02:
+      return colors.primary['02'];
+    case ButtonColors.Primary_03:
+      return colors.primary['03'];
+    case ButtonColors.Primary_04:
+      return colors.primary['04'];
+    case ButtonColors.Secondary_01:
+      return colors.secondary['01'];
+    case ButtonColors.Secondary_02:
+      return colors.secondary['02'];
+    case ButtonColors.Secondary_03:
+      return colors.secondary['03'];
+    case ButtonColors.Secondary_04:
+      return colors.secondary['04'];
+    default:
+      return colors.primary['01'];
+  }
+};
 
 export const StyledButton = styled.button<ButtonProps>`
   ${buttonBase}
@@ -53,26 +72,41 @@ export const StyledButton = styled.button<ButtonProps>`
     }
   }}
 
-  ${({ variant, theme }) => {
+  ${({ variant, theme, bgColor = ButtonColors.Primary_01 }) => {
     switch (variant) {
       case ButtonVariants.Neutral:
         return css`
+          position: relative;
           color: ${colors.neutrals['08']};
-          background: ${colors.primary['01']};
+          background: ${getButtonColor(bgColor)};
+          z-index: 1;
 
-          &:hover {
-            background: #2955bf;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: inherit;
+            opacity: 0;
+            visibility: hidden;
+            z-index: -1;
+            transition: var(--transition);
           }
 
-          &:disabled {
-            background: #2955bf;
+          &:hover::before,
+          &[disabled]::before {
+            opacity: 1;
+            visibility: visible;
           }
         `;
       case ButtonVariants.Theme:
         return css`
           color: ${theme.button.textColor};
           background: transparent;
-          border-color: ${theme.button.borderColor};
+          border: 2px solid ${theme.button.borderColor};
 
           &:hover {
             color: ${theme.button.textHover};

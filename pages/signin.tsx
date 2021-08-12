@@ -9,12 +9,16 @@ export default function SignIn() {
     <>
       <Head>
         <title>Sign in | Todo Liszt</title>
-        <meta name="description" content="Sign in to the best app for writing todos" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <AuthLayout src={signinBg} alt="Orange Fox">
-        <SignInContent />
-      </AuthLayout>
+
+      <SignInContent />
     </>
   );
 }
+
+// eslint-disable-next-line react/display-name
+SignIn.getLayout = (page: React.ReactNode) => (
+  <AuthLayout src={signinBg} alt="Orange Fox">
+    {page}
+  </AuthLayout>
+);

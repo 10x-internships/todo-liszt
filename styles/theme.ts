@@ -51,6 +51,15 @@ const lightTheme = {
   authentication: {
     textColor: colors.neutrals['02'],
   },
+  listItem: {
+    hoverBackground: colors.neutrals['07'],
+  },
+  subTaskItem: {
+    borderColor: colors.neutrals['06'],
+  },
+  modal: {
+    backgroundColor: colors.neutrals['09'],
+  },
 };
 
 const darkTheme = {
@@ -79,6 +88,15 @@ const darkTheme = {
   },
   authentication: {
     textColor: colors.neutrals['05'],
+  },
+  listItem: {
+    hoverBackground: colors.neutrals['03'],
+  },
+  subTaskItem: {
+    borderColor: colors.neutrals['04'],
+  },
+  modal: {
+    backgroundColor: colors.neutrals['01'],
   },
 };
 

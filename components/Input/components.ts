@@ -45,6 +45,14 @@ export const InputIcon = styled.div`
 export const Input = styled.input<InputProps>`
   width: 100%;
   height: 3rem;
+  ${({ as }) =>
+    as === 'textarea' &&
+    `
+      min-height: 6rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      resize: none;
+  `}
   padding-right: ${({ inputIcon }) => (inputIcon ? '3rem' : '1rem')};
   padding-left: 1rem;
   font-family: var(--font-secondary);

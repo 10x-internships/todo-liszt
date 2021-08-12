@@ -1,22 +1,21 @@
 import * as Styled from './components';
 import { InputProps } from './types';
 import { Text, TextVariants, TypoTags } from '../Typography';
+import InputLabel from './InputLabel';
 
 const Input = (props: InputProps) => {
-  const { label, id, type, message, isDisabled, ...others } = props;
+  const { label, id, type, message, isDisabled, as, ...others } = props;
 
   return (
     <Styled.InputWrapper>
-      {label && (
-        <Styled.InputLabel htmlFor={id}>
-          <Text as={TypoTags.Span} variant={TextVariants.Hairline2}>
-            {label}
-          </Text>
-        </Styled.InputLabel>
-      )}
+      {label && <InputLabel id={id} label={label} />}
 
       <Styled.InputGroup>
-        <Styled.Input type={type || 'text'} id={id} disabled={isDisabled} {...others} />
+        {as === 'textarea' && (
+          <Styled.Input as="textarea" id={id} disabled={isDisabled} {...others} />
+        )}
+
+        {!as && <Styled.Input type={type || 'text'} id={id} disabled={isDisabled} {...others} />}
         {others.inputIcon}
       </Styled.InputGroup>
 

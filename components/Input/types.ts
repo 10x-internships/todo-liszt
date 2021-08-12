@@ -5,4 +5,5 @@ export interface InputProps extends React.ComponentPropsWithRef<'input'> {
   isDisabled?: boolean;
   message?: string;
   inputIcon?: React.ReactNode;
+  as?: string;
 }

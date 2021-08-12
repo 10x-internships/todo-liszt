@@ -1,28 +1,32 @@
 import type { AppProps } from 'next/app';
-import { ThemeProvider } from '@emotion/react';
 import { Provider } from 'react-redux';
-
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { NextPage } from 'next';
 
 import 'normalize.css';
-import { GlobalStyles, lightTheme, darkTheme } from 'styles';
+import { GlobalStyles } from 'styles';
 import store from '../redux/store';
 import ToastContainer from '@components/Toast';
-import Switch from '@components/Switch';
+import ThemeDarkProvider from '@styles/ThemeDarkProvider';
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const [isDark, setIsDark] = useState(false);
+type Page<P = {}> = NextPage<P> & {
+  getLayout?: (page: React.ReactNode) => React.ReactNode;
+};
+
+type Props = AppProps & {
+  Component: Page;
+};
+
+function MyApp({ Component, pageProps }: Props) {
+  const getLayout = Component.getLayout || ((page: React.ReactNode) => page);
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <ThemeDarkProvider>
         <GlobalStyles />
-        <Component {...pageProps} />
+        {getLayout(<Component {...pageProps} />)}
         <ToastContainer />
-        <div style={{ position: 'fixed', bottom: '1rem', right: '1rem' }}>
-          <Switch checked={isDark} onChange={() => setIsDark(!isDark)} />
-        </div>
-      </ThemeProvider>
+      </ThemeDarkProvider>
     </Provider>
   );
 }
