@@ -10,8 +10,6 @@ export default function SignUp() {
     <>
       <Head>
         <title>Sign up | Todo Liszt</title>
-        <meta name="description" content="Sign in to the best app for writing todos" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <SignUpContent />

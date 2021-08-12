@@ -9,8 +9,6 @@ export default function ForgotPassword() {
     <>
       <Head>
         <title>Forgot Password | Todo Liszt</title>
-        <meta name="description" content="Sign in to the best app for writing todos" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <ForgotPasswordContent />

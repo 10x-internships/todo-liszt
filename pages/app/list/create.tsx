@@ -13,8 +13,6 @@ export default function CreateList() {
     <>
       <Head>
         <title>Create List | Todo Liszt</title>
-        <meta name="description" content="The best app for writing todos" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <form autoComplete="off">

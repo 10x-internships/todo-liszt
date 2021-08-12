@@ -12,8 +12,6 @@ export default function List() {
     <>
       <Head>
         <title>List | Todo Liszt</title>
-        <meta name="description" content="The best app for writing todos" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <ListHeader title="List">
