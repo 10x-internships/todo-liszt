@@ -9,6 +9,17 @@ export enum ButtonVariants {
   Theme = 'theme',
 }
 
+export enum ButtonColors {
+  Primary_01,
+  Primary_02,
+  Primary_03,
+  Primary_04,
+  Secondary_01,
+  Secondary_02,
+  Secondary_03,
+  Secondary_04,
+}
+
 type ButtonTypes = React.ComponentPropsWithRef<'button'> & React.ComponentPropsWithoutRef<'a'>;
 
 export interface ButtonProps extends ButtonTypes {
@@ -17,6 +28,7 @@ export interface ButtonProps extends ButtonTypes {
   isDisabled?: boolean;
   href?: string;
   children: React.ReactNode;
+  bgColor?: ButtonColors;
 }
 
 export interface ButtonIconProps {
