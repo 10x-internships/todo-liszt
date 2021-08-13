@@ -30,7 +30,7 @@ const items = [
   },
 ];
 
-const SidebarAbout = ({ isCollapsed }: SidebarItemProps) => {
+const SidebarAbout = ({ isCollapsed, title }: SidebarItemProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [position, setPosition] = useState({});
 
@@ -51,6 +51,7 @@ const SidebarAbout = ({ isCollapsed }: SidebarItemProps) => {
         ref={aboutDropdownRef}
         isCollapsed={isCollapsed}
         onClick={handleToggleDropdown}
+        title={isCollapsed ? 'About' : ''}
       >
         <Styled.SidebarAbout isCollapsed={isCollapsed}>
           <Styled.SidebarIcon>

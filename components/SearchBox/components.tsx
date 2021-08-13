@@ -17,6 +17,7 @@ export const SearchGroup = styled.div`
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
+  transition: var(--transition);
 `;
 
 export const SearchInput = styled.input`

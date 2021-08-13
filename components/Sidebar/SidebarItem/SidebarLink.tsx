@@ -4,9 +4,13 @@ import * as Styled from './components';
 import { Text, TextVariants, TypoTags } from '@components/Typography';
 import { SidebarItemProps } from './types';
 
-const SidebarLink = ({ href, icon, children, isCollapsed, isActive }: SidebarItemProps) => {
+const SidebarLink = ({ href, icon, children, isCollapsed, isActive, title }: SidebarItemProps) => {
   return (
-    <Styled.SidebarItem isCollapsed={isCollapsed} isActive={isActive}>
+    <Styled.SidebarItem
+      isCollapsed={isCollapsed}
+      isActive={isActive}
+      title={isCollapsed ? title : ''}
+    >
       {href && (
         <Link href={href}>
           <a>

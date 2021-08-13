@@ -14,7 +14,7 @@ const SidebarDarkMode = ({ isCollapsed }: SidebarItemProps) => {
   const handleToggle = () => dispatch(toggleDarkMode());
 
   return (
-    <Styled.SidebarItem isCollapsed={isCollapsed}>
+    <Styled.SidebarItem isCollapsed={isCollapsed} title="Toggle Dark Mode">
       <Styled.SidebarSwitch isCollapsed={isCollapsed}>
         <Styled.SidebarIcon onClick={handleToggle}>
           {isDarkMode ? <BrightnessUpFilled /> : <BrightnessUpLine />}
