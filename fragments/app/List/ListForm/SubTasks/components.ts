@@ -3,19 +3,29 @@ import { Heading, Text } from '@components/Typography';
 import { colors } from '@styles/theme';
 import { InputWrapper } from '@components/Input';
 
-export const SubTaskList = styled.ul`
+export const SubTasksWrapper = styled.div`
+  width: 50%;
+`;
+
+export const SubTasksContent = styled.div`
+  margin-top: 3.25rem;
+`;
+
+export const SubTasksList = styled.ul`
   margin-bottom: 2rem;
 `;
 
+// Sub task item
 export const SubTaskItem = styled.li`
   padding: 1rem;
   border: 1px solid ${({ theme }) => theme.subTaskItem.borderColor};
   border-radius: 4px;
   display: flex;
   align-items: flex-start;
+  transition: var(--transition);
 `;
 
-export const SubTaskContent = styled.div`
+export const SubTaskItemContent = styled.div`
   margin-left: 1.25rem;
 
   & ${Text} {
@@ -28,6 +38,7 @@ export const SubTaskContent = styled.div`
   }
 `;
 
+// Sub task delete button
 export const DeleteButton = styled.button`
   background: transparent;
   border: 0;
@@ -46,6 +57,7 @@ export const DeleteButton = styled.button`
   }
 `;
 
+// Add sub task
 export const AddSubTaskForm = styled.form`
   & ${Heading} {
     margin-bottom: 2rem;

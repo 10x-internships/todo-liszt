@@ -8,6 +8,7 @@ const ListWrapper = styled.div<{ isEmpty?: boolean }>`
   border-radius: 4px;
   flex: 1;
   overflow: hidden;
+  transition: var(--transition);
 
   ${({ isEmpty }) =>
     isEmpty &&

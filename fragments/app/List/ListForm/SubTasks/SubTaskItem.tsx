@@ -8,14 +8,14 @@ const SubTaskItem = () => {
     <Styled.SubTaskItem>
       <Checkbox />
 
-      <Styled.SubTaskContent>
+      <Styled.SubTaskItemContent>
         <Text as={TypoTags.Span} variant={TextVariants.Body2}>
           Office Equipments
         </Text>
         <Text as={TypoTags.Span} variant={TextVariants.Caption1}>
           Get the coffee machine fixed
         </Text>
-      </Styled.SubTaskContent>
+      </Styled.SubTaskItemContent>
 
       <Styled.DeleteButton title="Remove this sub-task">
         <Eraser />

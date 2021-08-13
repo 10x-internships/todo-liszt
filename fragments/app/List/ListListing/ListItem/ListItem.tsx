@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+
 import Checkbox from '@components/Checkbox';
 
 import { Text, TextVariants, TypoTags } from '@components/Typography';
@@ -11,12 +14,18 @@ interface ListItemProps {
 }
 
 const ListsItem = ({ item }: ListItemProps) => {
+  const router = useRouter();
+
+  const itemDetails = (event: React.MouseEvent) => {
+    const element = event.target as HTMLElement;
+    if (element.closest('label')) return;
+    router.push(`${router.asPath}/${item.id}`);
+  };
+
   return (
-    <Styled.ListItem>
+    <Styled.ListItem onClick={itemDetails}>
       <Checkbox />
-      {/* ItemContent */}
       <ListItemContent {...item} />
-      {/* Item subTasks */}
       <Styled.SubTasks>
         <Text as={TypoTags.Span} variant={TextVariants.Hairline2}>
           {item.subTasks}
