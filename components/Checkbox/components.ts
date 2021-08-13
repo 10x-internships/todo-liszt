@@ -12,7 +12,8 @@ export const Checkbox = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s linear;
+  transition: var(--transition);
+  pointer-events: none;
 
   & svg {
     width: 100%;
