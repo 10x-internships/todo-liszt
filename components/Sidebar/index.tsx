@@ -39,6 +39,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             icon={sidebarItem.icon}
             isCollapsed={isCollapsed}
             isActive={router.pathname.startsWith(sidebarItem.path)}
+            title={sidebarItem.name}
           >
             {sidebarItem.name}
           </SidebarLink>

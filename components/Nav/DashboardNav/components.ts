@@ -1,18 +1,34 @@
 import styled from '@emotion/styled';
 import { colors } from '@styles/theme';
 
-export const Header = styled.header`
+export const Header = styled.header<{ isSidebarCollapsed: boolean }>`
+  position: fixed;
+  width: calc(100% - ${({ isSidebarCollapsed }) => (isSidebarCollapsed ? '4rem' : '12.5rem')});
   height: 4rem;
   padding: 0 2rem;
+  background: ${({ theme }) => theme.backgroundColor};
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid ${colors.neutrals['06']};
+  transition: var(--transition);
+  z-index: 10;
 
   & svg {
     display: block;
   }
 `;
+
+// export const NavWrapper = styled.nav`
+//   position: fixed;
+//   top: 0;
+//   right: 0;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   height: inherit;
+//   width: inherit;
+// `;
 
 export const NavToggle = styled.div`
   cursor: pointer;
