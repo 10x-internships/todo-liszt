@@ -60,6 +60,9 @@ const lightTheme = {
   modal: {
     backgroundColor: colors.neutrals['09'],
   },
+  calenderCell: {
+    borderColor: colors.neutrals['06'],
+  },
 };
 
 const darkTheme = {
@@ -97,6 +100,9 @@ const darkTheme = {
   },
   modal: {
     backgroundColor: colors.neutrals['01'],
+  },
+  calenderCell: {
+    borderColor: colors.neutrals['04'],
   },
 };
 
