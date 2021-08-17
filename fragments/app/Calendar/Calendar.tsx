@@ -13,8 +13,8 @@ const Calendar = ({ startDayOfWeek }: CalendarProps) => {
   let daysOfWeek;
 
   const firstDateOfMonthObj = dateObj.startOf('month');
-  let startDay: number;
   const lastDateOfMonthObj = dateObj.endOf('month');
+  let startDay: number;
   let endDay: number;
 
   if (startDayOfWeek === 'monday') {
@@ -28,14 +28,17 @@ const Calendar = ({ startDayOfWeek }: CalendarProps) => {
   }
 
   const startWeekDays = Array.from(Array(startDay), (_, i) =>
-    firstDateOfMonthObj.subtract(startDay - i, 'day').date()
+    firstDateOfMonthObj.subtract(startDay - i, 'day').toISOString()
   );
 
   const endWeekDays = Array.from(Array(6 - endDay), (_, i) =>
-    lastDateOfMonthObj.add(i + 1, 'day').date()
+    lastDateOfMonthObj.add(i + 1, 'day').toISOString()
   );
 
-  const daysInMonth = Array.from(Array(dateObj.daysInMonth()), (_, i) => i + 1);
+  const daysInMonth = Array.from(
+    Array(dateObj.daysInMonth()),
+    (_, i) => `${dateObj.format('YYYY')}-${dateObj.format('MM')}-${i + 1}`
+  );
 
   const prevMonth = () => setDateObj((prevDateObj) => prevDateObj.subtract(1, 'month'));
   const nextMonth = () => setDateObj((prevDateObj) => prevDateObj.add(1, 'month'));

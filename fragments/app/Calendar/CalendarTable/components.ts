@@ -41,3 +41,9 @@ export const Td = styled.td<{ isToday?: boolean; isDayInMonth?: boolean }>`
   ${({ isDayInMonth }) => !isDayInMonth && `color: ${colors.neutrals['05']}`}
   ${({ isToday }) => isToday && `color: ${colors.primary['01']}`}
 `;
+
+export const CalendarContent = styled.div`
+  margin-top: 1rem;
+  max-height: 4rem;
+  overflow-y: auto;
+`;
