@@ -1,38 +1,62 @@
+import { useMemo } from 'react';
 import { Dayjs } from 'dayjs';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Text, TextVariants, TypoTags } from '@components/Typography';
 
 import * as Styled from './components';
-import { colors } from '@styles/theme';
+import CalendarCell from './CalendarCell';
 
 interface CalendarTableProps {
   dateObj: Dayjs;
-  totalDays?: number[];
+  daysOfWeek: string[];
   startWeekDays: number[];
   endWeekDays: number[];
   daysInMonth: number[];
 }
 
-const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-
 const CalendarTable = ({
   dateObj,
+  daysOfWeek,
   startWeekDays,
   endWeekDays,
   daysInMonth,
 }: CalendarTableProps) => {
-  const totalDays = [...startWeekDays, ...daysInMonth, ...endWeekDays];
+  const startWeekDaysEl = startWeekDays.map((day) => (
+    <CalendarCell key={uuidv4()}>{day}</CalendarCell>
+  ));
 
-  const totalRows = totalDays.reduce((acc: any, day, i) => {
-    if (i % 7 !== 0) {
-      acc[acc.length - 1].push(day);
-    } else {
-      acc.push([]);
-      acc[acc.length - 1].push(day);
-    }
+  const daysInMonthEl = daysInMonth.map((day) => (
+    <CalendarCell
+      key={uuidv4()}
+      isDayInMonth
+      isToday={day === dateObj.date() && new Date().getMonth() === dateObj.month()}
+    >
+      {day}
+    </CalendarCell>
+  ));
 
-    return acc;
-  }, []);
+  const endWeekDaysEl = endWeekDays.map((day) => <CalendarCell key={uuidv4()}>{day}</CalendarCell>);
+
+  const totalDays = useMemo(
+    () => [...startWeekDaysEl, ...daysInMonthEl, ...endWeekDaysEl],
+    [startWeekDaysEl, daysInMonthEl, endWeekDaysEl]
+  );
+
+  const totalRows = useMemo(
+    () =>
+      totalDays.reduce((acc: any[], day, i) => {
+        if (i % 7 !== 0) {
+          acc[acc.length - 1].push(day);
+        } else {
+          acc.push([]);
+          acc[acc.length - 1].push(day);
+        }
+
+        return acc;
+      }, []),
+    [totalDays]
+  );
 
   return (
     <Styled.Wrapper>
@@ -50,19 +74,8 @@ const CalendarTable = ({
         </Styled.Thead>
 
         <Styled.Tbody>
-          {totalRows.map((row: any, i: any) => (
-            <tr key={i}>
-              {row.map((day: number, i: number) => (
-                <td
-                  key={i}
-                  css={{ color: dateObj.date() === day ? colors.primary['01'] : 'inherit' }}
-                >
-                  <Text as={TypoTags.Span} variant={TextVariants.Caption1} isBold>
-                    {day}
-                  </Text>
-                </td>
-              ))}
-            </tr>
+          {totalRows.map((row: number[], i: number) => (
+            <tr key={i}>{row}</tr>
           ))}
         </Styled.Tbody>
       </Styled.Table>
