@@ -4,13 +4,28 @@ import dayjs from 'dayjs';
 import CalendarHeader from './CalendarHeader';
 import CalendarTable from './CalendarTable';
 
-const Calendar = () => {
+interface CalendarProps {
+  startDayOfWeek: 'sunday' | 'monday';
+}
+
+const Calendar = ({ startDayOfWeek }: CalendarProps) => {
   const [dateObj, setDateObj] = useState(dayjs());
+  let daysOfWeek;
 
   const firstDateOfMonthObj = dateObj.startOf('month');
-  const startDay = firstDateOfMonthObj.day(); // Sunday is 0
+  let startDay: number;
   const lastDateOfMonthObj = dateObj.endOf('month');
-  const endDay = lastDateOfMonthObj.day();
+  let endDay: number;
+
+  if (startDayOfWeek === 'monday') {
+    daysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+    startDay = firstDateOfMonthObj.day() === 0 ? 6 : firstDateOfMonthObj.day() - 1;
+    endDay = lastDateOfMonthObj.day() - 1;
+  } else {
+    daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    startDay = firstDateOfMonthObj.day();
+    endDay = lastDateOfMonthObj.day();
+  }
 
   const startWeekDays = Array.from(Array(startDay), (_, i) =>
     firstDateOfMonthObj.subtract(startDay - i, 'day').date()
@@ -30,6 +45,7 @@ const Calendar = () => {
       <CalendarHeader dateObj={dateObj} onNextMonth={nextMonth} onPrevMonth={prevMonth} />
       <CalendarTable
         dateObj={dateObj}
+        daysOfWeek={daysOfWeek}
         startWeekDays={startWeekDays}
         endWeekDays={endWeekDays}
         daysInMonth={daysInMonth}

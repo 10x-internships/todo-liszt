@@ -12,7 +12,7 @@ export default function CalendarPage() {
       </Head>
 
       <ListHeader title="Calendar" />
-      <Calendar />
+      <Calendar startDayOfWeek="monday" />
     </>
   );
 }
