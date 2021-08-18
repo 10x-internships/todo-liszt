@@ -1,18 +1,25 @@
-import { Td as StyledCalendarCell } from './components';
+import dayjs from 'dayjs';
+import isToday from 'dayjs/plugin/isToday';
+
 import { Text, TextVariants, TypoTags } from '@components/Typography';
 
+import { Td as StyledCalendarCell, CalendarContent } from './components';
+
+dayjs.extend(isToday);
+
 interface CalendarCellProps {
-  isToday?: boolean;
+  dateData?: string;
   isDayInMonth?: boolean;
   children?: React.ReactNode;
 }
 
-const CalendarCell = ({ isToday, isDayInMonth, children }: CalendarCellProps) => {
+const CalendarCell = ({ isDayInMonth, dateData, children }: CalendarCellProps) => {
   return (
-    <StyledCalendarCell isToday={isToday} isDayInMonth={isDayInMonth}>
+    <StyledCalendarCell isToday={dayjs(dateData).isToday()} isDayInMonth={isDayInMonth}>
       <Text as={TypoTags.Span} variant={TextVariants.Caption1} isBold>
-        {children}
+        {dayjs(dateData).date()}
       </Text>
+      <CalendarContent>{children}</CalendarContent>
     </StyledCalendarCell>
   );
 };

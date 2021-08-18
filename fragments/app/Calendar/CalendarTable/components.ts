@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 
 import { colors } from '@styles/theme';
 
+import { StyledCalendarTask } from '../CalendarTask';
+
 export const Wrapper = styled.div`
   padding: 2rem 1.5rem;
   margin-top: 1rem;
@@ -40,4 +42,14 @@ export const Tbody = styled.tbody`
 export const Td = styled.td<{ isToday?: boolean; isDayInMonth?: boolean }>`
   ${({ isDayInMonth }) => !isDayInMonth && `color: ${colors.neutrals['05']}`}
   ${({ isToday }) => isToday && `color: ${colors.primary['01']}`}
+`;
+
+export const CalendarContent = styled.div`
+  margin-top: 1rem;
+  height: 4rem;
+  overflow-y: auto;
+
+  & ${StyledCalendarTask} + ${StyledCalendarTask} {
+    margin-top: 0.75rem;
+  }
 `;
