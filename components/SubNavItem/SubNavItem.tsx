@@ -4,17 +4,25 @@ import styled from '@emotion/styled';
 
 import { Text, TextVariants, TypoTags } from '../Typography';
 
-interface SubNavItemProps extends React.ComponentPropsWithRef<'a'> {
+type SubNavItemAttributes = React.ComponentPropsWithRef<'a'> &
+  React.ComponentPropsWithoutRef<'button'>;
+interface SubNavItemProps extends SubNavItemAttributes {
   isActive?: boolean;
   isDeactive?: boolean;
   children?: React.ReactNode;
+  isTab?: boolean;
 }
 
 const StyledSubNavItem = styled.a<SubNavItemProps>`
   height: 1.75rem;
   padding: 0 0.75rem;
+  border: 0;
+  outline: none;
+  background: transparent;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
 
   ${({ theme }) => css`
     color: ${theme.subNavItem.textColor};
@@ -41,13 +49,24 @@ const StyledSubNavItem = styled.a<SubNavItemProps>`
   ${({ theme, isDeactive }) =>
     isDeactive &&
     css`
+      &,&[disabled]
       color: ${theme.subNavItem.deactiveColor};
       pointer-events: none;
     `}
 `;
 
 const SubNavItem = forwardRef<HTMLAnchorElement, SubNavItemProps>(
-  ({ children, ...others }, ref) => {
+  ({ children, isTab, ...others }, ref) => {
+    if (isTab) {
+      return (
+        <StyledSubNavItem as="button" {...others}>
+          <Text as={TypoTags.Span} variant={TextVariants.Button2}>
+            {children}
+          </Text>
+        </StyledSubNavItem>
+      );
+    }
+
     return (
       <StyledSubNavItem ref={ref} {...others}>
         <Text as={TypoTags.Span} variant={TextVariants.Button2}>
