@@ -13,6 +13,7 @@ export const Header = styled.header<{ isSidebarCollapsed: boolean }>`
   border-bottom: 1px solid ${colors.neutrals['06']};
   transition: var(--transition);
   z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
   & svg {
     display: block;

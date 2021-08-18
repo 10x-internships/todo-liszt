@@ -18,7 +18,7 @@ const items = [
   {
     id: 1,
     name: 'Settings',
-    href: '/app/settings',
+    href: '/app/settings/krillin',
     icon: <Setting />,
   },
   {
