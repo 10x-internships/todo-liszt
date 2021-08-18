@@ -21,6 +21,7 @@ const StyledDropdownItem = styled.li<Omit<DropdownItemProps, 'option'>>`
 
   &,
   & a {
+    width: 100%;
     display: flex;
     align-items: center;
   }

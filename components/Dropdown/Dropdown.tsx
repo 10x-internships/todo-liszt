@@ -10,6 +10,8 @@ import { DropdownProps, OptionType } from './types';
 import DropdownList from './DropdownList';
 import DropdownItem from './DropdownItem';
 
+export const DropdownWrapper = styled.div``;
+
 const DropdownSelectBox = styled.div`
   width: 100%;
   height: 3rem;
@@ -62,7 +64,7 @@ const Dropdown = ({
   };
 
   return (
-    <>
+    <DropdownWrapper>
       {label && <InputLabel label={label} />}
 
       <DropdownSelectBox ref={dropdownRef} onClick={handleToggleDropdown}>
@@ -87,7 +89,7 @@ const Dropdown = ({
           </DropdownList>
         </Portal>
       )}
-    </>
+    </DropdownWrapper>
   );
 };
 
