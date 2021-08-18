@@ -5,7 +5,7 @@ import { Input, InputIcon } from '@components/Input';
 import { Button } from '@components/Button';
 import { Eye } from '@components/Icons';
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
@@ -43,4 +43,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;
