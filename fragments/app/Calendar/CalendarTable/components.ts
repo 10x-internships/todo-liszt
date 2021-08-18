@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 
 import { colors } from '@styles/theme';
 
+import { StyledCalendarTask } from '../CalendarTask';
+
 export const Wrapper = styled.div`
   padding: 2rem 1.5rem;
   margin-top: 1rem;
@@ -44,6 +46,10 @@ export const Td = styled.td<{ isToday?: boolean; isDayInMonth?: boolean }>`
 
 export const CalendarContent = styled.div`
   margin-top: 1rem;
-  max-height: 4rem;
+  height: 4rem;
   overflow-y: auto;
+
+  & ${StyledCalendarTask} + ${StyledCalendarTask} {
+    margin-top: 0.75rem;
+  }
 `;

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import dayjs from 'dayjs';
 
-import CalendarHeader from './CalendarHeader';
 import CalendarTable from './CalendarTable';
+import CalendarHeader from './CalendarHeader';
 
 interface CalendarProps {
   startDayOfWeek: 'sunday' | 'monday';
