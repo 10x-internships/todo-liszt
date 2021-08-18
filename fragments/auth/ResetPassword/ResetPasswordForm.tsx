@@ -5,7 +5,7 @@ import { Input, InputIcon } from '@components/Input';
 import { Button } from '@components/Button';
 import { Eye } from '@components/Icons';
 
-const SignUpForm = () => {
+const ResetPasswordForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
@@ -37,10 +37,10 @@ const SignUpForm = () => {
         required
       />
       <Button type="submit" css={{ width: '100%' }}>
-        Sign up
+        Confirm Reset Password
       </Button>
     </AuthForm>
   );
 };
 
-export default SignUpForm;
+export default ResetPasswordForm;
