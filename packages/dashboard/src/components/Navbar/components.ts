@@ -3,10 +3,8 @@ import { colors } from "@todo-liszt/common";
 
 export const Header = styled.header<{ isSidebarCollapsed: boolean }>`
   position: fixed;
-  width: calc(
-    100% -
-      ${({ isSidebarCollapsed }) => (isSidebarCollapsed ? "4rem" : "12.5rem")}
-  );
+  width: ${({ isSidebarCollapsed }) =>
+    `calc(100% - ${isSidebarCollapsed ? "4rem" : "12.5rem"})`};
   height: 4rem;
   padding: 0 2rem;
   background: ${({ theme }) => theme.backgroundColor};
@@ -22,17 +20,6 @@ export const Header = styled.header<{ isSidebarCollapsed: boolean }>`
     display: block;
   }
 `;
-
-// export const NavWrapper = styled.nav`
-//   position: fixed;
-//   top: 0;
-//   right: 0;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   height: inherit;
-//   width: inherit;
-// `;
 
 export const NavToggle = styled.div`
   cursor: pointer;

@@ -19,7 +19,7 @@ const SidebarLink = ({
       title={isCollapsed ? title : ""}
     >
       {href && (
-        <NavLink to={href}>
+        <NavLink to={href} activeClassName="active">
           <Styled.SidebarIcon>{icon}</Styled.SidebarIcon>
           {!isCollapsed && (
             <Text as={TypoTags.Span} variant={TextVariants.Button2}>

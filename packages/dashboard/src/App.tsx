@@ -4,7 +4,9 @@ import { GlobalStyles } from "@todo-liszt/common";
 import { ThemeDarkProvider } from "./styles";
 
 import Layout from "./components/Layout";
-import { CreateList, List } from "./pages/List";
+import { CreateList, List, UpdateList } from "./pages/List";
+import CalendarPage from "./pages/Calendar";
+import SettingsPage from "./pages/Settings";
 
 function App() {
   return (
@@ -15,20 +17,23 @@ function App() {
           <Route path="/app/list/create">
             <CreateList />
           </Route>
+          <Route path="/app/list/:id">
+            <UpdateList />
+          </Route>
           <Route path="/app/list">
             <List />
           </Route>
           <Route path="/app/settings">
-            <h1>Settings</h1>
+            <SettingsPage />
           </Route>
           <Route path="/app/calendar">
-            <h1>Calendar</h1>
+            <CalendarPage />
           </Route>
           <Route path="/app">
-            <h1>List</h1>
+            <Redirect to="/app/list" />
           </Route>
           <Route path="/" exact>
-            <Redirect to="/app" />
+            <Redirect to="/app/list" />
           </Route>
         </Switch>
       </Layout>

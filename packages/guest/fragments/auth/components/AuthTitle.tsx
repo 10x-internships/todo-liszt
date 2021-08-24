@@ -1,5 +1,6 @@
-import { Heading, HeadingVariants, TypoTags } from '@components/Typography';
 import styled from '@emotion/styled';
+
+import { Heading, HeadingVariants, TypoTags } from '@todo-liszt/common';
 
 const StyledAuthTitle = styled(Heading)`
   margin-top: 1.75rem;

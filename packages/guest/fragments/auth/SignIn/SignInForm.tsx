@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
+import { Eye } from '@todo-liszt/common';
+import { Input, InputIcon, Button } from '@todo-liszt/common';
+
 import AuthForm from '../components/AuthForm';
-import { Input, InputIcon } from '@components/Input';
-import { Button } from '@components/Button';
-import { Eye } from '@components/Icons';
 
 const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);

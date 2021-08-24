@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { InputWrapper } from '@components/Input';
+import { InputWrapper } from '@todo-liszt/common';
 
 const AuthForm = styled.form`
   max-width: 22.5rem;

@@ -23,17 +23,18 @@ export const SidebarItem = styled.li<Omit<SidebarItemProps, "href">>`
   & a {
     ${({ isCollapsed }) => itemContentStyles(isCollapsed)}
 
-    ${({ isActive }) =>
-      isActive &&
-      css`
-        background: ${colors.neutrals["08"]};
-        color: ${colors.primary["01"]};
-      `}
-
     &:hover {
-      background: ${({ isActive }) =>
-        isActive ? colors.neutrals["08"] : "#2955bf"};
+      background: #2955bf;
     }
+  }
+
+  & a.active {
+    background: ${colors.neutrals["08"]};
+    color: ${colors.primary["01"]};
+  }
+
+  & a.active:hover {
+    background: ${colors.neutrals["08"]};
   }
 
   & ${Text} {

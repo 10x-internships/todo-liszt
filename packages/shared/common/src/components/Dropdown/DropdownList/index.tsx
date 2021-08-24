@@ -26,7 +26,7 @@ const StyledDropdownList = styled.ul<
   }
 
   &::-webkit-scrollbar {
-    width: 0.5rem;
+    width: 5px;
   }
 
   &::-webkit-scrollbar-track {

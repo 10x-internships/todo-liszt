@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 import { animated } from 'react-spring';
 
-import { colors } from '../../styles/theme';
-import { Text, TextVariants, TypoTags } from '../Typography';
+import { colors, Text, TextVariants, TypoTags } from '@todo-liszt/common';
 import { ToastTypes } from './types';
 
 interface ToastProps extends React.ComponentPropsWithoutRef<'div'>, ToastTypes {}

@@ -43,7 +43,7 @@ const NavUser = ({ avatarSrc, avatarAlt, username }: NavUserProps) => {
   return (
     <>
       <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
-        <Avatar src={avatarSrc as any} alt={avatarAlt} width={36} height={36} />
+        <Avatar src={avatarSrc} name={avatarAlt} />
         <Text as={TypoTags.Span} variant={TextVariants.Button2}>
           {username}
         </Text>
@@ -66,9 +66,9 @@ const NavUser = ({ avatarSrc, avatarAlt, username }: NavUserProps) => {
 };
 
 const NavUserWrapper = styled.div`
-  cursor: pointer;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   ${Text} {
     margin-left: 1rem;

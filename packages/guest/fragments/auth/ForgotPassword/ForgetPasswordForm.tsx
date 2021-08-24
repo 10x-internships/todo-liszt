@@ -1,6 +1,5 @@
 import AuthForm from '../components/AuthForm';
-import { Input } from '@components/Input';
-import { Button } from '@components/Button';
+import { Input, Button } from '@todo-liszt/common';
 
 const ForgetPasswordForm = () => {
   return (

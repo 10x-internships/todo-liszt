@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-import { Text, TextVariants, TypoTags } from '@components/Typography';
+import { Text, TextVariants, TypoTags } from '@todo-liszt/common';
 
 import AuthLogo from '../components/AuthLogo';
 import AuthTitle from '../components/AuthTitle';

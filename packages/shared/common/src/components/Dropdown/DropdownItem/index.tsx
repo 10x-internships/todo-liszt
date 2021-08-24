@@ -1,5 +1,6 @@
+import { forwardRef } from "react";
 import styled from "@emotion/styled";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 import { colors } from "../../../styles";
 import { OptionType } from "../types";
@@ -41,36 +42,36 @@ const StyledDropdownItem = styled.li<Omit<DropdownItemProps, "option">>`
   }
 `;
 
-const DropdownItem = ({ option, ...others }: DropdownItemProps) => {
-  const { name, value, href, icon, colorFill } = option;
+const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
+  ({ option, ...others }, ref) => {
+    const { name, value, href, icon, colorFill } = option;
 
-  if (href) {
-    return (
-      <StyledDropdownItem {...others}>
-        <Link href={href}>
-          <a>
+    if (href) {
+      return (
+        <StyledDropdownItem {...others}>
+          <Link to={href}>
             {icon}
             <Text as={TypoTags.Span} variant={TextVariants.Caption1}>
               {name}
             </Text>
-          </a>
-        </Link>
+          </Link>
+        </StyledDropdownItem>
+      );
+    }
+
+    return (
+      <StyledDropdownItem isAllItem={value === ""} {...others}>
+        <CircleLine circleFill={colorFill} />
+        <Text
+          as={TypoTags.Span}
+          variant={TextVariants.Caption1}
+          isBold={value === ""}
+        >
+          {name}
+        </Text>
       </StyledDropdownItem>
     );
   }
-
-  return (
-    <StyledDropdownItem isAllItem={value === ""} {...others}>
-      <CircleLine circleFill={colorFill} />
-      <Text
-        as={TypoTags.Span}
-        variant={TextVariants.Caption1}
-        isBold={value === ""}
-      >
-        {name}
-      </Text>
-    </StyledDropdownItem>
-  );
-};
+);
 
 export default DropdownItem;

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useTransition } from 'react-spring';
 
 import { selectToastsList } from '../../redux/selectors/toasts';
-import Portal from '../Portal';
+import { Portal } from '@todo-liszt/common';
 import Toast from './Toast';
 import { ToastTypes } from './types';
 

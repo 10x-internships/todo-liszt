@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
-import { Logo } from '@components/Icons';
-import { Text, TextVariants, TypoTags } from '@components/Typography';
-import { colors } from '@styles/theme';
+import { Logo } from '@todo-liszt/common';
+import { colors, Text, TextVariants, TypoTags } from '@todo-liszt/common';
 
 const StyledAuthLogo = styled.div`
   text-align: center;

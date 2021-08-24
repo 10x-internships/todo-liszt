@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
 
-import { colors } from '@styles/theme';
-import { Text, TextVariants, TypoTags } from '@components/Typography';
+import { colors, Text, TextVariants, TypoTags } from '@todo-liszt/common';
 
 interface AuthHaveAccountProps {
   noAccount?: boolean;

@@ -8,7 +8,6 @@ const GlobalStyles = () => {
         :root {
           --font-primary: "DM Sans", sans-serif;
           --font-secondary: "Poppins", sans-serif;
-
           --transition: all 0.25s linear;
         }
 
@@ -26,7 +25,7 @@ const GlobalStyles = () => {
           font-weight: 400;
           color: ${theme.textColor};
           background-color: ${theme.backgroundColor};
-          transition: var(--transition);
+          transition: background-color 0.25s linear, color 0.25s linear;
         }
 
         a {
@@ -48,6 +47,11 @@ const GlobalStyles = () => {
         textarea {
           font-family: inherit;
           font-size: 100%;
+        }
+
+        img {
+          display: block;
+          max-width: 100%;
         }
       `}
     />
