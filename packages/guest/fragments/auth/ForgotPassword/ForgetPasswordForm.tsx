@@ -6,7 +6,7 @@ const ForgetPasswordForm = () => {
     <AuthForm autoComplete="off">
       <Input label="email" id="email" type="email" placeholder="Enter your email" required />
 
-      <Button type="submit" css={{ width: '100%' }}>
+      <Button type="submit" width="100%">
         Reset password
       </Button>
     </AuthForm>

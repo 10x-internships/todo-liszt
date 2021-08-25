@@ -55,6 +55,8 @@ const getButtonColor = (color: ButtonColors) => {
 export const StyledButton = styled.button<ButtonProps>`
   ${buttonBase}
 
+  ${({ width }) => width && `width: ${width};`}
+
   ${({ size }) => {
     switch (size) {
       case ButtonSizes.XSmall:

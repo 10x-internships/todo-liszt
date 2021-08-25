@@ -36,7 +36,7 @@ const ResetPasswordForm = () => {
         }
         required
       />
-      <Button type="submit" css={{ width: '100%' }}>
+      <Button type="submit" width="100%">
         Confirm Reset Password
       </Button>
     </AuthForm>

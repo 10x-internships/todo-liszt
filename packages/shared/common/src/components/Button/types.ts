@@ -30,6 +30,7 @@ export interface ButtonProps extends ButtonTypes {
   href?: string;
   children: React.ReactNode;
   bgColor?: ButtonColors;
+  width?: string;
 }
 
 export interface ButtonIconProps {

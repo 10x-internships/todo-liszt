@@ -10,7 +10,7 @@ const onAddToast = (action$: Observable<Action>, state$: StateObservable<RootSta
   action$.pipe(
     ofType(ADD_TOAST),
     delay(3000),
-    map(() => removeToast(state$.value.toasts.list[0].id))
+    map(() => removeToast(state$.value.toasts.list[0].id as string))
   );
 
 export default combineEpics(onAddToast);
