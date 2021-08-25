@@ -2,21 +2,21 @@ import { Heading, HeadingVariants, TypoTags } from "@todo-liszt/common";
 
 import * as Styled from "./components";
 
-interface PageHeaderProps {
+interface SceneHeaderProps {
   title: string;
   children?: React.ReactNode;
 }
 
-const PageHeader = ({ title, children }: PageHeaderProps) => {
+const SceneHeader = ({ title, children }: SceneHeaderProps) => {
   return (
-    <Styled.PageHeader>
+    <Styled.SceneHeader>
       <Heading as={TypoTags.H1} variant={HeadingVariants.Headline2}>
         {title}
       </Heading>
 
-      <Styled.PageHeaderContent>{children}</Styled.PageHeaderContent>
-    </Styled.PageHeader>
+      <Styled.SceneHeaderContent>{children}</Styled.SceneHeaderContent>
+    </Styled.SceneHeader>
   );
 };
 
-export default PageHeader;
+export default SceneHeader;

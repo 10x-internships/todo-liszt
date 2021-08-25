@@ -1,11 +1,11 @@
-import PageHeader from "../components/PageHeader";
+import SceneHeader from "../../components/SceneHeader";
 
 import Calendar from "../../fragments/calender-page";
 
 const CalendarPage = () => {
   return (
     <>
-      <PageHeader title="Calendar" />
+      <SceneHeader title="Calendar" />
       <Calendar startDayOfWeek="monday" />
     </>
   );

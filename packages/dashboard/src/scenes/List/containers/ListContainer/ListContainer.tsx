@@ -2,31 +2,33 @@ import { Link } from "react-router-dom";
 
 import { SearchBox, Button, ButtonSizes } from "@todo-liszt/common";
 
+import SceneHeader from "../../../../components/SceneHeader";
+
 import {
   ListWrapper,
   ListListing,
   ListFilter,
   ListPagination,
-} from "../../fragments/list-page";
+} from "../../components";
 
-import PageHeader from "../components/PageHeader";
+import listItemTestData from "../../components/listItemTestData";
 
 const List = () => {
   return (
     <>
-      <PageHeader title="List">
+      <SceneHeader title="List">
         <form>
           <SearchBox placeholder="Search everything" />
         </form>
         <Link to="/app/list/create">
           <Button size={ButtonSizes.Medium}>Create</Button>
         </Link>
-      </PageHeader>
+      </SceneHeader>
 
       <ListFilter />
 
       <ListWrapper isEmpty={false}>
-        <ListListing />
+        <ListListing items={listItemTestData} />
       </ListWrapper>
       <ListPagination total={50} />
     </>
