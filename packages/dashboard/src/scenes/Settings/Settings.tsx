@@ -1,11 +1,10 @@
+import SceneHeader from "../../components/SceneHeader";
 import Settings from "../../fragments/settings-page/Settings";
-
-import PageHeader from "../components/PageHeader";
 
 const SettingsPage = () => {
   return (
     <>
-      <PageHeader title="Settings" />
+      <SceneHeader title="Settings" />
       <Settings />
     </>
   );

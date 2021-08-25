@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
-export const ListHeader = styled.div`
+export const SceneHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const ListHeaderContent = styled.div`
+export const SceneHeaderContent = styled.div`
   display: flex;
 
   & > *:not(:last-child) {

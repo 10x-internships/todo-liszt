@@ -14,11 +14,11 @@ import {
   TypoTags,
 } from "@todo-liszt/common";
 
-import { ListForm } from "../../fragments/list-page";
+import SceneHeader from "../../../../components/SceneHeader";
 
-import PageHeader from "../components/PageHeader";
+import { ListForm } from "../../components";
 
-const UpdateList = () => {
+const UpdateListContainer = () => {
   const history = useHistory();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -26,7 +26,7 @@ const UpdateList = () => {
 
   return (
     <form autoComplete="off">
-      <PageHeader title="Update list">
+      <SceneHeader title="Update list">
         <Button
           type="button"
           size={ButtonSizes.Medium}
@@ -80,7 +80,7 @@ const UpdateList = () => {
         <Button type="submit" size={ButtonSizes.Medium}>
           Update
         </Button>
-      </PageHeader>
+      </SceneHeader>
 
       <ListForm
         itemData={{
@@ -97,4 +97,4 @@ const UpdateList = () => {
   );
 };
 
-export default UpdateList;
+export default UpdateListContainer;

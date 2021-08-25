@@ -8,7 +8,7 @@ const initialState = {
 
 const uiReducers = (state = initialState, action: UIAction) => {
   switch (action.type) {
-    case "TOGGLE_DARK_MODE":
+    case "TOGGLE_THEME":
       return { ...state, isDarkMode: !state.isDarkMode };
     default:
       return state;

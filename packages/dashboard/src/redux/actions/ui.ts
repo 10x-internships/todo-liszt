@@ -1,1 +1,1 @@
-export const toggleDarkMode = () => ({ type: "TOGGLE_DARK_MODE" });
+export const toggleDarkMode = () => ({ type: "TOGGLE_THEME" });
