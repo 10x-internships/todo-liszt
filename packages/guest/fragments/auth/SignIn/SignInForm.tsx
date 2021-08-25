@@ -17,13 +17,13 @@ const SignInForm = () => {
         type={showPassword ? 'text' : 'password'}
         placeholder="Enter your password"
         inputIcon={
-          <InputIcon onClick={handleShowPassword} css={{ cursor: 'pointer' }}>
+          <InputIcon onClick={handleShowPassword}>
             <Eye />
           </InputIcon>
         }
         required
       />
-      <Button type="submit" css={{ width: '100%' }}>
+      <Button type="submit" width="100%">
         Sign in
       </Button>
     </AuthForm>

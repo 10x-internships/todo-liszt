@@ -6,6 +6,10 @@ import { colors, Text, TextVariants, TypoTags } from '@todo-liszt/common';
 const StyledAuthLogo = styled.div`
   text-align: center;
 
+  & ${Text} {
+    color: ${colors.primary['01']};
+  }
+
   & svg {
     display: block;
     width: 5rem;
@@ -20,7 +24,7 @@ const AuthLogo = () => {
   return (
     <StyledAuthLogo>
       <Logo />
-      <Text as={TypoTags.Span} variant={TextVariants.Body1} css={{ color: colors.primary['01'] }}>
+      <Text as={TypoTags.Span} variant={TextVariants.Body1}>
         TodoLiszt
       </Text>
     </StyledAuthLogo>

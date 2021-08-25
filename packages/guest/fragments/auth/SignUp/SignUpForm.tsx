@@ -36,7 +36,7 @@ const SignUpForm = () => {
         }
         required
       />
-      <Button type="submit" css={{ width: '100%' }}>
+      <Button type="submit" width="100%">
         Sign up
       </Button>
     </AuthForm>
