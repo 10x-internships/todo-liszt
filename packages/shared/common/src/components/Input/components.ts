@@ -22,6 +22,7 @@ export const InputLabel = styled.label`
   display: inline-block;
   margin-bottom: 0.75rem;
   color: ${colors.neutrals["05"]};
+  user-select: none;
 `;
 
 export const InputGroup = styled.div`
@@ -105,7 +106,7 @@ export const Input = styled.input<InputProps>`
 `;
 
 export const InputMessage = styled.div<InputProps>`
-  padding: 0.5rem 1rem;
-  margin-top: 0.75rem;
+  padding: 0.25rem 1rem;
+  margin-top: 0.25rem;
   color: ${({ isError, isSuccess }) => getStateColor({ isError, isSuccess })};
 `;

@@ -1,10 +1,12 @@
+import { forwardRef } from "react";
+
 import { Text, TextVariants, TypoTags } from "../Typography";
 
 import * as Styled from "./components";
 import { InputProps } from "./types";
 import InputLabel from "./InputLabel";
 
-const Input = (props: InputProps) => {
+const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { label, id, type, message, isDisabled, as, ...others } = props;
 
   return (
@@ -16,6 +18,7 @@ const Input = (props: InputProps) => {
           <Styled.Input
             as="textarea"
             id={id}
+            ref={ref}
             disabled={isDisabled}
             {...others}
           />
@@ -25,6 +28,7 @@ const Input = (props: InputProps) => {
           <Styled.Input
             type={type || "text"}
             id={id}
+            ref={ref}
             disabled={isDisabled}
             {...others}
           />
@@ -41,6 +45,6 @@ const Input = (props: InputProps) => {
       )}
     </Styled.InputWrapper>
   );
-};
+});
 
 export default Input;
