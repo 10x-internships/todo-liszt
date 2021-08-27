@@ -1,40 +1,35 @@
-import { useState } from 'react';
-import axios from 'axios';
-import { useForm, SubmitHandler, UseFormRegister } from 'react-hook-form';
+import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { Eye } from '@todo-liszt/common';
 import { Input, InputIcon, Button } from '@todo-liszt/common';
 
 import AuthForm from '../../components/AuthForm';
 
-interface SignUpForm {}
+import { SignUpFormProps, IFormInput } from '../types';
 
-interface IFormInput {
-  email: string;
-  password: string;
-  confirmPassword: string;
-}
-
-const SignUpForm = () => {
+const SignUpForm = ({ onSubmit, isLoading, errorMessage }: SignUpFormProps) => {
   const {
     register,
     handleSubmit,
+    watch,
+    setError,
     formState: { errors },
   } = useForm<IFormInput>();
-
   const [showPassword, setShowPassword] = useState(false);
+
+  const watchPassword = watch('password');
+
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    const accountInfo = {
-      email: data.email,
-      password: data.password,
-    };
-    axios
-      .post('http://api-todo-liszt.sestud.io/api/v1.0/users', accountInfo)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
+  useEffect(() => {
+    if (errorMessage) {
+      setError('email', {
+        type: 'existed',
+        message: errorMessage,
+      });
+    }
+  }, [errorMessage, setError]);
 
   return (
     <AuthForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -43,11 +38,18 @@ const SignUpForm = () => {
         id="email"
         type="email"
         placeholder="Enter your email"
-        {...register('email', {
-          required: true,
-        })}
         isError={errors.email ? true : false}
-        message={errors.email && 'Email is required'}
+        message={errors.email && errors.email.message}
+        {...register('email', {
+          required: {
+            value: true,
+            message: 'This field is required',
+          },
+          pattern: {
+            value: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
+            message: 'Invalid email address',
+          },
+        })}
       />
 
       <Input
@@ -61,9 +63,16 @@ const SignUpForm = () => {
           </InputIcon>
         }
         isError={errors.password ? true : false}
-        message={errors.password && 'Password is required'}
+        message={errors.password && errors.password.message}
         {...register('password', {
-          required: true,
+          required: {
+            value: true,
+            message: 'This field is required',
+          },
+          minLength: {
+            value: 8,
+            message: 'Password must have 8+ characters',
+          },
         })}
       />
 
@@ -78,14 +87,18 @@ const SignUpForm = () => {
           </InputIcon>
         }
         isError={errors.confirmPassword ? true : false}
-        message={errors.confirmPassword && 'Confirm Password is required'}
+        message={errors.confirmPassword && errors.confirmPassword.message}
         {...register('confirmPassword', {
-          required: true,
+          required: {
+            value: true,
+            message: 'This field is required',
+          },
+          validate: (value) => value === watchPassword || 'Password not match',
         })}
       />
 
-      <Button type="submit" width="100%">
-        Sign up
+      <Button type="submit" width="100%" isDisabled={isLoading}>
+        {isLoading ? 'Please wait...' : 'Sign up'}
       </Button>
     </AuthForm>
   );
