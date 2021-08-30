@@ -1,20 +1,11 @@
-import { NextRouter } from 'next/router';
+import { UPDATE_TOKENS, UPDATE_DATA } from '../constants/auth';
 
-import todoLisztAPI from '../api';
-import { SIGN_UP } from '../constants/auth';
+export const updateTokens = (payload: { accessToken: string; refreshToken: string }) => ({
+  type: UPDATE_TOKENS,
+  payload,
+});
 
-import fetchData from './fetchData';
-
-type DataTypes = { email: string; password: string };
-
-export const signUp = (data: DataTypes, router: NextRouter) => {
-  return fetchData({
-    method: 'POST',
-    url: '/users',
-    axiosInstance: todoLisztAPI,
-    type: SIGN_UP,
-    data,
-    router,
-    redirectPath: '/signin',
-  });
-};
+export const updateData = (payload: any) => ({
+  type: UPDATE_DATA,
+  payload,
+});

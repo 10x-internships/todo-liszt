@@ -1,41 +1,33 @@
-import { SIGN_UP } from '@redux/constants/auth';
-import requestStatus from '@redux/constants/requestStatus';
-import getRequestType from '@redux/helpers/getRequestType';
+import { UPDATE_DATA, UPDATE_TOKENS } from '../constants/auth';
+import Cookies from 'js-cookie';
 
-const initialState = {
-  email: '',
-  accessToken: '',
-  isSignedIn: false,
-  isLoading: false,
-  isError: false,
-  errorMessage: '',
+const parseJSON = (data: string) => {
+  try {
+    return JSON.parse(data);
+  } catch {
+    return null;
+  }
 };
 
-const signUpRequest = getRequestType(SIGN_UP);
+const initialState = {
+  data: parseJSON(Cookies.get('userData') as string) || null,
+  accessToken: Cookies.get('accessToken') || '',
+  refreshToken: Cookies.get('refreshToken') || '',
+  isSignedIn: Cookies.get('accessToken') ? true : false,
+};
 
 const authReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case signUpRequest(requestStatus.REQUEST):
+    case UPDATE_TOKENS:
       return {
         ...state,
-        isLoading: true,
-        isError: false,
-        errorMessage: '',
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
       };
-    case signUpRequest(requestStatus.SUCCESS):
+    case UPDATE_DATA:
       return {
         ...state,
-        isLoading: false,
-        email: action.payload.data.email,
-        isError: false,
-        errorMessage: '',
-      };
-    case signUpRequest(requestStatus.FAILURE):
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-        errorMessage: action.payload.code === 'tdl4000200' && 'This email address has been taken',
+        data: action.payload,
       };
     default:
       return state;

@@ -5,6 +5,7 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@fragments/*": ["fragments/*"],
+      "@config/*": ["config/*"],
       "@redux/*": ["redux/*"]
     },
     "target": "es5",
