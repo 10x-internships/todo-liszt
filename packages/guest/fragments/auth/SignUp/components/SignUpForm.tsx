@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Input, Button } from '@todo-liszt/common';
-
-import AuthForm from '../../components/AuthForm';
+import validation from '@helpers/validation';
+import ShowPassword from '@fragments/auth/components/ShowPassword';
+import AuthForm from '@fragments/auth/components/AuthForm';
 
 import { SignUpFormProps, IFormInput } from '../types';
-import ShowPassword from '@fragments/auth/components/ShowPassword';
-import validation from 'helpers/validation';
+import getErrorMessage from '@helpers/getErrorMessage';
 
 const SignUpForm = ({ onSubmit, isLoading, error }: SignUpFormProps) => {
   const {
@@ -23,10 +23,10 @@ const SignUpForm = ({ onSubmit, isLoading, error }: SignUpFormProps) => {
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
   useEffect(() => {
-    if (error?.response?.data.code === 'tdl4000200') {
+    if (error) {
       setError('email', {
         type: 'email-existed',
-        message: 'This email address is already existed',
+        message: getErrorMessage(error.response?.data.code),
       });
     }
   }, [error, setError]);

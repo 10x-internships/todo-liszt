@@ -1,22 +1,15 @@
 import { useState, useEffect } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 
 import { Input, Button } from '@todo-liszt/common';
-import ShowPassword from '@fragments/auth/components/ShowPassword';
 import { selectUserData } from '@redux/selectors/auth';
-import validation from 'helpers/validation';
+import validation from '@helpers/validation';
+import getErrorMessage from '@helpers/getErrorMessage';
+import ShowPassword from '@fragments/auth/components/ShowPassword';
+import AuthForm from '@fragments/auth/components/AuthForm';
 
-import AuthForm from '../../components/AuthForm';
-
-import { ISignInInputs } from '../types';
-import { AxiosError } from 'axios';
-
-interface SignInFormProps {
-  onSignInSubmit: SubmitHandler<ISignInInputs>;
-  isLoading?: boolean;
-  error?: AxiosError;
-}
+import { ISignInInputs, SignInFormProps } from '../types';
 
 const SignInForm = ({ onSignInSubmit, isLoading, error }: SignInFormProps) => {
   const {
@@ -32,10 +25,10 @@ const SignInForm = ({ onSignInSubmit, isLoading, error }: SignInFormProps) => {
   const userData = useSelector(selectUserData);
 
   useEffect(() => {
-    if (error?.response?.data.code === 'tdl4000100') {
+    if (error) {
       setError('email', {
         type: 'invalid-email',
-        message: 'Invalid email or password',
+        message: getErrorMessage(error.response?.data.code),
       });
     }
   }, [error, setError]);
