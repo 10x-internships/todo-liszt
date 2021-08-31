@@ -14,14 +14,12 @@ const Navbar = ({ isSidebarCollapsed, onSidebarCollapsed }: NavbarProps) => {
       <Styled.NavToggle onClick={onSidebarCollapsed}>
         <Burger />
       </Styled.NavToggle>
+
       <Styled.NavLogo>
         <Logo />
       </Styled.NavLogo>
-      <NavUser
-        avatarSrc="/assets/images/krillin.jpg"
-        avatarAlt="Krillin"
-        username="Krillin"
-      />
+
+      <NavUser />
     </Styled.Header>
   );
 };

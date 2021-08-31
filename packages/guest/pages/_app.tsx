@@ -6,8 +6,9 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import 'normalize.css';
 import { GlobalStyles, ToastProvider, ToastContainer } from '@todo-liszt/common';
 
-import store from '../redux/store';
+import store from '@redux/store';
 import ThemeDarkProvider from '@styles/ThemeDarkProvider';
+import CheckAuth from '@components/CheckAuth';
 
 type Page<P = {}> = NextPage<P> & {
   getLayout?: (page: React.ReactNode) => React.ReactNode;
@@ -24,15 +25,17 @@ function MyApp({ Component, pageProps }: Props) {
 
   return (
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <ThemeDarkProvider>
-          <GlobalStyles />
-          <ToastProvider>
-            {getLayout(<Component {...pageProps} />)}
-            <ToastContainer />
-          </ToastProvider>
-        </ThemeDarkProvider>
-      </QueryClientProvider>
+      <CheckAuth>
+        <QueryClientProvider client={queryClient}>
+          <ThemeDarkProvider>
+            <GlobalStyles />
+            <ToastProvider>
+              {getLayout(<Component {...pageProps} />)}
+              <ToastContainer />
+            </ToastProvider>
+          </ThemeDarkProvider>
+        </QueryClientProvider>
+      </CheckAuth>
     </Provider>
   );
 }

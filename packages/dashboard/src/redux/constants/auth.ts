@@ -1,1 +1,2 @@
-export const UPDATE_TOKENS = "AUTH/UPDATE_TOKENS";
+export const UPDATE_DATA = "AUTH/UPDATE_DATA";
+export const SIGN_OUT = "AUTH/SIGN_OUT";

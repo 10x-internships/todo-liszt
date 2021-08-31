@@ -1,14 +1,27 @@
-import Cookies from "js-cookie";
+import { UPDATE_DATA, SIGN_OUT } from "../constants/auth";
 
 const initialState = {
-  data: JSON.parse(Cookies.get("userData") as string) || null,
-  accessToken: Cookies.get("accessToken") || "",
-  refreshToken: Cookies.get("refreshToken") || "",
-  isSignedIn: Cookies.get("accessToken") ? true : false,
+  data: null,
+  isSignedIn: false,
 };
 
 const authReducers = (state = initialState, action: any) => {
-  return state;
+  switch (action.type) {
+    case UPDATE_DATA:
+      return {
+        ...state,
+        data: action.payload,
+        isSignedIn: true,
+      };
+    case SIGN_OUT:
+      return {
+        ...state,
+        data: null,
+        isSignedIn: false,
+      };
+    default:
+      return state;
+  }
 };
 
 export default authReducers;
