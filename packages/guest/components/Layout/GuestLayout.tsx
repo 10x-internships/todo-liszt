@@ -1,9 +1,9 @@
-import { GuestNav } from '../Nav';
+import Navbar from '../Navbar';
 
 const Guest: React.FC = ({ children }) => {
   return (
     <>
-      <GuestNav />
+      <Navbar />
       <main>{children}</main>
     </>
   );
