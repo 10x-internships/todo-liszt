@@ -1,22 +1,24 @@
-import { SubmitHandler } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
+import { useMutation } from 'react-query';
+import { useDispatch } from 'react-redux';
+import { SubmitHandler } from 'react-hook-form';
 
-import { signUp } from '@redux/actions/auth';
-import { selectErrorMessage, selectIsLoading } from '@redux/selectors/auth';
+import todoLisztAPI from '@config/api';
+import { updateSignUpData } from '@redux/actions/auth';
 
-import AuthLogo from '../../components/AuthLogo';
-import AuthTitle from '../../components/AuthTitle';
-import AuthHaveAccount from '../../components/AuthHaveAccount';
-
-import SignUpForm from '../components/SignUpForm';
 import { IFormInput } from '../types';
+import SignUp from '../components/SignUp';
 
 const SignUpContainer = () => {
-  const router = useRouter();
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const errorMessage = useSelector(selectErrorMessage);
+  const router = useRouter();
+
+  const { isLoading, mutate, error } = useMutation(
+    (newUser: { email: string; password: string }) => {
+      return todoLisztAPI.post('/users', newUser);
+    }
+  );
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     const signUpData = {
@@ -24,17 +26,15 @@ const SignUpContainer = () => {
       password: data.password,
     };
 
-    dispatch(signUp(signUpData, router));
+    mutate(signUpData, {
+      onSuccess: (signUpData) => {
+        dispatch(updateSignUpData(signUpData?.data.data));
+        router.push('/signin');
+      },
+    });
   };
 
-  return (
-    <>
-      <AuthLogo />
-      <AuthTitle>Sign up</AuthTitle>
-      <SignUpForm onSubmit={onSubmit} isLoading={isLoading} errorMessage={errorMessage} />
-      <AuthHaveAccount />
-    </>
-  );
+  return <SignUp onSubmit={onSubmit} isLoading={isLoading} error={error as AxiosError} />;
 };
 
 export default SignUpContainer;

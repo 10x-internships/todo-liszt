@@ -1,23 +1,21 @@
-import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./redux/store";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 import { GlobalStyles } from "@todo-liszt/common";
-import { ThemeDarkProvider } from "./styles";
 
-import Layout from "./components/Layout";
+import store from "./redux/store";
+import { ThemeDarkProvider } from "./styles";
 import Routes from "./routes";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <Provider store={store}>
       <ThemeDarkProvider>
-        <GlobalStyles />
-        <Router>
-          <Layout>
-            <Routes />
-          </Layout>
-        </Router>
+        <QueryClientProvider client={queryClient}>
+          <GlobalStyles />
+          <Routes />
+        </QueryClientProvider>
       </ThemeDarkProvider>
     </Provider>
   );

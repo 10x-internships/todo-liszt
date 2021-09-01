@@ -1,4 +1,4 @@
-export const SIGN_UP = 'AUTH/SIGN_UP';
-export const SIGN_IN = 'AUTH/SIGN_IN';
-export const FORGOT_PASSWORD = 'AUTH/FORGOT_PASSWORD';
-export const RESET_PASSWORD = 'AUTH/RESET_PASSWORD';
+export const UPDATE_DATA = 'AUTH/UPDATE_DATA';
+export const SIGNUP_SUCCESS = 'AUTH/SIGNUP_SUCCESS';
+export const SIGNIN_SUCCESS = 'AUTH/SIGNIN_SUCCESS';
+export const SIGN_OUT = 'AUTH/SIGN_OUT';

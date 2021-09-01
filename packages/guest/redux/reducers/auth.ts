@@ -1,41 +1,34 @@
-import { SIGN_UP } from '@redux/constants/auth';
-import requestStatus from '@redux/constants/requestStatus';
-import getRequestType from '@redux/helpers/getRequestType';
+import { UPDATE_DATA, SIGNIN_SUCCESS, SIGNUP_SUCCESS, SIGN_OUT } from '../constants/auth';
 
 const initialState = {
-  email: '',
-  accessToken: '',
+  data: null,
   isSignedIn: false,
-  isLoading: false,
-  isError: false,
-  errorMessage: '',
 };
-
-const signUpRequest = getRequestType(SIGN_UP);
 
 const authReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case signUpRequest(requestStatus.REQUEST):
+    case UPDATE_DATA:
       return {
         ...state,
-        isLoading: true,
-        isError: false,
-        errorMessage: '',
+        data: action.payload,
+        isSignedIn: Boolean(action.payload.accessToken),
       };
-    case signUpRequest(requestStatus.SUCCESS):
+    case SIGNIN_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        email: action.payload.data.email,
-        isError: false,
-        errorMessage: '',
+        data: action.payload,
+        isSignedIn: true,
       };
-    case signUpRequest(requestStatus.FAILURE):
+    case SIGNUP_SUCCESS:
       return {
         ...state,
-        isLoading: false,
-        isError: true,
-        errorMessage: action.payload.code === 'tdl4000200' && 'This email address has been taken',
+        data: action.payload,
+      };
+    case SIGN_OUT:
+      return {
+        ...state,
+        data: null,
+        isSignedIn: false,
       };
     default:
       return state;

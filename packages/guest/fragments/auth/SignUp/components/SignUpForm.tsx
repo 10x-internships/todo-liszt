@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { Input, Button } from '@todo-liszt/common';
 
-import { Eye } from '@todo-liszt/common';
-import { Input, InputIcon, Button } from '@todo-liszt/common';
+import validation from '@helpers/validation';
+import getErrorMessage from '@helpers/getErrorMessage';
 
+import ShowPassword from '../../components/ShowPassword';
 import AuthForm from '../../components/AuthForm';
 
 import { SignUpFormProps, IFormInput } from '../types';
 
-const SignUpForm = ({ onSubmit, isLoading, errorMessage }: SignUpFormProps) => {
+const SignUpForm = ({ onSubmit, isLoading, error }: SignUpFormProps) => {
   const {
     register,
     handleSubmit,
@@ -16,20 +18,19 @@ const SignUpForm = ({ onSubmit, isLoading, errorMessage }: SignUpFormProps) => {
     setError,
     formState: { errors },
   } = useForm<IFormInput>();
-  const [showPassword, setShowPassword] = useState(false);
-
   const watchPassword = watch('password');
 
+  const [showPassword, setShowPassword] = useState(false);
   const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
 
   useEffect(() => {
-    if (errorMessage) {
+    if (error) {
       setError('email', {
-        type: 'existed',
-        message: errorMessage,
+        type: 'email-existed',
+        message: getErrorMessage(error.response?.data.code),
       });
     }
-  }, [errorMessage, setError]);
+  }, [error, setError]);
 
   return (
     <AuthForm onSubmit={handleSubmit(onSubmit)} autoComplete="off">
@@ -41,14 +42,8 @@ const SignUpForm = ({ onSubmit, isLoading, errorMessage }: SignUpFormProps) => {
         isError={errors.email ? true : false}
         message={errors.email && errors.email.message}
         {...register('email', {
-          required: {
-            value: true,
-            message: 'This field is required',
-          },
-          pattern: {
-            value: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
-            message: 'Invalid email address',
-          },
+          required: validation.email.required,
+          pattern: validation.email.pattern,
         })}
       />
 
@@ -57,22 +52,12 @@ const SignUpForm = ({ onSubmit, isLoading, errorMessage }: SignUpFormProps) => {
         id="password"
         type={showPassword ? 'text' : 'password'}
         placeholder="Enter your password"
-        inputIcon={
-          <InputIcon onClick={handleShowPassword}>
-            <Eye />
-          </InputIcon>
-        }
+        inputIcon={<ShowPassword onShowPassword={handleShowPassword} />}
         isError={errors.password ? true : false}
         message={errors.password && errors.password.message}
         {...register('password', {
-          required: {
-            value: true,
-            message: 'This field is required',
-          },
-          minLength: {
-            value: 8,
-            message: 'Password must have 8+ characters',
-          },
+          required: validation.password.required,
+          minLength: validation.password.minLength,
         })}
       />
 
@@ -81,18 +66,11 @@ const SignUpForm = ({ onSubmit, isLoading, errorMessage }: SignUpFormProps) => {
         id="confirm-password"
         type={showPassword ? 'text' : 'password'}
         placeholder="Confirm your password"
-        inputIcon={
-          <InputIcon onClick={handleShowPassword}>
-            <Eye />
-          </InputIcon>
-        }
+        inputIcon={<ShowPassword onShowPassword={handleShowPassword} />}
         isError={errors.confirmPassword ? true : false}
         message={errors.confirmPassword && errors.confirmPassword.message}
         {...register('confirmPassword', {
-          required: {
-            value: true,
-            message: 'This field is required',
-          },
+          required: validation.password.required,
           validate: (value) => value === watchPassword || 'Password not match',
         })}
       />

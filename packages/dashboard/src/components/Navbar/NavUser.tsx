@@ -1,34 +1,28 @@
 import { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "@emotion/styled";
 
-import { Text, TextVariants, TypoTags, Avatar } from "@todo-liszt/common";
-import { DropdownList, DropdownItem, Portal } from "@todo-liszt/common";
+import {
+  Text,
+  TextVariants,
+  TypoTags,
+  Avatar,
+  DropdownList,
+  DropdownItem,
+  Portal,
+} from "@todo-liszt/common";
 import { Setting, Signout } from "@todo-liszt/common";
 
-interface NavUserProps {
-  avatarSrc: string;
-  avatarAlt: string;
-  username?: string;
-}
+import { selectUserData } from "../../redux/selectors/auth";
+import { signOut } from "../../redux/actions/auth";
 
-const items = [
-  {
-    id: 1,
-    name: "Settings",
-    href: "/app/settings/krillin",
-    icon: <Setting />,
-  },
-  {
-    id: 2,
-    name: "Sign out",
-    href: "/app/signout",
-    icon: <Signout />,
-  },
-];
+const NavUser = () => {
+  const userData = useSelector(selectUserData);
+  const dispatch = useDispatch();
 
-const NavUser = ({ avatarSrc, avatarAlt, username }: NavUserProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [position, setPosition] = useState({});
+
   const navUserRef = useRef<HTMLDivElement>(null);
 
   const handleToggleDropdown = () => {
@@ -42,12 +36,17 @@ const NavUser = ({ avatarSrc, avatarAlt, username }: NavUserProps) => {
 
   return (
     <>
-      <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
-        <Avatar src={avatarSrc} name={avatarAlt} />
-        <Text as={TypoTags.Span} variant={TextVariants.Button2}>
-          {username}
-        </Text>
-      </NavUserWrapper>
+      {userData && (
+        <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
+          <Avatar
+            src={userData.avatar || "/assets/images/avatar-placeholder.png"}
+            name={userData.name ? userData.name : userData.email}
+          />
+          <Text as={TypoTags.Span} variant={TextVariants.Button2}>
+            {userData.name ? userData.name : userData.email}
+          </Text>
+        </NavUserWrapper>
+      )}
 
       {showDropdown && (
         <Portal>
@@ -55,9 +54,22 @@ const NavUser = ({ avatarSrc, avatarAlt, username }: NavUserProps) => {
             onCloseDropdown={() => setShowDropdown(false)}
             style={{ ...position, right: 24, width: "16rem", margin: 0 }}
           >
-            {items.map((item) => (
-              <DropdownItem key={item.id} option={item} />
-            ))}
+            <DropdownItem
+              option={{
+                id: 1,
+                name: "Settings",
+                href: "/app/settings",
+                icon: <Setting />,
+              }}
+            />
+            <DropdownItem
+              option={{
+                id: 2,
+                name: "Sign out",
+                icon: <Signout />,
+              }}
+              onClick={() => dispatch(signOut())}
+            />
           </DropdownList>
         </Portal>
       )}
