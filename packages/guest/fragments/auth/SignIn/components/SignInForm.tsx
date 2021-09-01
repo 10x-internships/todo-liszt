@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
-
 import { Input, Button } from '@todo-liszt/common';
+
 import { selectUserData } from '@redux/selectors/auth';
 import validation from '@helpers/validation';
 import getErrorMessage from '@helpers/getErrorMessage';
-import ShowPassword from '@fragments/auth/components/ShowPassword';
-import AuthForm from '@fragments/auth/components/AuthForm';
+
+import AuthForm from '../../components/AuthForm';
+import ShowPassword from '../../components/ShowPassword';
 
 import { ISignInInputs, SignInFormProps } from '../types';
 

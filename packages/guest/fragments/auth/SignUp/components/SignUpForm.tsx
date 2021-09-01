@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
 import { Input, Button } from '@todo-liszt/common';
+
 import validation from '@helpers/validation';
-import ShowPassword from '@fragments/auth/components/ShowPassword';
-import AuthForm from '@fragments/auth/components/AuthForm';
+import getErrorMessage from '@helpers/getErrorMessage';
+
+import ShowPassword from '../../components/ShowPassword';
+import AuthForm from '../../components/AuthForm';
 
 import { SignUpFormProps, IFormInput } from '../types';
-import getErrorMessage from '@helpers/getErrorMessage';
 
 const SignUpForm = ({ onSubmit, isLoading, error }: SignUpFormProps) => {
   const {

@@ -8,7 +8,6 @@ import { GlobalStyles, ToastProvider, ToastContainer } from '@todo-liszt/common'
 
 import store from '@redux/store';
 import ThemeDarkProvider from '@styles/ThemeDarkProvider';
-import CheckAuth from '@components/CheckAuth';
 
 type Page<P = {}> = NextPage<P> & {
   getLayout?: (page: React.ReactNode) => React.ReactNode;
@@ -25,17 +24,15 @@ function MyApp({ Component, pageProps }: Props) {
 
   return (
     <Provider store={store}>
-      <CheckAuth>
-        <QueryClientProvider client={queryClient}>
-          <ThemeDarkProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeDarkProvider>
+          <ToastProvider>
             <GlobalStyles />
-            <ToastProvider>
-              {getLayout(<Component {...pageProps} />)}
-              <ToastContainer />
-            </ToastProvider>
-          </ThemeDarkProvider>
-        </QueryClientProvider>
-      </CheckAuth>
+            {getLayout(<Component {...pageProps} />)}
+            <ToastContainer />
+          </ToastProvider>
+        </ThemeDarkProvider>
+      </QueryClientProvider>
     </Provider>
   );
 }

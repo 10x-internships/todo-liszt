@@ -1,13 +1,13 @@
 import { AxiosError } from 'axios';
-import { SubmitHandler } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
+import { SubmitHandler } from 'react-hook-form';
 
 import todoLisztAPI from '@config/api';
-
-import { ISignInInputs } from '../types';
 import { updateSignInData } from '@redux/actions/auth';
+
 import SignIn from '../components/SignIn';
+import { ISignInInputs } from '../types';
 
 const SignInContainer = () => {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ const SignInContainer = () => {
     };
     mutate(signInData, {
       onSuccess: (signInData) => {
-        dispatch(updateSignInData(signInData?.data.data));
+        dispatch(updateSignInData(signInData.data.data));
 
         // Navigate to dashboard
         window.location.replace(`${process.env.NEXT_PUBLIC_DASHBOARD_URL}`);
