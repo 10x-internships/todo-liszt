@@ -1,4 +1,5 @@
 const path = require('path');
+const CracoAlias = require('craco-alias');
 const { getLoader, loaderByName } = require('@craco/craco');
 
 const packages = [];
@@ -21,6 +22,16 @@ module.exports = {
       return webpackConfig;
     },
   },
+  plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: 'tsconfig',
+        baseUrl: './src',
+        tsConfigPath: './tsconfig.paths.json',
+      },
+    },
+  ],
   babel: {
     plugins: ['@emotion'],
   },

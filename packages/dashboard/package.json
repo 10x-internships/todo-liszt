@@ -15,6 +15,7 @@
     "@types/react": "^17.0.19",
     "@types/react-dom": "^17.0.9",
     "axios": "^0.21.1",
+    "craco-alias": "^3.0.1",
     "dayjs": "^1.10.6",
     "js-cookie": "^3.0.0",
     "normalize.css": "^8.0.1",
