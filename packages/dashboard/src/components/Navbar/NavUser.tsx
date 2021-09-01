@@ -36,15 +36,17 @@ const NavUser = () => {
 
   return (
     <>
-      <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
-        <Avatar
-          src={userData.avatar || "/assets/images/avatar-placeholder.png"}
-          name={userData.name ? userData.name : userData.email}
-        />
-        <Text as={TypoTags.Span} variant={TextVariants.Button2}>
-          {userData.name ? userData.name : userData.email}
-        </Text>
-      </NavUserWrapper>
+      {userData && (
+        <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
+          <Avatar
+            src={userData.avatar || "/assets/images/avatar-placeholder.png"}
+            name={userData.name ? userData.name : userData.email}
+          />
+          <Text as={TypoTags.Span} variant={TextVariants.Button2}>
+            {userData.name ? userData.name : userData.email}
+          </Text>
+        </NavUserWrapper>
+      )}
 
       {showDropdown && (
         <Portal>

@@ -11,6 +11,7 @@ const onSignOutSuccess = (action$: any) =>
     map(() => {
       Cookies.remove("accessToken");
       Cookies.remove("refreshToken");
+      window.location.reload();
 
       return skipAction();
     })

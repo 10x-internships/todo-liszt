@@ -1,39 +1,42 @@
+import { useEffect } from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-import Layout from "../components/Layout";
-import { selectIsSignedIn } from "../redux/selectors/auth";
+import Layout from "@components/Layout";
+import Auth from "@containers/Auth";
+import { getAccessToken } from "services/auth";
 
 import routesConfig from "./routesConfig";
-import { useEffect } from "react";
 
 const Routes = () => {
-  const isSignedIn = useSelector(selectIsSignedIn);
+  const isAuth = getAccessToken();
 
   useEffect(() => {
-    if (!isSignedIn)
+    if (!isAuth) {
       window.location.replace(`${process.env.REACT_APP_LANDING_URL}/signin`);
-  }, [isSignedIn]);
+    }
+  }, [isAuth]);
 
   return (
     <>
-      {isSignedIn && (
+      {isAuth && (
         <Router>
-          <Layout>
-            <Switch>
-              {routesConfig.map((route, idx) => (
-                <Route
-                  key={idx}
-                  exact={route.exact}
-                  path={route.path}
-                  render={() => {
-                    const Component = route.component;
-                    return <Component />;
-                  }}
-                />
-              ))}
-            </Switch>
-          </Layout>
+          <Auth>
+            <Layout>
+              <Switch>
+                {routesConfig.map((route, idx) => (
+                  <Route
+                    key={idx}
+                    exact={route.exact}
+                    path={route.path}
+                    render={() => {
+                      const Component = route.component;
+                      return <Component />;
+                    }}
+                  />
+                ))}
+              </Switch>
+            </Layout>
+          </Auth>
         </Router>
       )}
     </>

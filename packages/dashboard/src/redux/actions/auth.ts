@@ -1,6 +1,6 @@
 import { UPDATE_DATA, SIGN_OUT } from "../constants/auth";
 
-export const updateData = (payload: any) => ({
+export const updateUserData = (payload: any) => ({
   type: UPDATE_DATA,
   payload,
 });
