@@ -1,46 +1,43 @@
-import { useEffect } from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Suspense } from "react";
+import { Switch, BrowserRouter as Router } from "react-router-dom";
 
 import Layout from "@components/Layout";
-import Auth from "@containers/Auth";
-import { getAccessToken } from "services/auth";
+import Spinner from "@components/Spinner";
 
 import routesConfig from "./routesConfig";
+import ProtectedRoute from "./ProtectedRoute";
 
 const Routes = () => {
-  const isAuth = getAccessToken();
-
-  useEffect(() => {
-    if (!isAuth) {
-      window.location.replace(`${process.env.REACT_APP_LANDING_URL}/signin`);
-    }
-  }, [isAuth]);
-
   return (
-    <>
-      {isAuth && (
-        <Router>
-          <Auth>
-            <Layout>
-              <Switch>
-                {routesConfig.map((route, idx) => (
-                  <Route
-                    key={idx}
-                    exact={route.exact}
-                    path={route.path}
-                    render={() => {
-                      const Component = route.component;
-                      return <Component />;
-                    }}
-                  />
-                ))}
-              </Switch>
-            </Layout>
-          </Auth>
-        </Router>
-      )}
-    </>
+    <Router>
+      <Suspense fallback={<Spinner />}>
+        <Layout>
+          <Switch>
+            {routesConfig.map((route, idx) => (
+              <ProtectedRoute key={idx} {...route} />
+            ))}
+          </Switch>
+        </Layout>
+      </Suspense>
+    </Router>
   );
 };
 
 export default Routes;
+
+/*
+const AppRouter = () => (
+  <Router history={history}>
+    <Suspense fallback={<Loading />}>
+      <Switch>
+        {publicRoutes.map((route, index) => (
+          <PublicRoute key={index} exact {...route} />
+        ))}
+        {protectedRoutes.map((route, index) => (
+          <ProtectedRoute key={index} exact {...route} />
+        ))}
+      </Switch>
+    </Suspense>
+  </Router>
+);
+*/

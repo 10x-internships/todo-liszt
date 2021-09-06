@@ -1,7 +1,8 @@
 import Head from 'next/head';
 
 import { AuthLayout } from '@components/Layout';
-import ForgotPasswordContent from '@fragments/auth/ForgotPassword';
+import ForgotPasswordScene from '@fragments/auth/ForgotPassword';
+
 import forgotBg from '../public/assets/images/forgot-password.jpg';
 
 export default function ForgotPassword() {
@@ -11,7 +12,7 @@ export default function ForgotPassword() {
         <title>Forgot Password | Todo Liszt</title>
       </Head>
 
-      <ForgotPasswordContent />
+      <ForgotPasswordScene />
     </>
   );
 }

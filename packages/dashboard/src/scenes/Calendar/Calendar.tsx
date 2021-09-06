@@ -1,14 +1,7 @@
-import SceneHeader from "../../components/SceneHeader";
+import CalendarContainer from "./containers/CalendarContainer";
 
-import Calendar from "../../fragments/calender-page";
-
-const CalendarPage = () => {
-  return (
-    <>
-      <SceneHeader title="Calendar" />
-      <Calendar startDayOfWeek="monday" />
-    </>
-  );
+const Calendar = () => {
+  return <CalendarContainer />;
 };
 
-export default CalendarPage;
+export default Calendar;

@@ -5,18 +5,21 @@ import { GlobalStyles } from "@todo-liszt/common";
 import store from "./redux/store";
 import { ThemeDarkProvider } from "./styles";
 import Routes from "./routes";
+import Auth from "./containers/Auth";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <Provider store={store}>
-      <ThemeDarkProvider>
-        <QueryClientProvider client={queryClient}>
-          <GlobalStyles />
-          <Routes />
-        </QueryClientProvider>
-      </ThemeDarkProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeDarkProvider>
+          <Auth>
+            <GlobalStyles />
+            <Routes />
+          </Auth>
+        </ThemeDarkProvider>
+      </QueryClientProvider>
     </Provider>
   );
 }

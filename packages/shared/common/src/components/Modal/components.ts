@@ -1,7 +1,8 @@
+import { animated } from "react-spring";
 import styled from "@emotion/styled";
 import { colors } from "../../styles";
 
-export const ModalOverlay = styled.div`
+export const ModalOverlay = styled(animated.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +16,7 @@ export const ModalOverlay = styled.div`
   justify-content: center;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled(animated.div)`
   position: fixed;
   top: 50%;
   left: 50%;

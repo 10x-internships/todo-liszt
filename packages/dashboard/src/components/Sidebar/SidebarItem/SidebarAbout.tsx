@@ -1,8 +1,8 @@
 import { useState, useRef } from "react";
 
 import { Document, InfoCircle, Lock, QuestionCircle } from "@todo-liszt/common";
-import { Text, TextVariants, TypoTags } from "@todo-liszt/common";
-import { DropdownList, DropdownItem, Portal } from "@todo-liszt/common";
+import { Text, TextVariants, TypoTags, Portal } from "@todo-liszt/common";
+import { DropdownList, DropdownItem } from "@components/Dropdown";
 
 import * as Styled from "./components";
 import { SidebarItemProps } from "./types";

@@ -4,7 +4,6 @@ export * from "./src/components/Typography";
 export * from "./src/components/Checkbox";
 export * from "./src/components/Switch";
 export * from "./src/components/Input";
-export * from "./src/components/Dropdown";
 export * from "./src/components/Checkbox";
 export * from "./src/components/SearchBox";
 export * from "./src/components/Avatar";

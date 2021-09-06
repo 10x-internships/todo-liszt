@@ -1,20 +1,20 @@
 import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styled from "@emotion/styled";
 
+import { Setting, Signout } from "@todo-liszt/common"; // icon
 import {
   Text,
   TextVariants,
   TypoTags,
   Avatar,
-  DropdownList,
-  DropdownItem,
   Portal,
 } from "@todo-liszt/common";
-import { Setting, Signout } from "@todo-liszt/common";
 
-import { selectUserData } from "../../redux/selectors/auth";
-import { signOut } from "../../redux/actions/auth";
+import { selectUserData } from "@redux/selectors/auth";
+import { signOut } from "@redux/actions/auth";
+
+import { DropdownList, DropdownItem } from "../Dropdown";
+import { NavUserWrapper } from "./components";
 
 const NavUser = () => {
   const userData = useSelector(selectUserData);
@@ -34,24 +34,29 @@ const NavUser = () => {
     }
   };
 
+  const handleClickOutside = (e: Event) => {
+    if (navUserRef.current && !navUserRef.current.contains(e.target as Node)) {
+      setShowDropdown(false);
+      setPosition({});
+    }
+  };
+
   return (
     <>
-      {userData && (
-        <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
-          <Avatar
-            src={userData.avatar || "/assets/images/avatar-placeholder.png"}
-            name={userData.name ? userData.name : userData.email}
-          />
-          <Text as={TypoTags.Span} variant={TextVariants.Button2}>
-            {userData.name ? userData.name : userData.email}
-          </Text>
-        </NavUserWrapper>
-      )}
+      <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
+        <Avatar
+          src={userData?.avatar || "/assets/images/avatar-placeholder.png"}
+          name={userData?.name ? userData?.name : userData?.email}
+        />
+        <Text as={TypoTags.Span} variant={TextVariants.Button2}>
+          {userData?.name ? userData?.name : userData?.email}
+        </Text>
+      </NavUserWrapper>
 
       {showDropdown && (
         <Portal>
           <DropdownList
-            onCloseDropdown={() => setShowDropdown(false)}
+            onCloseDropdown={handleClickOutside}
             style={{ ...position, right: 24, width: "16rem", margin: 0 }}
           >
             <DropdownItem
@@ -76,15 +81,5 @@ const NavUser = () => {
     </>
   );
 };
-
-const NavUserWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  ${Text} {
-    margin-left: 1rem;
-  }
-`;
 
 export default NavUser;

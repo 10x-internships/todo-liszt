@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { colors } from "@todo-liszt/common";
+import { colors, Text } from "@todo-liszt/common";
 
 export const Header = styled.header<{ isSidebarCollapsed: boolean }>`
   position: fixed;
@@ -29,5 +29,15 @@ export const NavLogo = styled.div`
   & svg {
     width: 3rem;
     height: 3rem;
+  }
+`;
+
+export const NavUserWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  ${Text} {
+    margin-left: 1rem;
   }
 `;
