@@ -5,9 +5,9 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@config/*": ["config/*"],
-      "@service/*": ["service/*"],
+      "@services/*": ["services/*"],
       "@redux/*": ["redux/*"],
-      "@scene/*": ["scene/*"],
+      "@scenes/*": ["scenes/*"],
       "@route/*": ["route/*"],
       "@fragments/*": ["fragments/*"],
       "@containers/*": ["containers/*"]

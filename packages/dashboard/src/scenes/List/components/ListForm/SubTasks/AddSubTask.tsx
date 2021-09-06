@@ -28,29 +28,31 @@ const AddSubTask = () => {
         Add sub-task
       </Button>
 
-      {showModal && (
-        <Modal onCloseModal={handleCloseModal}>
-          <AddSubTaskForm>
-            <Heading as={TypoTags.H3} variant={HeadingVariants.Headline4}>
-              Add sub-task
-            </Heading>
-            <Input label="Name" id="name" placeholder="Enter sub-task name" />
-            <Input
-              as="textarea"
-              label="Description"
-              id="desc"
-              placeholder="Enter Description"
-            />
+      <Modal onCloseModal={handleCloseModal} showModal={showModal}>
+        <AddSubTaskForm>
+          <Heading as={TypoTags.H3} variant={HeadingVariants.Headline4}>
+            Add sub-task
+          </Heading>
+          <Input label="Name" id="name" placeholder="Enter sub-task name" />
+          <Input
+            as="textarea"
+            label="Description"
+            id="desc"
+            placeholder="Enter Description"
+          />
 
-            <AddSubTaskAction>
-              <Button variant={ButtonVariants.Theme} onClick={handleCloseModal}>
-                Cancel
-              </Button>
-              <Button>Add</Button>
-            </AddSubTaskAction>
-          </AddSubTaskForm>
-        </Modal>
-      )}
+          <AddSubTaskAction>
+            <Button
+              type="button"
+              variant={ButtonVariants.Theme}
+              onClick={handleCloseModal}
+            >
+              Cancel
+            </Button>
+            <Button>Add</Button>
+          </AddSubTaskAction>
+        </AddSubTaskForm>
+      </Modal>
     </>
   );
 };

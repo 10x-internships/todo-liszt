@@ -1,15 +1,11 @@
 import { useState } from "react";
+import { Input, Heading, HeadingVariants, TypoTags } from "@todo-liszt/common";
 
-import {
-  Input,
-  Dropdown,
-  Heading,
-  HeadingVariants,
-  TypoTags,
-} from "@todo-liszt/common";
+import { Dropdown } from "@components/Dropdown";
+
+import colorOptions from "../../../colorOptions";
 
 import * as Styled from "./components";
-import colorOptions from "../../colorOptions";
 
 interface InformationProps {
   itemData?: {

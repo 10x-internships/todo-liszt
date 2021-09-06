@@ -1,18 +1,46 @@
+import { Link } from "react-router-dom";
+import { SearchBox, Button, ButtonSizes } from "@todo-liszt/common";
+
+import pathName from "@config/pathName";
+import SceneHeader from "@components/SceneHeader";
+
 import ListItem from "./ListItem";
+import * as Styled from "./components";
 
-import { itemDataTypes } from "../listItemTestData";
+import ListFilter from "../ListFilter";
+import ListPagination from "../ListPagination";
 
-interface ListListingProps {
-  items: itemDataTypes[];
-}
+import listItemTestData from "./listItemTestData";
+import ListEmpty from "../ListEmpty";
 
-const ListListing = ({ items }: ListListingProps) => {
+const ListListing = () => {
+  const isListEmpty = listItemTestData.length === 0;
+
   return (
-    <ul>
-      {items.map((item) => (
-        <ListItem key={item.id} item={item} />
-      ))}
-    </ul>
+    <>
+      <SceneHeader title="List">
+        <SearchBox placeholder="Search everything" />
+
+        <Link to={pathName.app.listCreate}>
+          <Button size={ButtonSizes.Medium}>Create</Button>
+        </Link>
+      </SceneHeader>
+
+      {!isListEmpty && <ListFilter />}
+
+      <Styled.ListListingWrapper isEmpty={isListEmpty}>
+        {isListEmpty && <ListEmpty />}
+        {!isListEmpty && (
+          <ul>
+            {listItemTestData.map((item) => (
+              <ListItem key={item.id} item={item} />
+            ))}
+          </ul>
+        )}
+      </Styled.ListListingWrapper>
+
+      {!isListEmpty && <ListPagination total={50} />}
+    </>
   );
 };
 

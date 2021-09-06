@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import { AuthLayout } from '@components/Layout';
-import SignUpContent from '@fragments/auth/SignUp';
+import SignUpScene from '@fragments/auth/SignUp';
 
 import signupBg from '../public/assets/images/signup.jpg';
 
@@ -12,7 +12,7 @@ export default function SignUp() {
         <title>Sign up | Todo Liszt</title>
       </Head>
 
-      <SignUpContent />
+      <SignUpScene />
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { Redirect } from "react-router-dom";
 
 import pathName from "../config/pathName";
-import { List, CreateList, UpdateList } from "../scenes/List";
+import { ListListing, ListCreate, ListUpdate } from "../scenes/List";
 import Calendar from "../scenes/Calendar";
 import Settings from "../scenes/Settings";
 
@@ -9,17 +9,17 @@ const routesConfig = [
   {
     exact: true,
     path: pathName.app.list,
-    component: List,
+    component: ListListing,
   },
   {
     exact: true,
     path: pathName.app.listCreate,
-    component: CreateList,
+    component: ListCreate,
   },
   {
     exact: true,
     path: pathName.app.listUpdate,
-    component: UpdateList,
+    component: ListUpdate,
   },
   {
     exact: true,

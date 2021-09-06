@@ -4,7 +4,7 @@ import { Text, TextVariants, TypoTags, Checkbox } from "@todo-liszt/common";
 
 import * as Styled from "./components";
 import ListItemContent from "../ListItemContent";
-import { itemDataTypes } from "../../listItemTestData";
+import { itemDataTypes } from "../listItemTestData";
 
 interface ListItemProps {
   item: itemDataTypes;

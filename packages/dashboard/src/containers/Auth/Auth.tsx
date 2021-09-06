@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 
-import * as auth from "services/auth";
+import * as auth from "@services/auth";
 import { updateUserData } from "@redux/actions/auth";
 
 import CheckAuth from "./components/CheckAuth";
