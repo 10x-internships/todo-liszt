@@ -1,45 +1,45 @@
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
-import pathName from "../config/pathName";
-import { ListListing, ListCreate, ListUpdate } from "../scenes/List";
-import Calendar from "../scenes/Calendar";
-import Settings from "../scenes/Settings";
+import pathConfig from '@configs/path';
+import { ListListing, ListCreate, ListUpdate } from '@scenes/List';
+import Calendar from '@scenes/Calendar';
+import Settings from '@scenes/Settings';
 
 const routesConfig = [
   {
     exact: true,
-    path: pathName.app.list,
+    path: pathConfig.app.list,
     component: ListListing,
   },
   {
     exact: true,
-    path: pathName.app.listCreate,
+    path: pathConfig.app.listCreate,
     component: ListCreate,
   },
   {
     exact: true,
-    path: pathName.app.listUpdate,
+    path: pathConfig.app.listUpdate,
     component: ListUpdate,
   },
   {
     exact: true,
-    path: pathName.app.calendar,
+    path: pathConfig.app.calendar,
     component: Calendar,
   },
   {
     exact: true,
-    path: pathName.app.settings,
+    path: pathConfig.app.settings,
     component: Settings,
   },
   {
     exact: true,
-    path: pathName.app.home,
-    component: () => <Redirect to={pathName.app.list} />,
+    path: pathConfig.app.home,
+    component: () => <Redirect to={pathConfig.app.list} />,
   },
   {
     exact: true,
-    path: pathName.app.index,
-    component: () => <Redirect to={pathName.app.list} />,
+    path: pathConfig.app.index,
+    component: () => <Redirect to={pathConfig.app.list} />,
   },
 ];
 

@@ -5,9 +5,10 @@
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
       "@fragments/*": ["fragments/*"],
-      "@config/*": ["config/*"],
+      "@configs/*": ["configs/*"],
       "@redux/*": ["redux/*"],
-      "@helpers/*": ["helpers/*"]
+      "@helpers/*": ["helpers/*"],
+      "@queries/*": ["queries/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

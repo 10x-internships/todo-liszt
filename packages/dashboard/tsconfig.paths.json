@@ -4,13 +4,15 @@
     "paths": {
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
-      "@config/*": ["config/*"],
-      "@services/*": ["services/*"],
+      "@configs/*": ["configs/*"],
       "@redux/*": ["redux/*"],
       "@scenes/*": ["scenes/*"],
       "@route/*": ["route/*"],
       "@fragments/*": ["fragments/*"],
-      "@containers/*": ["containers/*"]
+      "@containers/*": ["containers/*"],
+      "@queries/*": ["queries/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"]
     }
   }
 }

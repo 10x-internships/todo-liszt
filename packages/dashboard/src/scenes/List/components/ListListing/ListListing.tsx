@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import { SearchBox, Button, ButtonSizes } from "@todo-liszt/common";
+import { Link } from 'react-router-dom';
+import { SearchBox, Button, ButtonSizes } from '@todo-liszt/common';
 
-import pathName from "@config/pathName";
-import SceneHeader from "@components/SceneHeader";
+import pathName from '@configs/path';
+import SceneHeader from '@components/SceneHeader';
 
-import ListItem from "./ListItem";
-import * as Styled from "./components";
+import ListFilter from '../ListFilter';
+import ListPagination from '../ListPagination';
 
-import ListFilter from "../ListFilter";
-import ListPagination from "../ListPagination";
+import listItemTestData from './listItemTestData';
+import ListEmpty from '../ListEmpty';
 
-import listItemTestData from "./listItemTestData";
-import ListEmpty from "../ListEmpty";
+import * as Styled from './components';
+import ListItem from './ListItem';
 
 const ListListing = () => {
   const isListEmpty = listItemTestData.length === 0;
