@@ -1,30 +1,15 @@
-import { useSelector } from "react-redux";
-import {
-  Button,
-  ButtonVariants,
-  Text,
-  TextVariants,
-  TypoTags,
-  Avatar,
-} from "@todo-liszt/common";
+import { Button, ButtonVariants, Text, TextVariants, TypoTags, Avatar } from '@todo-liszt/common';
 
-import { selectUserData } from "@redux/selectors/auth";
+import SettingsCard from '../../SettingsCard/SettingsCard';
 
-import SettingsCard from "../../SettingsCard/SettingsCard";
-import * as Styled from "./components";
+import * as Styled from './components';
 
 const Photo = () => {
-  const userProfile = useSelector(selectUserData);
-
   return (
     <SettingsCard title="Photo">
       <Styled.Wrapper>
         <Avatar
-          src={
-            userProfile?.avatar
-              ? userProfile.avatar
-              : "/assets/images/avatar-placeholder.png"
-          }
+          src="/assets/images/avatar-placeholder.png"
           name="Avatar"
           width="12.375rem"
           height="12.375rem"

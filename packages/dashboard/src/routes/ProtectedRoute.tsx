@@ -1,14 +1,11 @@
-import { Route, RouteProps } from "react-router-dom";
-import { getAccessToken } from "@services/auth";
+import { Route, RouteProps } from 'react-router-dom';
+import { getAccessToken } from '@utils/auth';
 
 interface ProtectedRouteProps extends RouteProps {
   component: any;
 }
 
-const ProtectedRoute = ({
-  component: Component,
-  ...others
-}: ProtectedRouteProps) => {
+const ProtectedRoute = ({ component: Component, ...others }: ProtectedRouteProps) => {
   const isSignedIn = getAccessToken();
 
   // if (!isSignedIn) {

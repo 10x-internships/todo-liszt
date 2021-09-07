@@ -1,8 +1,7 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import uiReducers from "./ui";
-import authReducers from "./auth";
+import uiReducers from './ui';
 
-const rootReducer = combineReducers({ ui: uiReducers, auth: authReducers });
+const rootReducer = combineReducers({ ui: uiReducers });
 
 export default rootReducer;
