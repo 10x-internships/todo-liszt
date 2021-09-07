@@ -11,8 +11,8 @@ export const useSignIn = () => {
   const dispatch = useDispatch();
 
   return useMutation(checkSignin, {
-    onSuccess: (signUpData) => {
-      dispatch(updateSignUpData(signUpData.data.data));
+    onSuccess: (signInData) => {
+      dispatch(updateSignInData(signInData));
       window.location.replace(`${process.env.NEXT_PUBLIC_DASHBOARD_URL}`);
     },
   });
@@ -24,7 +24,7 @@ export const useSignUp = () => {
 
   return useMutation(checkSignUp, {
     onSuccess: (signUpData) => {
-      dispatch(updateSignUpData(signUpData.data.data));
+      dispatch(updateSignUpData(signUpData));
       router.push(pathConfig.app.signIn);
     },
   });
