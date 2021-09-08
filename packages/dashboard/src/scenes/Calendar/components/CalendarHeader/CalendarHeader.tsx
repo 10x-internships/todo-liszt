@@ -1,9 +1,9 @@
-import { Dayjs } from "dayjs";
+import { Dayjs } from 'dayjs';
 
-import { ArrowLeft, ArrowRight } from "@todo-liszt/common";
-import { CircleButton, Text, TextVariants, TypoTags } from "@todo-liszt/common";
+import { ArrowLeft, ArrowRight } from '@todo-liszt/common';
+import { CircleButton, Text, TextVariants, TypoTags } from '@todo-liszt/common';
 
-import * as Styled from "./components";
+import * as Styled from './components';
 
 interface CalendarHeaderProps {
   dateObj: Dayjs;
@@ -11,15 +11,11 @@ interface CalendarHeaderProps {
   onNextMonth: () => void;
 }
 
-const CalendarHeader = ({
-  dateObj,
-  onNextMonth,
-  onPrevMonth,
-}: CalendarHeaderProps) => {
+const CalendarHeader = ({ dateObj, onNextMonth, onPrevMonth }: CalendarHeaderProps) => {
   return (
     <Styled.Wrapper>
       <Text as={TypoTags.H2} variant={TextVariants.Hairline1}>
-        {dateObj.format("MMMM")} {dateObj.year()}
+        {dateObj.format('MMMM')} {dateObj.year()}
       </Text>
       <Styled.ButtonsWrapper>
         <CircleButton icon={<ArrowLeft />} onClick={onPrevMonth} />

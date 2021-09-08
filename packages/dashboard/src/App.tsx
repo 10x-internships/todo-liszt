@@ -1,11 +1,12 @@
-import { Provider } from "react-redux";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { GlobalStyles } from "@todo-liszt/common";
+import { Provider } from 'react-redux';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { GlobalStyles } from '@todo-liszt/common';
 
-import store from "./redux/store";
-import { ThemeDarkProvider } from "./styles";
-import Routes from "./routes";
-import Auth from "./containers/Auth";
+import store from './redux/store';
+import { ThemeDarkProvider } from './styles';
+import Routes from './routes';
+import Auth from './containers/Auth';
+import './locales/i18n';
 
 const queryClient = new QueryClient();
 

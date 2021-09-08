@@ -5,7 +5,7 @@ import * as auth from '@utils/auth';
 import pathConfig from './path';
 
 const todoLisztAPI = axios.create({
-  baseURL: pathConfig.apis.baseURL.url,
+  baseURL: process.env.REACT_APP_API_URL,
   headers: {
     'Access-Control-Allow-Origin': '*',
   },

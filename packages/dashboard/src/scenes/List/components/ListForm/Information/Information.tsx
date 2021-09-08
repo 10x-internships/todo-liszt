@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Input, Heading, HeadingVariants, TypoTags } from "@todo-liszt/common";
+import { useState } from 'react';
+import { Input, Heading, HeadingVariants, TypoTags } from '@todo-liszt/common';
 
-import { Dropdown } from "@components/Dropdown";
+import { Dropdown } from '@components/Dropdown';
 
-import colorOptions from "../../../colorOptions";
+import colorOptions from '../../../colorOptions';
 
-import * as Styled from "./components";
+import * as Styled from './components';
+import { useTranslation } from 'react-i18next';
 
 interface InformationProps {
   itemData?: {
@@ -20,40 +21,39 @@ interface InformationProps {
 }
 
 const Information = ({ itemData }: InformationProps) => {
-  const [selected, setSelected] = useState<string>(
-    itemData?.color || colorOptions[0].name
-  );
+  const [selected, setSelected] = useState<string>(itemData?.color || colorOptions[0].name);
+  const { t } = useTranslation();
 
   return (
     <Styled.FormInformation>
       <Heading as={TypoTags.H2} variant={HeadingVariants.Headline4}>
-        Information
+        {t('scene.Lists.ListForm.Information.title')}
       </Heading>
       <Styled.FormInputs>
         <Input
-          label="Name"
           id="name"
-          placeholder="Enter name"
+          label={t('scene.Lists.ListForm.NameInput.label')}
+          placeholder={t('scene.Lists.ListForm.NameInput.placeholder')}
           defaultValue={itemData?.name}
         />
         <Input
           as="textarea"
-          label="Description"
           id="desc"
-          placeholder="Enter Description"
+          label={t('scene.Lists.ListForm.DescInput.label')}
+          placeholder={t('scene.Lists.ListForm.DescInput.placeholder')}
           defaultValue={itemData?.desc}
         />
 
         <Styled.FormDate>
           <Input
-            label="Start date"
             id="start-date"
+            label={t('scene.Lists.ListForm.StartDateInput.label')}
             placeholder="09/08/2021"
             defaultValue={itemData?.startDate}
           />
           <Input
-            label="Start time"
             id="start-time"
+            label={t('scene.Lists.ListForm.StartTimeInput.label')}
             placeholder="10:00"
             defaultValue={itemData?.startTime}
           />
@@ -61,14 +61,14 @@ const Information = ({ itemData }: InformationProps) => {
 
         <Styled.FormDate>
           <Input
-            label="End date"
             id="end-date"
+            label={t('scene.Lists.ListForm.EndDateInput.label')}
             placeholder="09/08/2021"
             defaultValue={itemData?.endDate}
           />
           <Input
-            label="End time"
             id="end-time"
+            label={t('scene.Lists.ListForm.EndTimeInput.label')}
             placeholder="10:00"
             defaultValue={itemData?.endTime}
           />
@@ -80,7 +80,7 @@ const Information = ({ itemData }: InformationProps) => {
             selected={selected}
             setSelected={setSelected}
             placement="top"
-            label="Color"
+            label={t('scene.Lists.ListForm.ColorInput.label')}
           />
         </Styled.FormDropdown>
       </Styled.FormInputs>

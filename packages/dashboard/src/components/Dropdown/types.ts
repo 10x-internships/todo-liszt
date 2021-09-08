@@ -8,21 +8,22 @@ export type OptionType = {
 };
 
 export interface DropdownProps {
-  options: OptionType[];
-  selected: string;
-  setSelected: (name: string) => void;
-  placement?: "top" | "bottom";
+  options?: OptionType[];
+  selected?: string;
+  setSelected?: (name: string) => void;
+  placement?: 'top' | 'bottom';
   label?: string;
   children?: React.ReactNode;
+  onSelectedItem?: () => void;
+  defaultValue?: string;
 }
 
-export interface DropdownListProps extends React.ComponentPropsWithRef<"ul"> {
+export interface DropdownListProps extends React.ComponentPropsWithRef<'ul'> {
   children?: React.ReactNode;
   onCloseDropdown: (e: Event) => void;
 }
 
-export interface DropdownItemProps
-  extends React.ComponentPropsWithoutRef<"li"> {
+export interface DropdownItemProps extends React.ComponentPropsWithoutRef<'li'> {
   isAllItem?: boolean;
   option: OptionType;
 }
