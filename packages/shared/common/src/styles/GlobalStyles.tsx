@@ -1,4 +1,4 @@
-import { Global, css, useTheme } from "@emotion/react";
+import { Global, css, useTheme } from '@emotion/react';
 
 const GlobalStyles = () => {
   const theme = useTheme();
@@ -6,8 +6,8 @@ const GlobalStyles = () => {
     <Global
       styles={css`
         :root {
-          --font-primary: "DM Sans", sans-serif;
-          --font-secondary: "Poppins", sans-serif;
+          --font-primary: 'Source Sans Pro', sans-serif;
+          --font-secondary: 'Source Sans Pro', sans-serif;
           --transition: all 0.25s linear;
         }
 
