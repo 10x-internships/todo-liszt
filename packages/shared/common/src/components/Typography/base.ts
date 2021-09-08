@@ -1,12 +1,12 @@
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
 
-import { BaseStyles } from "./types";
+import { BaseStyles } from './types';
 
 const base = ({
-  fontFamily = "DM Sans",
-  fontSize = "1rem",
+  fontFamily = 'Source Sans Pro',
+  fontSize = '1rem',
   fontWeight,
-  lineHeight = "1.5rem",
+  lineHeight = '1.5rem',
   letterSpacing,
   textTransform,
 }: BaseStyles) =>

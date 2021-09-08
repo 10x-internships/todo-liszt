@@ -20,9 +20,6 @@ const app = {
 };
 
 const apis: IApis = {
-  baseURL: {
-    url: process.env.REACT_APP_API_URL as string,
-  },
   refreshToken: {
     url: '/sessions/refresh',
     method: 'POST',

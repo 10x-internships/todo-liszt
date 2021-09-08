@@ -1,25 +1,27 @@
-import { Button, ButtonVariants, ButtonSizes } from "@todo-liszt/common";
-import { useHistory } from "react-router-dom";
+import { Button, ButtonVariants, ButtonSizes } from '@todo-liszt/common';
+import { useHistory } from 'react-router-dom';
 
-import SceneHeader from "@components/SceneHeader";
+import SceneHeader from '@components/SceneHeader';
 
-import ListForm from "../ListForm";
+import ListForm from '../ListForm';
+import { useTranslation } from 'react-i18next';
 
 const ListCreate = () => {
   const history = useHistory();
+  const { t } = useTranslation();
 
   return (
     <form autoComplete="off">
-      <SceneHeader title="Create list">
+      <SceneHeader title={t('scene.Lists.ListCreate.title')}>
         <Button
           variant={ButtonVariants.Theme}
           size={ButtonSizes.Medium}
-          onClick={() => history.replace("/app/list")}
+          onClick={() => history.replace('/app/list')}
         >
-          Cancel
+          {t('scene.Lists.ListCreate.Button.cancel')}
         </Button>
         <Button type="submit" size={ButtonSizes.Medium}>
-          Create
+          {t('scene.Lists.ListCreate.Button.create')}
         </Button>
       </SceneHeader>
 

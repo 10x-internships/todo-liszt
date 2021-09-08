@@ -9,31 +9,42 @@ import {
   TypoTags,
   Input,
 } from '@todo-liszt/common';
+import { useTranslation } from 'react-i18next';
 
 import { AddSubTaskForm, AddSubTaskAction } from './components';
 
 const AddSubTask = () => {
   const { isModalOpen, handleOpenModal, handleCloseModal } = useModal();
+  const { t } = useTranslation();
 
   return (
     <>
       <Button bgColor={ButtonColors.Primary_02} onClick={handleOpenModal} type="button">
-        Add sub-task
+        {t('scene.Lists.ListForm.AddSubTasks.Button')}
       </Button>
 
       <Modal onCloseModal={handleCloseModal} showModal={isModalOpen}>
         <AddSubTaskForm>
           <Heading as={TypoTags.H3} variant={HeadingVariants.Headline4}>
-            Add sub-task
+            {t('scene.Lists.ListForm.AddSubTasks.Modal.title')}
           </Heading>
-          <Input label="Name" id="name" placeholder="Enter sub-task name" />
-          <Input as="textarea" label="Description" id="desc" placeholder="Enter Description" />
+          <Input
+            id="name"
+            label={t('scene.Lists.ListForm.NameInput.label')}
+            placeholder={t('scene.Lists.ListForm.NameInput.placeholder')}
+          />
+          <Input
+            as="textarea"
+            id="desc"
+            label={t('scene.Lists.ListForm.DescInput.label')}
+            placeholder={t('scene.Lists.ListForm.DescInput.placeholder')}
+          />
 
           <AddSubTaskAction>
             <Button type="button" variant={ButtonVariants.Theme} onClick={handleCloseModal}>
-              Cancel
+              {t('scene.Lists.ListForm.AddSubTasks.Button.cancel')}
             </Button>
-            <Button>Add</Button>
+            <Button>{t('scene.Lists.ListForm.AddSubTasks.Button.create')}</Button>
           </AddSubTaskAction>
         </AddSubTaskForm>
       </Modal>

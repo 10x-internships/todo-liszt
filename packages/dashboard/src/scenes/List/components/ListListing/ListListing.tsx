@@ -12,17 +12,19 @@ import ListEmpty from '../ListEmpty';
 
 import * as Styled from './components';
 import ListItem from './ListItem';
+import { useTranslation } from 'react-i18next';
 
 const ListListing = () => {
   const isListEmpty = listItemTestData.length === 0;
+  const { t, i18n } = useTranslation();
 
   return (
     <>
-      <SceneHeader title="List">
-        <SearchBox placeholder="Search everything" />
+      <SceneHeader title={t('scene.Lists.ListListing.title')}>
+        <SearchBox placeholder={t('scene.Lists.ListListing.SearchBox.placeholder')} />
 
         <Link to={pathName.app.listCreate}>
-          <Button size={ButtonSizes.Medium}>Create</Button>
+          <Button size={ButtonSizes.Medium}>{t('scene.Lists.ListListing.Button.create')}</Button>
         </Link>
       </SceneHeader>
 

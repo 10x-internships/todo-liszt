@@ -6,10 +6,18 @@ import { Text, TextVariants, TypoTags, Avatar, Portal } from '@todo-liszt/common
 import { DropdownList, DropdownItem } from '../Dropdown';
 import { NavUserWrapper } from './components';
 import { useGetUsers } from '@queries/hooks/users';
+import { useTranslation } from 'react-i18next';
 
 const NavUser = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [position, setPosition] = useState({});
+  const { t } = useTranslation();
+
+  const userData = {
+    avatar: '',
+    name: '',
+    email: '',
+  };
 
   const navUserRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +39,7 @@ const NavUser = () => {
 
   return (
     <>
-      {/* <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
+      <NavUserWrapper ref={navUserRef} onClick={handleToggleDropdown}>
         <Avatar
           src={userData?.avatar || '/assets/images/avatar-placeholder.png'}
           name={userData?.name ? userData?.name : userData?.email}
@@ -39,7 +47,7 @@ const NavUser = () => {
         <Text as={TypoTags.Span} variant={TextVariants.Button2}>
           {userData?.name ? userData?.name : userData?.email}
         </Text>
-      </NavUserWrapper> */}
+      </NavUserWrapper>
 
       {showDropdown && (
         <Portal>
@@ -50,7 +58,7 @@ const NavUser = () => {
             <DropdownItem
               option={{
                 id: 1,
-                name: 'Settings',
+                name: 'component.Navbar.NavUser.Settings',
                 href: '/app/settings',
                 icon: <Setting />,
               }}
@@ -58,7 +66,7 @@ const NavUser = () => {
             <DropdownItem
               option={{
                 id: 2,
-                name: 'Sign out',
+                name: 'component.Navbar.NavUser.SignOut',
                 icon: <Signout />,
               }}
             />

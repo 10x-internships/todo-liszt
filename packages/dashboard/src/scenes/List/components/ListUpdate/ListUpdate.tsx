@@ -17,21 +17,23 @@ import SceneHeader from '@components/SceneHeader';
 import useModal from '@hooks/modal';
 
 import ListForm from '../ListForm';
+import { useTranslation } from 'react-i18next';
 
 const UpdateListContainer = () => {
   const history = useHistory();
   const { isModalOpen, handleOpenModal, handleCloseModal } = useModal();
+  const { t } = useTranslation();
 
   return (
     <form autoComplete="off">
-      <SceneHeader title="Update list">
+      <SceneHeader title={t('scene.Lists.ListUpdate.title')}>
         <Button
           type="button"
           size={ButtonSizes.Medium}
           bgColor={ButtonColors.Primary_03}
           onClick={handleOpenModal}
         >
-          Delete
+          {t('scene.Lists.ListUpdate.Button.delete')}
         </Button>
 
         <Modal showModal={isModalOpen} onCloseModal={handleCloseModal}>
@@ -45,10 +47,10 @@ const UpdateListContainer = () => {
 
           <div style={{ textAlign: 'right' }}>
             <Button type="button" variant={ButtonVariants.Theme} onClick={handleCloseModal}>
-              Cancel
+              {t('scene.Lists.ListUpdate.Button.cancel')}
             </Button>
             <Button type="button" bgColor={ButtonColors.Primary_03} style={{ marginLeft: '1rem' }}>
-              Delete
+              {t('scene.Lists.ListUpdate.Button.delete')}
             </Button>
           </div>
         </Modal>
@@ -59,10 +61,10 @@ const UpdateListContainer = () => {
           size={ButtonSizes.Medium}
           onClick={() => history.replace('/app/list')}
         >
-          Cancel
+          {t('scene.Lists.ListUpdate.Button.cancel')}
         </Button>
         <Button type="submit" size={ButtonSizes.Medium}>
-          Update
+          {t('scene.Lists.ListUpdate.Button.update')}
         </Button>
       </SceneHeader>
 

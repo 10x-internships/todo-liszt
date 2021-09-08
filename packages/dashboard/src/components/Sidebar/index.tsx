@@ -1,9 +1,10 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
+import { colors } from '@todo-liszt/common';
 
-import { colors } from "@todo-liszt/common";
-import SidebarList from "./SidebarList";
-import { SidebarDarkMode, SidebarLink, SidebarAbout } from "./SidebarItem";
-import sidebarData from "./sidebarData";
+import SidebarList from './SidebarList';
+import { SidebarDarkMode, SidebarLink, SidebarAbout } from './SidebarItem';
+import sidebarData from './sidebarData';
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -15,7 +16,7 @@ const SidebarNav = styled.nav<SidebarProps>`
   left: 0;
   width: inherit;
   height: 100vh;
-  background: ${colors.primary["01"]};
+  background: ${colors.primary['01']};
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -23,6 +24,8 @@ const SidebarNav = styled.nav<SidebarProps>`
 `;
 
 const Sidebar = ({ isCollapsed }: SidebarProps) => {
+  const { t } = useTranslation();
+
   return (
     <SidebarNav isCollapsed={isCollapsed}>
       {/* Side Nav Top */}
@@ -35,7 +38,7 @@ const Sidebar = ({ isCollapsed }: SidebarProps) => {
             isCollapsed={isCollapsed}
             title={sidebarItem.name}
           >
-            {sidebarItem.name}
+            {t(sidebarItem.name)}
           </SidebarLink>
         ))}
       </SidebarList>

@@ -1,4 +1,4 @@
-import { BaseStyles } from "../types";
+import { BaseStyles } from '../types';
 
 interface TextType {
   body1: BaseStyles;
@@ -13,48 +13,48 @@ interface TextType {
 
 const textStyles: TextType = {
   body1: {
-    fontFamily: "Poppins",
-    fontSize: "1.5rem",
-    lineHeight: "2rem",
+    fontFamily: 'Source Sans Pro',
+    fontSize: '1.5rem',
+    lineHeight: '2rem',
   },
   body2: {
-    fontFamily: "Poppins",
-    fontSize: "1rem",
-    lineHeight: "1rem",
+    fontFamily: 'Source Sans Pro',
+    fontSize: '1rem',
+    lineHeight: '1rem',
   },
   caption1: {
-    fontFamily: "Poppins",
-    fontSize: "0.875rem",
-    lineHeight: "1.5rem",
+    fontFamily: 'Source Sans Pro',
+    fontSize: '0.875rem',
+    lineHeight: '1.5rem',
   },
   caption2: {
-    fontFamily: "Poppins",
-    fontSize: "0.75rem",
-    lineHeight: "1.25rem",
+    fontFamily: 'Source Sans Pro',
+    fontSize: '0.75rem',
+    lineHeight: '1.25rem',
   },
   hairline1: {
-    fontFamily: "Poppins",
-    fontSize: "1rem",
+    fontFamily: 'Source Sans Pro',
+    fontSize: '1rem',
     fontWeight: 700,
-    lineHeight: "1rem",
-    textTransform: "uppercase",
+    lineHeight: '1rem',
+    textTransform: 'uppercase',
   },
   hairline2: {
-    fontFamily: "Poppins",
-    fontSize: "0.75rem",
+    fontFamily: 'Source Sans Pro',
+    fontSize: '0.75rem',
     fontWeight: 700,
-    lineHeight: "0.75rem",
-    textTransform: "uppercase",
+    lineHeight: '0.75rem',
+    textTransform: 'uppercase',
   },
   button1: {
-    fontSize: "1rem",
+    fontSize: '1rem',
     fontWeight: 700,
-    lineHeight: "1rem",
+    lineHeight: '1rem',
   },
   button2: {
-    fontSize: "0.875rem",
+    fontSize: '0.875rem',
     fontWeight: 700,
-    lineHeight: "1rem",
+    lineHeight: '1rem',
   },
 };
 

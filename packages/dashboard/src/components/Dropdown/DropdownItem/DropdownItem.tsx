@@ -1,14 +1,16 @@
-import { forwardRef } from "react";
-import { Link } from "react-router-dom";
+import { forwardRef } from 'react';
+import { Link } from 'react-router-dom';
 
-import { Text, TextVariants, TypoTags } from "@todo-liszt/common";
+import { Text, TextVariants, TypoTags } from '@todo-liszt/common';
 
-import { DropdownItemProps } from "../types";
-import { StyledDropdownItem } from "./styledComponents";
+import { DropdownItemProps } from '../types';
+import { StyledDropdownItem } from './styledComponents';
+import { useTranslation } from 'react-i18next';
 
 const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
   ({ option, ...others }, ref) => {
     const { name, value, href, icon } = option;
+    const { t } = useTranslation();
 
     if (href) {
       return (
@@ -16,7 +18,7 @@ const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
           <Link to={href}>
             {icon}
             <Text as={TypoTags.Span} variant={TextVariants.Caption1}>
-              {name}
+              {t(name)}
             </Text>
           </Link>
         </StyledDropdownItem>
@@ -24,15 +26,11 @@ const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
     }
 
     return (
-      <StyledDropdownItem isAllItem={value === ""} {...others}>
+      <StyledDropdownItem isAllItem={value === ''} {...others}>
         {icon}
         {/* <CircleLine circleFill={colorFill} /> */}
-        <Text
-          as={TypoTags.Span}
-          variant={TextVariants.Caption1}
-          isBold={value === ""}
-        >
-          {name}
+        <Text as={TypoTags.Span} variant={TextVariants.Caption1} isBold={value === ''}>
+          {t(name)}
         </Text>
       </StyledDropdownItem>
     );

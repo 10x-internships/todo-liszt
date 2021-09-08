@@ -1,22 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { Text, TextVariants, TypoTags } from '@todo-liszt/common';
 
-import * as Styled from "./components";
-import { Text, TextVariants, TypoTags } from "@todo-liszt/common";
-import { SidebarItemProps } from "./types";
+import * as Styled from './components';
+import { SidebarItemProps } from './types';
 
-const SidebarLink = ({
-  href,
-  icon,
-  children,
-  isCollapsed,
-  isActive,
-  title,
-}: SidebarItemProps) => {
+const SidebarLink = ({ href, icon, children, isCollapsed, isActive, title }: SidebarItemProps) => {
   return (
     <Styled.SidebarItem
       isCollapsed={isCollapsed}
       isActive={isActive}
-      title={isCollapsed ? title : ""}
+      title={isCollapsed ? title : ''}
     >
       {href && (
         <NavLink to={href} activeClassName="active">

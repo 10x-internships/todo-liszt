@@ -1,12 +1,15 @@
 import { Button, ButtonVariants, Text, TextVariants, TypoTags, Avatar } from '@todo-liszt/common';
+import { useTranslation } from 'react-i18next';
 
 import SettingsCard from '../../SettingsCard/SettingsCard';
 
 import * as Styled from './components';
 
 const Photo = () => {
+  const { t } = useTranslation();
+
   return (
-    <SettingsCard title="Photo">
+    <SettingsCard title={t('scene.Settings.Photo.title')}>
       <Styled.Wrapper>
         <Avatar
           src="/assets/images/avatar-placeholder.png"
@@ -16,9 +19,9 @@ const Photo = () => {
         />
 
         <Styled.UploadPhoto>
-          <Button variant={ButtonVariants.Theme}>Upload photo</Button>
+          <Button variant={ButtonVariants.Theme}>{t('scene.Settings.Photo.Button.upload')}</Button>
           <Text as={TypoTags.P} variant={TextVariants.Caption1}>
-            Pick a photo up to 4MB
+            {t('scene.Settings.Photo.uploadText')}
           </Text>
         </Styled.UploadPhoto>
       </Styled.Wrapper>

@@ -1,29 +1,29 @@
-import { List, Calendar, User, Setting } from "@todo-liszt/common";
+import { List, Calendar, User, Setting } from '@todo-liszt/common';
 
 const sidebarData = [
   {
     id: 1,
-    name: "List",
+    name: 'component.Sidebar.SidebarLink.List',
     icon: <List />,
-    path: "/app/list",
+    path: '/app/list',
   },
   {
     id: 2,
-    name: "Calendar",
+    name: 'component.Sidebar.SidebarLink.Calendar',
     icon: <Calendar />,
-    path: "/app/calendar",
+    path: '/app/calendar',
   },
   {
     id: 3,
-    name: "Users",
+    name: 'component.Sidebar.SidebarLink.Users',
     icon: <User />,
-    path: "/app/users",
+    path: '/app/users',
   },
   {
     id: 4,
-    name: "Audit Logs",
+    name: 'component.Sidebar.SidebarLink.AuditLogs',
     icon: <Setting />,
-    path: "/app/audit-logs",
+    path: '/app/audit-logs',
   },
 ];
 
