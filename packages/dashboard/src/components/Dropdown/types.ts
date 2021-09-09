@@ -26,4 +26,5 @@ export interface DropdownListProps extends React.ComponentPropsWithRef<'ul'> {
 export interface DropdownItemProps extends React.ComponentPropsWithoutRef<'li'> {
   isAllItem?: boolean;
   option: OptionType;
+  isTranslated?: boolean;
 }

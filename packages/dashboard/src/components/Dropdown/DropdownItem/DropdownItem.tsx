@@ -8,7 +8,7 @@ import { StyledDropdownItem } from './styledComponents';
 import { useTranslation } from 'react-i18next';
 
 const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
-  ({ option, ...others }, ref) => {
+  ({ option, isTranslated, ...others }, ref) => {
     const { name, value, href, icon } = option;
     const { t } = useTranslation();
 
@@ -18,7 +18,7 @@ const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
           <Link to={href}>
             {icon}
             <Text as={TypoTags.Span} variant={TextVariants.Caption1}>
-              {t(name)}
+              {isTranslated ? t(name) : name}
             </Text>
           </Link>
         </StyledDropdownItem>
@@ -30,7 +30,7 @@ const DropdownItem = forwardRef<HTMLAnchorElement, DropdownItemProps>(
         {icon}
         {/* <CircleLine circleFill={colorFill} /> */}
         <Text as={TypoTags.Span} variant={TextVariants.Caption1} isBold={value === ''}>
-          {t(name)}
+          {isTranslated ? t(name) : name}
         </Text>
       </StyledDropdownItem>
     );
