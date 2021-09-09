@@ -1,5 +1,7 @@
 import { combineEpics } from 'redux-observable';
 
-const rootEpic = combineEpics();
+import settingsEpic from './settings';
+
+const rootEpic = combineEpics(settingsEpic);
 
 export default rootEpic;

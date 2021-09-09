@@ -56,6 +56,7 @@ const NavUser = () => {
             style={{ ...position, right: 24, width: '16rem', margin: 0 }}
           >
             <DropdownItem
+              isTranslated
               option={{
                 id: 1,
                 name: 'component.Navbar.NavUser.Settings',
@@ -64,6 +65,7 @@ const NavUser = () => {
               }}
             />
             <DropdownItem
+              isTranslated
               option={{
                 id: 2,
                 name: 'component.Navbar.NavUser.SignOut',

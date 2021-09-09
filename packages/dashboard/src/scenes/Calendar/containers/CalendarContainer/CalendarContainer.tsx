@@ -1,7 +1,11 @@
-import Calendar from "../../components/Calendar";
+import { selectWeekStart } from '@redux/selectors/settings';
+import { useSelector } from 'react-redux';
+import Calendar from '../../components/Calendar';
 
 const CalendarContainer = () => {
-  return <Calendar startDayOfWeek="monday" />;
+  const startDayOfWeek = useSelector(selectWeekStart);
+
+  return <Calendar startDayOfWeek={startDayOfWeek} />;
 };
 
 export default CalendarContainer;
