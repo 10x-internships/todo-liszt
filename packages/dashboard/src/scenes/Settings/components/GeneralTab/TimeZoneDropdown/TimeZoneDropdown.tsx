@@ -5,19 +5,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Dropdown, DropdownItem } from '@components/Dropdown';
 
 import timezoneOptions from './timezoneOptions';
+import { selectTimezone } from '@redux/selectors/settings';
+import { setTimezone } from '@redux/actions/settings';
 
 const getTimezoneName = (value: string) => {
   return timezoneOptions.find((option) => option.value === value)?.name;
 };
 
 const TimeZoneDropdown = () => {
-  const [selectedTimeZone, setSelectedTimeZone] = useState(timezoneOptions[0].name);
+  const dispatch = useDispatch();
+  const timezone = useSelector(selectTimezone);
   const { t } = useTranslation();
 
   return (
-    <Dropdown label={t('scene.Settings.AppSettings.Timezone.label')} selected={selectedTimeZone}>
+    <Dropdown
+      label={t('scene.Settings.AppSettings.Timezone.label')}
+      selected={getTimezoneName(timezone)}
+    >
       {timezoneOptions.map((option) => (
-        <DropdownItem key={option.id} option={option} />
+        <DropdownItem
+          key={option.id}
+          option={option}
+          onClick={() => dispatch(setTimezone(option.value))}
+        />
       ))}
     </Dropdown>
   );
