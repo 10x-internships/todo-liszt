@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 const ListListing = () => {
   const isListEmpty = listItemTestData.length === 0;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>

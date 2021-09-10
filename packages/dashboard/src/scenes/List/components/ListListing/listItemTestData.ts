@@ -1,7 +1,7 @@
 export type itemDataTypes = {
   id: number;
   task: string;
-  schedule?: string;
+  schedule?: { startDate: string; endDate: string };
   color?: string;
   subTasks: number;
 };
@@ -10,28 +10,40 @@ const listItemTestData: itemDataTypes[] = [
   {
     id: 1,
     task: 'Quarterly newsletter',
-    schedule: 'June 1, 2021 - August 30, 2021',
+    schedule: {
+      startDate: '2021-05-05T16:00:00.000Z',
+      endDate: '2021-05-29T16:00:00.000Z',
+    },
     color: 'tomato',
     subTasks: 0,
   },
   {
     id: 2,
     task: 'Recruiting blog post',
-    schedule: 'May 24, 2021 - May 29, 2021',
+    schedule: {
+      startDate: '2021-05-05T16:00:00.000Z',
+      endDate: '2021-05-29T16:00:00.000Z',
+    },
     color: 'cyan',
     subTasks: 2,
   },
   {
     id: 3,
     task: 'Mobile app launch',
-    schedule: 'Today',
+    schedule: {
+      startDate: '2021-05-05T16:00:00.000Z',
+      endDate: '2021-05-29T16:00:00.000Z',
+    },
     color: 'purple',
     subTasks: 0,
   },
   {
     id: 4,
     task: 'Interview John H.',
-    schedule: 'April 01, 2021 - April 25, 2021',
+    schedule: {
+      startDate: '2021-05-05T16:00:00.000Z',
+      endDate: '2021-05-29T16:00:00.000Z',
+    },
     color: 'pink',
     subTasks: 4,
   },
@@ -50,14 +62,20 @@ const listItemTestData: itemDataTypes[] = [
   {
     id: 7,
     task: 'Homepage refresh',
-    schedule: 'March 12, 2021 - April 12, 2021',
+    schedule: {
+      startDate: '2021-05-05T16:00:00.000Z',
+      endDate: '2021-05-29T16:00:00.000Z',
+    },
     color: 'purple',
     subTasks: 8,
   },
   {
     id: 8,
     task: 'Onboard new Sales team members',
-    schedule: 'June 1, 2021 - August 30, 2021',
+    schedule: {
+      startDate: '2021-05-05T16:00:00.000Z',
+      endDate: '2021-05-29T16:00:00.000Z',
+    },
     color: 'pink',
     subTasks: 4,
   },

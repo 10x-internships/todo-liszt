@@ -61,5 +61,10 @@
   "scene.Settings.AppSettings.Timezone.label": "Timezone",
   "scene.Settings.AppSettings.WeekStart": "Week Start",
   "scene.Settings.AppSettings.WeekStart.monday": "Monday",
+  "scene.Settings.AppSettings.WeekStart.tuesday": "Tuesday",
+  "scene.Settings.AppSettings.WeekStart.wednesday": "Wednesday",
+  "scene.Settings.AppSettings.WeekStart.thursday": "Thursday",
+  "scene.Settings.AppSettings.WeekStart.friday": "Friday",
+  "scene.Settings.AppSettings.WeekStart.saturday": "Saturday",
   "scene.Settings.AppSettings.WeekStart.sunday": "Sunday"
 }
