@@ -61,5 +61,10 @@
   "scene.Settings.AppSettings.Timezone.label": "Múi giờ",
   "scene.Settings.AppSettings.WeekStart": "Ngày bắt đầu của tuần",
   "scene.Settings.AppSettings.WeekStart.monday": "Thứ hai",
+  "scene.Settings.AppSettings.WeekStart.tuesday": "Thứ ba",
+  "scene.Settings.AppSettings.WeekStart.wednesday": "Thứ tư",
+  "scene.Settings.AppSettings.WeekStart.thursday": "Thứ năm",
+  "scene.Settings.AppSettings.WeekStart.friday": "Thứ sáu",
+  "scene.Settings.AppSettings.WeekStart.saturday": "Thứ bảy",
   "scene.Settings.AppSettings.WeekStart.sunday": "Chủ nhật"
 }
