@@ -1,4 +1,4 @@
-import { SET_LANGUAGE, SET_WEEK_START } from '@redux/constants/settings';
+import { SET_LANGUAGE, SET_TIMEZONE, SET_WEEK_START } from '@redux/constants/settings';
 
 const initialState = {
   language: '',
@@ -17,6 +17,11 @@ const settingsReducers = (state = initialState, action: any) => {
       return {
         ...state,
         weekStart: action.payload,
+      };
+    case SET_TIMEZONE:
+      return {
+        ...state,
+        timezone: action.payload,
       };
     default:
       return state;
