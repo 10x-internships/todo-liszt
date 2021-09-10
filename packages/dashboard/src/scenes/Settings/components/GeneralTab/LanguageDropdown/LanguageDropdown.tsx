@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -23,13 +22,9 @@ const getLanguageName = (lang: string) => {
 };
 
 const LanguageDropdown = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const language = useSelector(selectLanguage);
-
-  useEffect(() => {
-    i18n.changeLanguage(language);
-  }, [i18n, language]);
 
   return (
     <Dropdown
