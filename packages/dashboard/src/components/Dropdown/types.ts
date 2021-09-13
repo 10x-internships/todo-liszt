@@ -1,5 +1,5 @@
 export type OptionType = {
-  id: string | number;
+  id?: string | number;
   name: string;
   value?: string;
   href?: string;

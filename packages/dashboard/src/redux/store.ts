@@ -12,7 +12,7 @@ const composedEnhancer = composeWithDevTools(applyMiddleware(thunk, epicMiddlewa
 const preState = {
   settings: {
     language: localStorage.getItem('i18nextLng') || 'en-US',
-    timezone: localStorage.getItem('timezone') || '',
+    timezone: localStorage.getItem('timezone') || Intl.DateTimeFormat().resolvedOptions().timeZone,
     weekStart: localStorage.getItem('weekStart') || 'monday',
   },
 };
